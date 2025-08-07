@@ -1,7 +1,9 @@
 import {
+  getPreciseType,
   isArray,
   isBoolean,
   isEmptyString,
+  isError,
   isNil,
   isNull,
   isObject,
@@ -42,7 +44,7 @@ export class Router extends String {
 
     if (!isNull(absolute) && !isBoolean(absolute)) {
       throw new RoutePropsError(
-        `Invalid \`route()\` option "absolute" must be a boolean or undefined, but received type "${typeof absolute}". Learn more: ${REPO.LINK}#absolute-url.`
+        `Invalid \`route()\` option "absolute" must be a boolean or undefined, but received type "${getPreciseType(absolute)}". Learn more: ${REPO.LINK}#absolute-url.`
       );
     }
 
@@ -84,7 +86,7 @@ export class Router extends String {
       throw new Error(
         `${PACKAGE.PREFIX.NAME} - Unknown error while validating \`route()\` config`,
         {
-          cause: err instanceof Error ? err : undefined
+          cause: isError(err) ? err : undefined
         }
       );
     }
@@ -153,7 +155,7 @@ export class Router extends String {
   ): Record<string, string> {
     if (!isObjectOrArray(params)) {
       throw new RoutePropsError(
-        `Invalid \`route()\` \`params\` property detected. Value \`params\` need object or array type but you passing as \`${typeof params}\`. More info → ${REPO.LINK}#parameters`
+        `Invalid \`route()\` \`params\` property detected. Value \`params\` need object or array type but you passing as \`${getPreciseType(params)}\`. More info → ${REPO.LINK}#parameters`
       );
     }
 
@@ -287,7 +289,7 @@ export class Router extends String {
   public has(name: string): boolean {
     if (!isString(name)) {
       throw new RoutePropsError(
-        `Invalid \`route().has(...)\` the \`name\` parameter must be a string, but received \`${typeof name}\`.`
+        `Invalid \`route().has(...)\` the \`name\` parameter must be a string, but received \`${getPreciseType(name)}\`.`
       );
     }
     return this._config.routes.hasOwnProperty(name);
@@ -299,12 +301,12 @@ export class Router extends String {
   ): boolean | string | undefined {
     if (name && !isString(name)) {
       throw new RoutePropsError(
-        `Invalid \`route().current(...)\` \`name\` property detected. Value \`name\` need string type but you passing as \`${typeof name}\`.`
+        `Invalid \`route().current(...)\` \`name\` property detected. Value \`name\` need string type but you passing as \`${getPreciseType(name)}\`.`
       );
     }
     if (params && !isObjectOrArray(params)) {
       throw new RoutePropsError(
-        `Invalid \`params\` value passed to \`route().current(...)\`, expected a object or array (e.g., { foo: "bar" } or [{"foo": "bar"}]), but received \`${typeof params}\`. Learn more: ${REPO.LINK}#routecurrent-optionally-accepts-parameters-as-its-second-argument-and-will-check-that-their-values-also-match-in-the-current-url.`
+        `Invalid \`params\` value passed to \`route().current(...)\`, expected a object or array (e.g., { foo: "bar" } or [{"foo": "bar"}]), but received \`${getPreciseType(params)}\`. Learn more: ${REPO.LINK}#routecurrent-optionally-accepts-parameters-as-its-second-argument-and-will-check-that-their-values-also-match-in-the-current-url.`
       );
     }
 
@@ -389,7 +391,7 @@ export class Router extends String {
         isArray(thisParamsQuery))
     ) {
       throw new RoutePropsError(
-        `Invalid \`params._query\` value passed to \`route()\`, expected a plain object (e.g., { foo: "bar" }), but received \`${typeof thisParamsQuery}\`. More info → ${REPO.LINK}#query-parameters`
+        `Invalid \`params._query\` value passed to \`route()\`, expected a plain object (e.g., { foo: "bar" }), but received \`${getPreciseType(thisParamsQuery)}\`. More info → ${REPO.LINK}#query-parameters`
       );
     }
 

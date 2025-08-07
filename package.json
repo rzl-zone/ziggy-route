@@ -131,7 +131,7 @@
     "vite-plugin-run": "^0.6.1"
   },
   "devDependencies": {
-    "@rzl-zone/utils-js": "^2.0.1",
+    "@rzl-zone/utils-js": "^2.1.0",
     "@types/node": "^24.2.0",
     "del-cli": "^6.0.0",
     "glob": "^11.0.3",

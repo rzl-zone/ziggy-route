@@ -13,7 +13,8 @@ import {
   isObject,
   isObjectOrArray,
   isString,
-  isUndefined
+  isUndefined,
+  getPreciseType
 } from "@rzl-zone/utils-js";
 
 import { RouterConfigError } from "./exceptions";
@@ -47,32 +48,32 @@ export class RouterConfigClass implements RouterConfig {
     // object
     if (!isObject<Partial<RouterConfig>>(o)) {
       throw new RouterConfigError(
-        `Invalid \`route()\` \`config\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid config object, \`config\` need object type but you passing as \`${typeof o}\`.`
+        `Invalid \`route()\` \`config\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid config object, \`config\` need object type but you passing as \`${getPreciseType(o)}\`.`
       );
     }
 
     // url
     if (!isString(o.url)) {
       throw new RouterConfigError(
-        `Invalid \`route()\` \`config.url\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.url\`, \`config.url\` need string or null type but you passing as \`${typeof o.url}\`.`
+        `Invalid \`route()\` \`config.url\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.url\`, \`config.url\` need string or null type but you passing as \`${getPreciseType(o.url)}\`.`
       );
     }
     // port
     if (!isNull(o.port) && !isNumber(o.port)) {
       throw new RouterConfigError(
-        `Invalid \`route()\` \`config.port\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.port\`, \`config.port\` need number or null type but you passing as \`${typeof o.port}\`.`
+        `Invalid \`route()\` \`config.port\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.port\`, \`config.port\` need number or null type but you passing as \`${getPreciseType(o.port)}\`.`
       );
     }
     // defaults
     if (!isObjectOrArray(o.defaults)) {
       throw new RouterConfigError(
-        `Invalid \`route()\` \`config.defaults\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.defaults\`, \`config.defaults\` need array or object type but you passing as \`${typeof o.defaults}\`.`
+        `Invalid \`route()\` \`config.defaults\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.defaults\`, \`config.defaults\` need array or object type but you passing as \`${getPreciseType(o.defaults)}\`.`
       );
     }
     // routes
     if (!isObject(o.routes)) {
       throw new RouterConfigError(
-        `Invalid \`route()\` \`config.routes\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.routes\`, \`config.routes\` need object type but you passing as \`${isArray(o.routes) ? "Array" : typeof o.routes}\`.`
+        `Invalid \`route()\` \`config.routes\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.routes\`, \`config.routes\` need object type but you passing as \`${isArray(o.routes) ? "Array" : getPreciseType(o.routes)}\`.`
       );
     }
 
@@ -82,20 +83,20 @@ export class RouterConfigClass implements RouterConfig {
 
       if (isString(loc)) {
         throw new RouterConfigError(
-          `Invalid \`route()\` \`config.location\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid config object, \`config.location\` need object type\`{ host?: string | undefined; pathname?: string | undefined ;search?: string | undefined; }\` but you passing as \`${typeof loc}\`.`
+          `Invalid \`route()\` \`config.location\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid config object, \`config.location\` need object type\`{ host?: string | undefined; pathname?: string | undefined ;search?: string | undefined; }\` but you passing as \`${getPreciseType(loc)}\`.`
         );
       }
 
       if (!isObject(loc)) {
         throw new RouterConfigError(
-          `Invalid \`route()\` \`config.location\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.location\`, \`config.location\` need object type but you passing as \`${isArray(loc) ? "Array" : typeof loc}\`.`
+          `Invalid \`route()\` \`config.location\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.location\`, \`config.location\` need object type but you passing as \`${getPreciseType(loc)}\`.`
         );
       }
 
       const l = loc;
       if ("host" in l && !isString(l.host) && !isUndefined(l.host)) {
         throw new RouterConfigError(
-          `Invalid \`route()\` \`config.location.host\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.location.host\`, \`config.location.host\` need string or undefined type but you passing as \`${typeof l.host}\`.`
+          `Invalid \`route()\` \`config.location.host\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.location.host\`, \`config.location.host\` need string or undefined type but you passing as \`${getPreciseType(l.host)}\`.`
         );
       }
       if (
@@ -104,12 +105,12 @@ export class RouterConfigClass implements RouterConfig {
         !isUndefined(l.pathname)
       ) {
         throw new RouterConfigError(
-          `Invalid \`route()\` \`config.location.pathname\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.location.pathname\`, \`config.location.pathname\` need string or undefined type but you passing as \`${typeof l.pathname}\`.`
+          `Invalid \`route()\` \`config.location.pathname\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.location.pathname\`, \`config.location.pathname\` need string or undefined type but you passing as \`${getPreciseType(l.pathname)}\`.`
         );
       }
       if ("search" in l && !isString(l.search) && !isUndefined(l.search)) {
         throw new RouterConfigError(
-          `Invalid \`route()\` \`config.location.search\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.location.search\`, \`config.location.search\` need string or undefined type but you passing as \`${typeof l.search}\`.`
+          `Invalid \`route()\` \`config.location.search\` properties detected. Ensure that \`appRoutes\` is defined globally or passed as a valid \`config.location.search\`, \`config.location.search\` need string or undefined type but you passing as \`${getPreciseType(l.search)}\`.`
         );
       }
     }
