@@ -1,0 +1,13 @@
+{
+  "bump-minor-pre-major": true,
+  "changelog-path": "CHANGELOG.md",
+  "include-v-in-tag": true,
+  "include-component-in-tag": false,
+  "packages": {
+    ".": {
+      "release-type": "node"
+    }
+  },
+  "release-type": "node",
+  "versioning-strategy": "default"
+}

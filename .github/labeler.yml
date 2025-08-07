@@ -1,0 +1,6 @@
+enhancement:
+  - "**/*.ts"
+  - "**/*.js"
+bug:
+  - "**/bug*"
+  - "**/*bug*"

@@ -1,0 +1,8 @@
+.github/
+deprecated/
+dist/
+tests/fixtures/
+vendor/
+*.md
+.git-blame-ignore-revs
+.gitignore

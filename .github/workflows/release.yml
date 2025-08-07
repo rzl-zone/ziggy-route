@@ -1,0 +1,75 @@
+name: Release and Publish
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+    inputs:
+      force_publish:
+        description: 'Force publish even if no new release was created'
+        required: false
+        default: 'false'
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+
+    steps:
+      - id: release
+        uses: googleapis/release-please-action@v4
+        with: 
+          token: ${{ secrets.RELEASE_PAT }}
+          config-file: .release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  publish:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created == 'true' || github.event_name == 'workflow_dispatch' || github.event.inputs.force_publish == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+
+      - name: Get previous version
+        id: prev
+        run: | 
+          VERSION=$(npm view "$PACKAGE_NAME" version --timeout=5000 2>/dev/null || echo "0.0.0")
+          echo "prev_version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Found previous version: $VERSION"
+        env:
+          PACKAGE_NAME: "@rzl-zone/ziggy-route"
+
+      - run: npm ci
+
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Deprecate previous version
+        if: steps.prev.outputs.prev_version != '0.0.0'
+        run: |
+          echo "Marking previous version ${{ steps.prev.outputs.prev_version }} as deprecated..."
+          npm deprecate "$PACKAGE_NAME@${{ steps.prev.outputs.prev_version }}" "Deprecated. Please upgrade to the latest version by running '$PACKAGE_NAME@latest'."
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          PACKAGE_NAME: "@rzl-zone/ziggy-route"

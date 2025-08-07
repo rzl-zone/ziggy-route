@@ -1,0 +1,1 @@
+import{a as o,b as a,c as t}from"./chunk-4RLVSQZ7.esm.js";function m(e){if(!e&&!globalThis.appRoutes&&o(appRoutes))throw new a("Hook `useRouter()` missing configuration. Ensure that a `appRoutes` variable is defined globally or pass a config object into the `useRoute` hook.");return(r,n,u)=>t(r,n,u,e)}export{m as useRoute};

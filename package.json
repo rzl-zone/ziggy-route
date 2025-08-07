@@ -1,0 +1,146 @@
+{
+  "name": "@rzl-zone/ziggy-route",
+  "version": "0.0.1",
+  "type": "module",
+  "license": "MIT",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/rzl-ziggy.iife.js",
+  "jsdelivr": "./dist/rzl-ziggy.iife.js",
+  "sideEffects": false,
+  "bugs": "https://github.com/rzl-zone/ziggy-route/issues",
+  "homepage": "https://github.com/rzl-zone/ziggy-route#readme",
+  "description": "Typed Laravel route generator for any frontend — works with React, Vue, Vanilla JS, and other JavaScript-based stacks.",
+  "author": "RZL",
+  "main": "./dist/index.esm.js",
+  "module": "./dist/index.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rzl-zone/ziggy-route.git"
+  },
+  "authors": [
+    {
+      "name": "Rizalfin Dwiky",
+      "email": "rizalvindwiky@gmail.com",
+      "url": "https://github.com/rzl-app"
+    },
+    {
+      "name": "Tighten Co. (original Ziggy authors)",
+      "url": "https://github.com/tighten/ziggy"
+    }
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/ziggy-route/index.d.ts",
+      "import": "./dist/ziggy-route/index.esm.js",
+      "require": "./dist/ziggy-route/index.cjs",
+      "default": "./dist/ziggy-route/index.esm.js"
+    },
+    "./react": {
+      "types": "./dist/ziggy-route/react.d.ts",
+      "import": "./dist/ziggy-route/react.esm.js",
+      "require": "./dist/ziggy-route/react.cjs",
+      "default": "./dist/ziggy-route/react.esm.js"
+    },
+    "./vue": {
+      "types": "./dist/ziggy-route/vue.d.ts",
+      "import": "./dist/ziggy-route/vue.esm.js",
+      "require": "./dist/ziggy-route/vue.cjs",
+      "default": "./dist/ziggy-route/vue.esm.js"
+    },
+    "./vite-plugin": {
+      "types": "./dist/vite-plugin/index.d.ts",
+      "import": "./dist/vite-plugin/index.esm.js",
+      "require": "./dist/vite-plugin/index.cjs",
+      "default": "./dist/vite-plugin/index.esm.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "dist/ziggy-route/index.d.ts"
+      ],
+      "vue": [
+        "dist/ziggy-route/vue.d.ts"
+      ],
+      "react": [
+        "dist/ziggy-route/react.d.ts"
+      ],
+      "vite-plugin": [
+        "dist/vite-plugin/index.d.ts"
+      ]
+    }
+  },
+  "keywords": [
+    "laravel",
+    "routes",
+    "javascript",
+    "typescript",
+    "rzl",
+    "app",
+    "utils",
+    "utility",
+    "helper",
+    "helpers",
+    "library",
+    "functions",
+    "ziggy",
+    "rzl-app",
+    "ziggy js",
+    "rzl-zone",
+    "rzl-ziggy",
+    "ziggy-route",
+    "@rzl-zone/ziggy-route"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "mangle": {
+    "regex": "^_(?!query)"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "none"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "format": "prettier . --write",
+    "check-publish": "npm pack --dry-run",
+    "clear:dist": "rm -rf ./dist || true",
+    "postbuild": "del-cli \"dist/**/*.d.cts\"",
+    "prepublishOnly": "npm run clear:dist",
+    "release-patch": "npm version patch && git push && git push --tags && npm publish",
+    "build": "npm run clear:dist && tsup && npm run postbuild && npm run dts-minify && npm run rename-iife",
+    "build:deprecated": "npm run clear:dist && tsup && npm run esbuild-minify && npm run dts-minify && npm run rename-iife && npm run postbuild",
+    "rename-iife": "tsx tools/rename-iife.ts",
+    "dts-minify": "tsx tools/minify-dts.ts",
+    "esbuild-minify": "tsx tools/esbuild.ts",
+    "test": "vitest --typecheck"
+  },
+  "dependencies": {
+    "@types/qs": "^6.9.17",
+    "chalk": "^5.5.0",
+    "qs": "~6.9.7",
+    "vite-plugin-run": "^0.6.1"
+  },
+  "devDependencies": {
+    "@rzl-zone/utils-js": "^2.0.1",
+    "@types/node": "^24.2.0",
+    "del-cli": "^6.0.0",
+    "glob": "^11.0.3",
+    "prettier": "^3.6.2",
+    "pretty-bytes": "^7.0.0",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "type-fest": "^4.41.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.6"
+  }
+}

@@ -1,0 +1,28 @@
+# Don't publish tests or dev files
+fixtures/
+compiler/
+tests/
+examples/
+__tests__/
+
+# Don't publish source TS
+src/
+
+# Ignore config files
+tsconfig.json
+tsup.config.ts
+barrelsby.json
+*.tsbuildinfo
+*.ts
+*.log
+*.yml
+
+# Ignore editor/IDE stuff
+.editorconfig
+.gitattributes
+.vscode/
+
+
+
+# Deprecated Script
+deprecated/

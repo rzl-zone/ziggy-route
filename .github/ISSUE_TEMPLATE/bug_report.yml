@@ -1,0 +1,45 @@
+name: 🐞 Bug report
+description: Report a bug to help us improve
+title: "[Bug]: "
+labels: [bug]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug! Please fill in as much info as you can.
+
+  - type: input
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug clearly.
+      placeholder: "When I did X, I expected Y, but got Z"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce the bug?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node version, etc.
+      placeholder: "e.g. Windows 10, Node 18.17.0"
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any other info about the problem?

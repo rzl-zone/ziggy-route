@@ -1,0 +1,29 @@
+name: 🚀 Feature request
+description: Suggest an idea for this project
+title: "[Feature]: "
+labels: [enhancement]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature! Please fill this out to help us understand.
+
+  - type: input
+    id: feature
+    attributes:
+      label: What feature do you want?
+      placeholder: "I'd like to have..."
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why is it needed?
+      placeholder: "This would help because..."
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any other solutions or workarounds you've thought about?
