@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.7](https://github.com/rzl-zone/ziggy-route/compare/v0.0.6...v0.0.7) (2025-09-17)
+
+
+### Bug Fixes
+
+* Fixing BladeRouteGenerator.php for import path `.iife.js` file, fix readme.md. fix BANNER generate tsDoc for ts and .d.ts file. ([f6a1e74](https://github.com/rzl-zone/ziggy-route/commit/f6a1e74b82332e45b54a2387098b3a2312456c51))
+
 ## [0.0.6](https://github.com/rzl-zone/ziggy-route/compare/v0.0.5...v0.0.6) (2025-09-17)
 
 
