@@ -3,40 +3,29 @@ import { isError, isString } from "@rzl-zone/utils-js/predicates";
 
 import { CONFIG } from "./constants";
 
-const {
-  bgHex,
-  blueBright,
-  greenBright,
-  gray,
-  red,
-  redBright,
-  white,
-  whiteBright,
-  yellow,
-  yellowBright
-} = chalk;
-
-const tag = bgHex("#00bcd4").black.bold(` ${CONFIG.PACKAGE.PREFIX.NAME} `);
+const tag = chalk
+  .bgHex("#00bcd4")
+  .black.bold(` ${CONFIG.PACKAGE.PREFIX.NAME} `);
 
 export const logger = {
   info: (label: string, msg: string) => {
     console.log(
-      `\n${tag} ${blueBright("ℹ️ " + label)} ${gray("➔")} ${white(msg)}`
+      `\n${tag} ${chalk.blueBright("ℹ️ " + label)} ${chalk.gray("➔")} ${chalk.white(msg)}`
     );
   },
   success: (label: string, msg: string) => {
     console.log(
-      `\n${tag} ${greenBright("✅ " + label)} ${gray("➔")} ${whiteBright(msg)}`
+      `\n${tag} ${chalk.greenBright("✅ " + label)} ${chalk.gray("➔")} ${chalk.whiteBright(msg)}`
     );
   },
   warn: (label: string, msg: string) => {
     console.warn(
-      `\n${tag} ${yellow("⚠️  " + label)} ${gray("➔")} ${yellowBright(msg)}`
+      `\n${tag} ${chalk.yellow("⚠️  " + label)} ${chalk.gray("➔")} ${chalk.yellowBright(msg)}`
     );
   },
   error: (label: string, msg: string) => {
     console.error(
-      `\n${tag} ${redBright("❌ " + label)} ${gray("➔")} ${red(msg)}`
+      `\n${tag} ${chalk.redBright("❌ " + label)} ${chalk.gray("➔")} ${chalk.red(msg)}`
     );
   },
   throw: (label: string, err: unknown) => {
@@ -45,13 +34,13 @@ export const logger = {
 
       if (process.env.NODE_ENV === "development") {
         if (err.stack) {
-          console.error(gray(err.stack));
+          console.error(chalk.gray(err.stack));
         }
       }
 
       throw err;
     } else {
-      logger.error(label, "Unknown error occurred");
+      logger.error(label, "Unknown error occurchalk.red");
       throw new Error(isString(err) ? err : "Unknown error");
     }
   },
