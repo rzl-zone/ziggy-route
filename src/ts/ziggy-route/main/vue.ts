@@ -8,9 +8,9 @@ import type {
   RouteParams,
   Router,
   ValidRouteName
-} from "@/types";
+} from "@ts/ziggy-route/types";
 
-import { route } from "@/main/route";
+import { route } from "@ts/ziggy-route/main/route";
 
 interface Vue2CompatApp {
   version: string;
@@ -23,10 +23,9 @@ type VueApp = Vue3App | Vue2CompatApp;
 /** -------------------------------------------------------
  * * ***Rzl Ziggy's Vue Plugin.***
  * -------------------------------------------------------
+ * **Rzl Ziggy includes a Vue plugin to make it easy to use the route() helper throughout your Vue app.**
  *
- * Rzl Ziggy includes a Vue plugin to make it easy to use the route() helper throughout your Vue app:
- *
- * @see [More docs use with vue: #Rzl Ziggy Vue.](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#vue)
+ * @see [**More docs use with vue: #Rzl Ziggy Vue.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#vue)
  */
 export const rzlZiggyVue = {
   /** -------------------------------------------------------
@@ -37,24 +36,20 @@ export const rzlZiggyVue = {
     /** -------------------------------------------------------
      * * ***Rzl Ziggy's `route()` from `rzlZiggyVue` helper.***
      * -------------------------------------------------------
-     *
-     * This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).
+     * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
+     * @description
      * You can pass it the name of a route and any required parameters, and it will generate a proper URL string.
-     *
-     * - If called with no arguments, it returns a `Router` instance for more advanced usage.
-     * - If called with a route name and optional parameters, it returns a full URL string.
-     *
-     * > ⚠️ Unlike the standalone `route()` helper, this version does **not** require a `config` parameter,
-     * > because the route configuration is already provided by `rzlZiggyVue`.
-     *
+     * - **Behavior:**
+     *    - If called with no arguments, it returns a `Router` instance for more advanced usage.
+     *    - If called with a route name and optional parameters, it returns a full URL string.
+     *  - **⚠️ Note:**
+     *     - Unlike the standalone `route()` helper, this version does **not** require a `config` parameter,
+     *       because the route configuration is already provided by `rzlZiggyVue`.
      * @template T - A valid route name (based on your `appRoutes` route definitions).
-     *
      * @param {T} [name] - The name of the route (e.g., `"posts.show"`), defaultValue is `undefined`.
      * @param {RouteParams<T> | ParameterValueProps | null | undefined} [params] - Route parameters (either an `object`, `array` or `null` value), defaultValue is `undefined`.
      * @param {boolean} [absolute=false] - Whether to return an absolute URL (includes scheme and host), defaultValue is `false`.
-     *
      * @returns {string | Router} A generated URL string or a `Router` instance, depend of `name` argument.
-     *
      * @example
      * // Returns something like "/posts/123"
      * route("posts.show", { id: 123 });
@@ -78,30 +73,26 @@ export const rzlZiggyVue = {
      * const r = route(undefined, undefined, true, JSON.parse(appRoutes));
      * console.log(r) // ➔ r instance of Router.
      *
-     * @see [More Docs see: route() function.](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
+     * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
      */
     function rt(): Router;
     /** -------------------------------------------------------
      * * ***Rzl Ziggy's `route()` from `rzlZiggyVue` helper.***
      * -------------------------------------------------------
-     *
-     * This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).
+     * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
+     * @description
      * You can pass it the name of a route and any required parameters, and it will generate a proper URL string.
-     *
-     * - If called with no arguments, it returns a `Router` instance for more advanced usage.
-     * - If called with a route name and optional parameters, it returns a full URL string.
-     *
-     * > ⚠️ Unlike the standalone `route()` helper, this version does **not** require a `config` parameter,
-     * > because the route configuration is already provided by `rzlZiggyVue`.
-     *
+     *  - **Behavior:**
+     *    - If called with no arguments, it returns a `Router` instance for more advanced usage.
+     *    - If called with a route name and optional parameters, it returns a full URL string.
+     *  - **⚠️ Note:**
+     *     - Unlike the standalone `route()` helper, this version does **not** require a `config` parameter,
+     *       because the route configuration is already provided by `rzlZiggyVue`.
      * @template T - A valid route name (based on your `appRoutes` route definitions).
-     *
      * @param {T} [name] - The name of the route (e.g., `"posts.show"`), defaultValue is `undefined`.
      * @param {RouteParams<T> | null | undefined} [params] - Route parameters (either an `object`, `array` or `null` value), defaultValue is `undefined`.
      * @param {boolean} [absolute=false] - Whether to return an absolute URL (includes scheme and host), defaultValue is `false`.
-     *
      * @returns {string} Return `string` cause argument `name` is not `null` or `undefined`.
-     *
      * @example
      * // Returns something like "/posts/123"
      * route("posts.show", { id: 123 });
@@ -110,7 +101,7 @@ export const rzlZiggyVue = {
      * // Returns absolute URL like "https://example.com/posts/123"
      * route("posts.show", { id: 123 }, true);
      *
-     * @see [More Docs see: route() function.](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
+     * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
      */
     function rt<T extends ValidRouteName>(
       name: T,
@@ -120,24 +111,20 @@ export const rzlZiggyVue = {
     /** -------------------------------------------------------
      * * ***Rzl Ziggy's `route()` from `rzlZiggyVue` helper.***
      * -------------------------------------------------------
-     *
-     * This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).
+     * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
+     * @description
      * You can pass it the name of a route and any required parameters, and it will generate a proper URL string.
-     *
-     * - If called with no arguments, it returns a `Router` instance for more advanced usage.
-     * - If called with a route name and optional parameters, it returns a full URL string.
-     *
-     * > ⚠️ Unlike the standalone `route()` helper, this version does **not** require a `config` parameter,
-     * > because the route configuration is already provided by `rzlZiggyVue`.
-     *
+     * - **Behavior:**
+     *    - If called with no arguments, it returns a `Router` instance for more advanced usage.
+     *    - If called with a route name and optional parameters, it returns a full URL string.
+     *  - **⚠️ Note:**
+     *     - Unlike the standalone `route()` helper, this version does **not** require a `config` parameter,
+     *       because the route configuration is already provided by `rzlZiggyVue`.
      * @template T - A valid route name (based on your `appRoutes` route definitions).
-     *
      * @param {T} [name] - The name of the route (e.g., `"posts.show"`), defaultValue is `undefined`.
      * @param {ParameterValueProps | null | undefined} [params] - Route parameters (either an `object`, `array`, or `null` value), defaultValue is `undefined`.
      * @param {boolean} [absolute=false] - Whether to return an absolute URL (includes scheme and host), defaultValue is `false`.
-     *
      * @returns {string} Return `string` cause argument `name` is not `null` or `undefined`.
-     *
      * @example
      * // Returns something like "/posts/123"
      * route("posts.show", { id: 123 });
@@ -146,7 +133,7 @@ export const rzlZiggyVue = {
      * // Returns absolute URL like "https://example.com/posts/123"
      * route("posts.show", { id: 123 }, true);
      *
-     * @see [More Docs see: route() function.](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
+     * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
      */
     function rt<T extends ValidRouteName>(
       name: T,
@@ -156,36 +143,31 @@ export const rzlZiggyVue = {
     /** -------------------------------------------------------
      * * ***Rzl Ziggy's `route()` from `rzlZiggyVue` helper.***
      * -------------------------------------------------------
-     *
-     * This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).
+     * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
+     * @description
      * You can pass it the name of a route and any required parameters, and it will generate a proper URL string.
-     *
-     * - If called with no arguments, it returns a `Router` instance for more advanced usage.
-     * - If called with a route name and optional parameters, it returns a full URL string.
-     *
-     * > ⚠️ Unlike the standalone `route()` helper, this version does **not** require a `config` parameter,
-     * > because the route configuration is already provided by `rzlZiggyVue`.
-     *
+     * - **Behavior:**
+     *    - If called with no arguments, it returns a `Router` instance for more advanced usage.
+     *    - If called with a route name and optional parameters, it returns a full URL string.
+     *  - **⚠️ Note:**
+     *     - Unlike the standalone `route()` helper, this version does **not** require a `config` parameter,
+     *       because the route configuration is already provided by `rzlZiggyVue`.
      * @template T - A valid route name (based on your `appRoutes` route definitions).
-     *
      * @param {T} [name] - The name of the route (is `null` or `undefined`), defaultValue is `undefined`.
      * @param {null | undefined} [params] - Route parameters (because argument `name` is `undefined` or `null`, so argument params only can accept `undefined`), defaultValue is `undefined`.
      * @param {boolean} [absolute=false] - Whether to return an absolute URL (includes scheme and host), defaultValue is `false`.
-     *
      * @returns {Router} Return `Router` instance cause argument name is `null` or `undefined`.
-     *
      * @example
      * // Returns Router instance like route().has(...) or router().current() ...
      * const r = route(undefined);
      * console.log(r) // ➔ r instance of Router.
-     *
      *
      * @example
      * // Returns Router instance like route().has(...) or router().current() ...
      * const r = route(undefined, undefined, true, JSON.parse(appRoutes));
      * console.log(r) // ➔ r instance of Router.
      *
-     * @see [More Docs see: route() function.](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
+     * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
      */
     function rt(
       name: null | undefined,

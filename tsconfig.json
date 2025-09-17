@@ -6,24 +6,24 @@
     "declaration": true,
     "stripInternal": true,
     "alwaysStrict": true,
-    "module": "ESNext",
-    "target": "ESNext",
+    "module": "esnext",
+    "target": "esnext",
     "outDir": "./dist",
     "moduleResolution": "bundler",
     "paths": {
       "@/*": [
-        "./src/ts/ziggy/*"
+        "src/ts/ziggy-route/*"
       ],
       "@vite/*": [
         "./src/ts/vite-plugin/*"
       ],
       "@ts/*": [
         "./src/ts/*"
-      ],
+      ]
     }
   },
   "include": [
-    "src/ts",
+    "src/ts"
   ],
   "exclude": [
     "vendor",

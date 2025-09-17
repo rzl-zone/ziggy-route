@@ -1,4 +1,4 @@
-export { route } from "@/main/route";
+export { route } from "@ts/ziggy-route/main/route";
 
 export type {
   Config,
@@ -16,4 +16,4 @@ export type {
   TypeConfig,
   ParameterValueProps,
   ValidRouteName
-} from "@/types";
+} from "@ts/ziggy-route/types";

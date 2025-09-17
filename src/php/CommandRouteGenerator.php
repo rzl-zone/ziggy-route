@@ -209,7 +209,7 @@ class CommandRouteGenerator extends Command
     // Validate the final result avoid empty name
     if (trim($sanitizedName) === '') {
       $this->error("❌ {$this->PREFIX_LOG} Output filename is empty or invalid after sanitization.");
-      $this->error("→ Diagnostic information:");
+      $this->error("➔ Diagnostic information:");
       $this->error("- Original '--name' input: " . var_export($this->option('name'), true));
       $this->error("- After config fallback: '$nameInput'");
       $this->error("- Before sanitization: '$nameBeforeSanitize'");
@@ -270,7 +270,7 @@ class CommandRouteGenerator extends Command
     $lang = strtolower(ltrim($lang ?? '', '.'));
     $lang = $lang === 'js' ? 'js' : 'ts';
 
-    // Determine the raw path: priority → arg > config > default
+    // Determine the raw path: priority ➔ arg > config > default
     $default ??= "resources/js/rzl-ziggy/routes/index.$lang";
     $raw = filled($argPath)
       ? trim($argPath)

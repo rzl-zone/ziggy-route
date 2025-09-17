@@ -1,17 +1,24 @@
-import { readFileSync } from "fs";
+import type { ComposerPackage } from "../../../types/composer-schema";
+
 import { resolve } from "path";
-import { logger, rzlThrow } from "../utils/logger";
-import { isError } from "@rzl-zone/utils-js";
+import { readFileSync } from "fs";
 import { CONFIG } from "@ts/utils/constants";
+import { isError } from "@rzl-zone/utils-js/predicates";
+import { safeJsonParse } from "@rzl-zone/utils-js/conversions";
+
+import { logger, rzlThrow } from "../utils/logger";
 
 const { PACKAGIST_NAME } = CONFIG.PACKAGE;
 
 export const getComposerPackageVersion = (): string => {
   try {
     const composerPath = resolve(process.cwd(), "composer.json");
-    const composer = JSON.parse(readFileSync(composerPath, "utf-8"));
+    const readComposer = readFileSync(composerPath, "utf-8");
+    const composer = safeJsonParse<ComposerPackage, typeof readComposer>(
+      readComposer
+    );
 
-    if (!composer.require?.[PACKAGIST_NAME]) {
+    if (!composer?.require?.[PACKAGIST_NAME]) {
       rzlThrow(
         "composer.json",
         `${PACKAGIST_NAME} not found in composer.json dependencies`
@@ -36,7 +43,7 @@ export const getComposerPackageVersion = (): string => {
   } catch (error) {
     if (isError(error)) {
       if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-        rzlThrow("composer.json", `File not found in ${process.cwd()}`);
+        rzlThrow("composer.json", `File not found in: ${process.cwd()}.`);
       }
 
       rzlThrow("Version Fetch Failed", error);

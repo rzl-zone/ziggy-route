@@ -131,12 +131,14 @@
     "vite-plugin-run": "^0.6.1"
   },
   "devDependencies": {
-    "@rzl-zone/utils-js": "^2.1.0",
+    "@rzl-zone/utils-js": "^3.2.0",
     "@types/node": "^24.2.0",
     "del-cli": "^6.0.0",
     "glob": "^11.0.3",
+    "json-schema-to-typescript": "^15.0.4",
     "prettier": "^3.6.2",
     "pretty-bytes": "^7.0.0",
+    "terser": "^5.44.0",
     "tsup": "^8.5.0",
     "tsx": "^4.20.3",
     "type-fest": "^4.41.0",

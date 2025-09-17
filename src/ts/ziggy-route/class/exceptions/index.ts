@@ -13,7 +13,9 @@ export class RouterConfigError extends Error {
     const trimmedPrefix = prefix?.trim() || CONFIG.PACKAGE.PREFIX.NAME;
     const trimmedMessage = message.trim();
 
-    super(`${trimmedPrefix} - ${trimmedMessage}`);
+    super(
+      `\n${trimmedPrefix.startsWith("❌") ? trimmedPrefix : "❌ " + trimmedPrefix} - ${trimmedMessage}`
+    );
     this.name = "RouterConfigError";
 
     // Preserve stack trace in non-production environments
@@ -36,7 +38,9 @@ export class RoutePropsError extends Error {
     const trimmedPrefix = prefix?.trim() || CONFIG.PACKAGE.PREFIX.NAME;
     const trimmedMessage = message.trim();
 
-    super(`${trimmedPrefix} - ${trimmedMessage}`);
+    super(
+      `\n${trimmedPrefix.startsWith("❌") ? trimmedPrefix : "❌ " + trimmedPrefix} - ${trimmedMessage}`
+    );
     this.name = "RoutePropsError";
 
     // Preserve stack trace in non-production environments

@@ -1,11 +1,11 @@
 import type { PackageJson } from "type-fest";
 
 import chalk from "chalk";
-import { dirname, relative } from "path";
-import prettyBytes from "pretty-bytes";
-import { readFileSync, statSync } from "fs";
 import { fileURLToPath } from "url";
-import { isArray } from "@rzl-zone/utils-js";
+import prettyBytes from "pretty-bytes";
+import { dirname, relative } from "path";
+import { readFileSync, statSync } from "fs";
+import { isArray } from "@rzl-zone/utils-js/predicates";
 
 /** Utility type to partially override specific keys in a type. */
 export type PartialByKeys<T, K extends keyof T> = Omit<T, K> &
@@ -130,7 +130,7 @@ type FormatTypeFile = "js" | "ts";
 /** Converts a format string to uppercase for display.
  *
  * @example
- * formatExt("esm") // → "ESM"
+ * formatExt("esm") // ➔ "ESM"
  */
 export const formatExt = (
   format: FormatBuildsJs | FormatTypeFile | FormatTypeTypes | (string & {})
@@ -141,7 +141,7 @@ export const formatExt = (
 /** Detects file format based on its extension.
  *
  * @example
- * getFormatExt("index.d.ts") → "d.ts"
+ * getFormatExt("index.d.ts") ➔ "d.ts"
  */
 export const getFormatExt = (
   file: string
@@ -249,7 +249,7 @@ export const LOG_UTILS = {
     const styleTimer = chalk.gray(`[${getTimerProcess(startTime, endTime)}ms]`);
 
     return console.log(
-      `🟢 ${styleFormatExt} ${styleEntryFile} → ${styleOutFile} ${measureSize(outFile)} ${styleTimer}`
+      `🟢 ${styleFormatExt} ${styleEntryFile} ➔ ${styleOutFile} ${measureSize(outFile)} ${styleTimer}`
     );
   },
 

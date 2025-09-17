@@ -837,7 +837,7 @@ You can also set the output location when running the Artisan command `php artis
 
 return [
   "output" => [
-    "name" => "index", // → index.ts or index.js
+    "name" => "index", // ➔ index.ts or index.js
 
     "path" => [
       "main" => "resources/js/rzl-ziggy/routes", // Output folder only

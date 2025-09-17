@@ -1,3 +1,15 @@
+import { stringify } from "qs";
+
+import { CONFIG } from "@ts/utils/constants";
+import RouteFactory from "./RouteFactory";
+import { RouterConfigClass } from "./RouterConfigClass";
+import { RoutePropsError, RouterConfigError } from "./exceptions";
+
+import type {
+  ParsedQs,
+  RouteParams,
+  RouterConfig
+} from "@ts/ziggy-route/types";
 import {
   getPreciseType,
   isArray,
@@ -7,19 +19,12 @@ import {
   isNil,
   isNull,
   isObject,
-  isObjectOrArray,
+  isPlainObject,
   isServer,
   isString,
   isUndefined
-} from "@rzl-zone/utils-js";
-import { stringify } from "qs";
-
-import { CONFIG } from "@ts/utils/constants";
-import RouteFactory from "./RouteFactory";
-import { RouterConfigClass } from "./RouterConfigClass";
-import { RoutePropsError, RouterConfigError } from "./exceptions";
-
-import type { ParsedQs, RouteParams, RouterConfig } from "@/types";
+} from "@rzl-zone/utils-js/predicates";
+import { safeStableStringify } from "@rzl-zone/utils-js/conversions";
 
 const { REPO, PACKAGE } = CONFIG;
 
@@ -36,15 +41,15 @@ export class Router extends String {
   ) {
     super();
 
-    if (isEmptyString(name)) {
+    if (!isNil(name) && isEmptyString(name)) {
       throw new RoutePropsError(
-        `Invalid \`route()\` "name" value it cannot be an empty string. Use \`undefined\` if you don't want to provide a name. Make sure to call a valid \`Router\` instance method, or you'll encounter an error. Learn more: ${REPO.LINK}#%EF%B8%8F-warning-calling-route-without-arguments.`
+        `Invalid \`route()\`:\n- First parameter (\`name\`) must be of type a \`string\` and a non empty-string.\n- Use \`undefined\` if you don't want to provide a name.\n- Make sure to call a valid \`Router\` instance method, or you'll encounter an error. \n\nℹ️ Learn more: \`${REPO.LINK}#%EF%B8%8F-warning-calling-route-without-arguments\`.`
       );
     }
 
     if (!isNull(absolute) && !isBoolean(absolute)) {
       throw new RoutePropsError(
-        `Invalid \`route()\` option "absolute" must be a boolean or undefined, but received type "${getPreciseType(absolute)}". Learn more: ${REPO.LINK}#absolute-url.`
+        `Invalid \`route()\`:\n- Third parameter (\`absolute\`) must be of type a \`boolean\` or \`undefined\`, but received: \`${getPreciseType(absolute)}\`. \n\nℹ️ Learn more: \`${REPO.LINK}#absolute-url\`.`
       );
     }
 
@@ -53,7 +58,7 @@ export class Router extends String {
     absolute = !!absolute;
 
     const _config = this.safeValidateRouterConfig(
-      config || (!isUndefined(appRoutes) ? appRoutes : globalThis.appRoutes)
+      config || globalThis.appRoutes
     );
 
     this._config = { ..._config, absolute };
@@ -61,7 +66,7 @@ export class Router extends String {
     if (name) {
       if (!this._config.routes[name]) {
         throw new RoutePropsError(
-          `Route name '${name}' is not in the route list.`
+          `Route name \`"${name}"\` (first parameter) is not in the route list.`
         );
       }
 
@@ -153,9 +158,9 @@ export class Router extends String {
       | Record<string, string> = {},
     route: typeof this._route = this._route
   ): Record<string, string> {
-    if (!isObjectOrArray(params)) {
+    if (!isPlainObject(params) && !isArray(params)) {
       throw new RoutePropsError(
-        `Invalid \`route()\` \`params\` property detected. Value \`params\` need object or array type but you passing as \`${getPreciseType(params)}\`. More info → ${REPO.LINK}#parameters`
+        `Invalid \`route()\` \`params\` property detected. \n- Second Parameter (\`params\`) must be of type \`plain-object\` or \`array\`, but received: \`${getPreciseType(params)}\`.\n\nℹ️ More info: \`${REPO.LINK}#parameters\`.`
       );
     }
 
@@ -174,7 +179,7 @@ export class Router extends String {
         (result: object, current, i) =>
           segments?.[i]
             ? { ...result, [segments[i].name]: current }
-            : isObjectOrArray(current)
+            : isPlainObject(current) || isArray(current)
               ? { ...result, ...current }
               : { ...result, ...(isString(current) ? { [current]: "" } : {}) },
         {}
@@ -204,11 +209,11 @@ export class Router extends String {
    * @param {Route} route
    * @return {Object} Default route parameters.
    */
-  private _defaults(route: typeof this._route) {
+  private _defaults(route: typeof this._route): {} | undefined {
     return route?.parameterSegments
       .filter(({ name }) => this._config.defaults[name])
       .reduce(
-        (result, { name }, i) => ({
+        (result, { name }) => ({
           ...result,
           [name]: this._config.defaults[name]
         }),
@@ -245,7 +250,7 @@ export class Router extends String {
           route.bindings[key] = "id";
         } else {
           throw new RoutePropsError(
-            `Object passed as '${key}' parameter is missing route model binding key '${route.bindings[key]}'. More info → ${REPO.LINK}#parameters`
+            `Object passed as \`"${key}"\` parameter is missing route model binding key \`${route.bindings[key]}\`.\n\nℹ️ More info: \`${REPO.LINK}#parameters\`.`
           );
         }
       }
@@ -267,8 +272,8 @@ export class Router extends String {
         flatQuery[key] = val;
       } else if (isArray(val)) {
         flatQuery[key] = val.filter(isString).join(",");
-      } else if (val && isObject(val)) {
-        flatQuery[key] = JSON.stringify(val);
+      } else if (isObject(val)) {
+        flatQuery[key] = safeStableStringify(val);
       }
     }
 
@@ -289,7 +294,7 @@ export class Router extends String {
   public has(name: string): boolean {
     if (!isString(name)) {
       throw new RoutePropsError(
-        `Invalid \`route().has(...)\` the \`name\` parameter must be a string, but received \`${getPreciseType(name)}\`.`
+        `Invalid \`route().has(...)\` parameter \`name\` detected.\n- First parameter (\`name\`) must be of type \`string\`, but received: \`${getPreciseType(name)}\`.`
       );
     }
     return this._config.routes.hasOwnProperty(name);
@@ -301,12 +306,12 @@ export class Router extends String {
   ): boolean | string | undefined {
     if (name && !isString(name)) {
       throw new RoutePropsError(
-        `Invalid \`route().current(...)\` \`name\` property detected. Value \`name\` need string type but you passing as \`${getPreciseType(name)}\`.`
+        `Invalid \`route().current(...)\` parameter \`name\` detected.\n- First parameter (\`name\`) must be of type \`string\`, but received: \`${getPreciseType(name)}\`.`
       );
     }
-    if (params && !isObjectOrArray(params)) {
+    if (params && !(isPlainObject(params) || isArray(params))) {
       throw new RoutePropsError(
-        `Invalid \`params\` value passed to \`route().current(...)\`, expected a object or array (e.g., { foo: "bar" } or [{"foo": "bar"}]), but received \`${getPreciseType(params)}\`. Learn more: ${REPO.LINK}#routecurrent-optionally-accepts-parameters-as-its-second-argument-and-will-check-that-their-values-also-match-in-the-current-url.`
+        `Invalid parameter \`params\` (\`second parameter\`) value passed to \`route().current(...)\`, expected a object or array (e.g., { foo: "bar" } or [{"foo": "bar"}]), but received: \`${getPreciseType(params)}\`.\n\nℹ️ Learn more: \`${REPO.LINK}#routecurrent-optionally-accepts-parameters-as-its-second-argument-and-will-check-that-their-values-also-match-in-the-current-url\`.`
       );
     }
 
@@ -368,7 +373,7 @@ export class Router extends String {
 
     if (!thisRoute) {
       throw new RoutePropsError(
-        `Function route() was called without a name but used as a string. Pass a valid route name, or use route().current() to get the current route name — or route().current('dashboard') to check if it matches. More info → ${REPO.LINK}#%EF%B8%8F-warning-calling-route-without-arguments`
+        `Function route() was called without a \`name\` (first parameter) but used as a \`string\`.\n- Pass a valid route name, or use route().current() to get the current route name — or route().current('dashboard') to check if it matches.\n\nℹ️ More info: \`${REPO.LINK}#%EF%B8%8F-warning-calling-route-without-arguments\`.`
       );
     }
 
@@ -384,14 +389,9 @@ export class Router extends String {
 
     const thisParamsQuery = thisParams["_query"];
 
-    if (
-      !isUndefined(thisParamsQuery) &&
-      (!isObject(thisParamsQuery) ||
-        isNull(thisParamsQuery) ||
-        isArray(thisParamsQuery))
-    ) {
+    if (!isUndefined(thisParamsQuery) && !isPlainObject(thisParamsQuery)) {
       throw new RoutePropsError(
-        `Invalid \`params._query\` value passed to \`route()\`, expected a plain object (e.g., { foo: "bar" }), but received \`${getPreciseType(thisParamsQuery)}\`. More info → ${REPO.LINK}#query-parameters`
+        `Invalid parameter \`_query\` property of the \`params\` (second parameter) value passed to \`route()\`, expected a \`plain-object\` (e.g., { foo: "bar" }), but received: \`${getPreciseType(thisParamsQuery)}\`.\n\nℹ️ More info: \`${REPO.LINK}#query-parameters\`.`
       );
     }
 

@@ -1,5 +1,5 @@
-import { isBoolean, isString } from "@rzl-zone/utils-js";
 import { defineConfig, Options } from "tsup";
+import { isBoolean, isString } from "@rzl-zone/utils-js/predicates";
 
 const configOptions = (options: Options): Options => {
   if (
@@ -16,7 +16,15 @@ const configOptions = (options: Options): Options => {
 
   return {
     dts: true,
-    minify: true,
+    minify: "terser",
+    treeshake: true,
+    splitting: true,
+    bundle: true,
+    terserOptions: {
+      format: {
+        comments: false
+      }
+    },
     format: ["cjs", "esm"],
     outDir: "dist",
     target: "esnext",
@@ -38,18 +46,19 @@ const configOptions = (options: Options): Options => {
 export default defineConfig((options) => [
   configOptions({
     ...options,
-    outDir: "dist/ziggy-route",
-    entry: ["src/ts/ziggy/build/node/*.{ts,tsx}"]
+    entry: {
+      "ziggy-route/vue": "src/ts/ziggy-route/build/node/vue.ts",
+      "ziggy-route/react": "src/ts/ziggy-route/build/node/react.ts",
+      "ziggy-route/index": "src/ts/ziggy-route/build/node/index.ts",
+      "vite-plugin/index": "src/ts/vite-plugin/index.ts"
+    }
   }),
   configOptions({
     ...options,
     format: "iife",
     outDir: "dist/ziggy-route",
-    entry: ["src/ts/ziggy/build/browser/*.{ts,tsx}"]
-  }),
-  configOptions({
-    ...options,
-    outDir: "dist/vite-plugin",
-    entry: ["src/ts/vite-plugin/index.{ts,tsx}"]
+    entry: {
+      "rzl-ziggy": "src/ts/ziggy-route/build/browser/index.ts"
+    }
   })
 ]);

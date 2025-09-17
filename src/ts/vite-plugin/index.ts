@@ -1,20 +1,138 @@
 import path from "path";
 import chalk from "chalk";
-import { Plugin } from "vite";
+import { type Plugin } from "vite";
 import { run } from "vite-plugin-run";
-import { isError } from "@rzl-zone/utils-js";
+import {
+  isError,
+  isPlainObject,
+  getPreciseType,
+  isInteger,
+  isArray,
+  isString,
+  isUndefined,
+  isBoolean
+} from "@rzl-zone/utils-js/predicates";
 
-import { defaultConfig, Config } from "./config";
 import { build, BuildConfig } from "./build";
+import { defaultConfig, type Config } from "./config";
 import { getComposerPackageVersion } from "@ts/utils/composer";
+import { realValue } from "@ts/utils/stringValue";
 
 export default (config: Config = {}): Plugin => {
+  if (!isPlainObject(config)) {
+    config = {};
+  }
+
   try {
     const version = getComposerPackageVersion();
-    const { delay, throttle, ...restConfig } = config;
+    const {
+      delay = defaultConfig.delay,
+      throttle = defaultConfig.throttle,
+      except = defaultConfig.except,
+      group = defaultConfig.group,
+      only = defaultConfig.only,
+      sail = defaultConfig.sail,
+      types = defaultConfig.types,
+      typesOnly = defaultConfig.typesOnly,
+      url = defaultConfig.url
+    } = config;
+
+    if (!isInteger(delay)) {
+      throw new TypeError(
+        `Parameter \`delay\` property of the \`config\` (first parameter) must be of type \`integer-number\`, but received: \`${getPreciseType(
+          delay
+        )}\`, with value: \`${realValue(delay)}\`.`
+      );
+    }
+    if (!isInteger(throttle)) {
+      throw new TypeError(
+        `Parameter \`throttle\` property of the \`config\` (first parameter) must be of type \`integer-number\`, but received: \`${getPreciseType(
+          throttle
+        )}\`, with value: \`${realValue(throttle)}\`.`
+      );
+    }
+    if (!isArray(except)) {
+      throw new TypeError(
+        `Parameter \`except\` property of the \`config\` (first parameter) must be of type \`array\`, but received: \`${getPreciseType(
+          except
+        )}\`, with value: \`${realValue(except)}\`.`
+      );
+    }
+    if (!isUndefined(group) && !isString(group)) {
+      throw new TypeError(
+        `Parameter \`group\` property of the \`config\` (first parameter) must be of type \`string\`, but received: \`${getPreciseType(
+          group
+        )}\`, with value: \`${realValue(group)}\`.`
+      );
+    }
+    if (!isArray(only)) {
+      throw new TypeError(
+        `Parameter \`only\` property of the \`config\` (first parameter) must be of type \`array\`, but received: \`${getPreciseType(
+          only
+        )}\`, with value: \`${realValue(only)}\`.`
+      );
+    }
+    if (!isBoolean(sail)) {
+      throw new TypeError(
+        `Parameter \`sail\` property of the \`config\` (first parameter) must be of type \`boolean\`, but received: \`${getPreciseType(
+          sail
+        )}\`, with value: \`${realValue(sail)}\`.`
+      );
+    }
+    if (!isBoolean(types)) {
+      throw new TypeError(
+        `Parameter \`types\` property of the \`config\` (first parameter) must be of type \`boolean\`, but received: \`${getPreciseType(
+          types
+        )}\`, with value: \`${realValue(types)}\`.`
+      );
+    }
+    if (!isBoolean(typesOnly)) {
+      throw new TypeError(
+        `Parameter \`typesOnly\` property of the \`config\` (first parameter) must be of type \`boolean\`, but received: \`${getPreciseType(
+          typesOnly
+        )}\`, with value: \`${realValue(typesOnly)}\`.`
+      );
+    }
+    if (!isUndefined(url) && !isString(url)) {
+      throw new TypeError(
+        `Parameter \`url\` property of the \`config\` (first parameter) must be of type \`string\`, but received: \`${getPreciseType(
+          url
+        )}\`, with value: \`${realValue(url)}\`.`
+      );
+    }
+
+    const invalidExcept = except.filter((exc) => !isString(exc));
+    if (invalidExcept.length > 0) {
+      throw new TypeError(
+        `Parameter \`except\` property of the \`config\` (first parameter) must be of type \`array-of-string\` and contains \`string\` only, invalid values: ${invalidExcept
+          .map((exc) => {
+            return `\n\`${getPreciseType(exc)}\`: \`${realValue(exc)}\``;
+          })
+          .join(", ")}`
+      );
+    }
+
+    const invalidOnly = only.filter((onl) => !isString(onl));
+    if (invalidOnly.length > 0) {
+      throw new TypeError(
+        `Parameter \`only\` property of the \`config\` (first parameter) must be of type \`array-of-string\` and contains \`string\` only, invalid values: ${invalidOnly
+          .map((onl) => {
+            return `\n\`${getPreciseType(onl)}\`: \`${realValue(onl)}\``;
+          })
+          .join(", ")}`
+      );
+    }
+
     const cmd = build(version, {
-      ...defaultConfig,
-      ...restConfig
+      delay,
+      throttle,
+      except,
+      group,
+      only,
+      sail,
+      types,
+      typesOnly,
+      url
     } as BuildConfig);
 
     const { configResolved, handleHotUpdate } = run(

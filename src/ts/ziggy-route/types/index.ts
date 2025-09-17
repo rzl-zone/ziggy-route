@@ -188,114 +188,119 @@ export type ParsedQs = {
 /** -------------------------------------------------------
  * * ***Rzl Ziggy's Router Instance Class.***
  * -------------------------------------------------------
- *
- * Calling Rzl Ziggy's `route()` function with no arguments will return an instance of its JavaScript `Router` class, which has some other useful properties and methods.
+ * **Calling Rzl Ziggy's `route()` function with no arguments will return an instance of
+ * its JavaScript `Router` class, which has some other useful properties and methods.**
  */
 export type Router = {
   /** ---------------------------------------------
-   * * ***Check the current route: `route().current()`***
+   * * ***Check the current route name: `route().current()`.***
    * ---------------------------------------------
+   * **Returns the current Laravel route name (if any) based on the
+   * browser's URL.**
+   * @example
+   * // Laravel route called 'events.index' with URI '/events'
+   * // Current window URL is https://ziggy.test/events
+   * route().current(); // ➔ 'events.index'
    *
    * @example
-   *  // Laravel route called 'events.index' with URI '/events'
-   *  // Current window URL is https://ziggy.test/events
-   *
-   *  route().current(); // ➔ 'events.index'
-   *
-   * @example
-   *
-   *  // Laravel route called 'venues.events.show' with URI '/venues/{venue}/events/{event}'
-   *  // Current window URL is https://myapp.com/venues/1/events/2?hosts=all
-   *
-   *  route().current(); // ➔ 'venues.events.show'
+   * // Laravel route called 'venues.events.show' with URI '/venues/{venue}/events/{event}'
+   * // Current window URL is https://myapp.com/venues/1/events/2?hosts=all
+   * route().current(); // ➔ 'venues.events.show'
    *
    * @see [Check **@rzl-zone/ziggy-route** the current route: ***`route().current()`***.](https://github.com/rzl-zone/ziggy-route#check-the-current-route-routecurrent)
-   *
    */
   current(): ValidRouteName | undefined;
-  /** ---------------------------------------------
-   * * ***Check the current route with name route: `route().current(...)`***
-   * ---------------------------------------------
+  /** -------------------------------------------------------
+   * * ***Check if the current route matches a name pattern: `route().current(name, [params])`.***
+   * -------------------------------------------------------
+   * **Tests whether the current route matches a given name or name pattern,
+   * optionally verifying that certain parameters match the current URL.**
+   * @param {RouteName} name   Route name or wildcard pattern (e.g. `"events.*"`).
+   * @param {DefaultRoutable | RouteParams<T> | null} [params] Optional params to match against the current URL.
+   * @example
+   * // Laravel route called 'events.index' with URI '/events'
+   * // Current window URL is https://ziggy.test/events
+   * route().current('events.*');     // ➔ true
+   * route().current('events.index'); // ➔ true
+   * route().current('events.show');  // ➔ false
    *
    * @example
-   *  // Laravel route called 'events.index' with URI '/events'
-   *  // Current window URL is https://ziggy.test/events
+   * // `route().current()` optionally accepts parameters as its second argument, and will check that their values also match in the current URL:
    *
-   *  route().current('events.index'); // ➔ true
-   *  route().current('events.*');     // ➔ true
-   *  route().current('events.show');  // ➔ false
-   *
-   * @example
-   *
-   *  // `route().current()` optionally accepts parameters as its second argument, and will check that their values also match in the current URL:
-   *
-   *  // Laravel route called 'venues.events.show' with URI '/venues/{venue}/events/{event}'
-   *  // Current window URL is https://myapp.com/venues/1/events/2?hosts=all
-   *
-   *  route().current('venues.events.show', { venue: 1 });           // ➔ true
-   *  route().current('venues.events.show', { venue: 1, event: 2 }); // ➔ true
-   *  route().current('venues.events.show', { hosts: 'all' });       // ➔ true
-   *  route().current('venues.events.show', { venue: 6 });           // ➔ false
+   * // Laravel route called 'venues.events.show' with URI '/venues/{venue}/events/{event}'
+   * // Current window URL is https://myapp.com/venues/1/events/2?hosts=all
+   * route().current('venues.events.show', { venue: 1 });
+   * // ➔ true
+   * route().current('venues.events.show', { venue: 1, event: 2 });
+   * // ➔ true
+   * route().current('venues.events.show', { hosts: 'all' });
+   * // ➔ true
+   * route().current('venues.events.show', { venue: 6 });
+   * // ➔ false
    *
    * @see [Check **@rzl-zone/ziggy-route** the current route: ***`route().current(...)`***.](https://github.com/rzl-zone/ziggy-route#check-the-current-route-routecurrent)
-   *
    */
   current<T extends RouteName>(
     name: T,
     params?: RouteParams<T> | ParameterValueProps | null
   ): boolean;
   /** ---------------------------------------------
-   * * ***Retrieve the current route with all params (query search params and laravel route params): `route().params`***
+   * * ***Get all current parameters: `route().params`.***
    * ---------------------------------------------
+   * **Returns an object of all parameters in the current URL,
+   * including both **Laravel route parameters** and **query string values**.**
    * @example
-   *
-   *  // Laravel route called 'venues.events.show' with URI '/venues/{venue}/events/{event}'
-   *  // Current window URL is https://myapp.com/venues/1/events/2?hosts=all&type=test
-   *
-   *  route().params; // ➔ { venue: '1', event: '2', hosts: 'all', type: 'test' }
+   * // Laravel route called 'venues.events.show' with URI '/venues/{venue}/events/{event}'
+   * // Current window URL is https://myapp.com/venues/1/events/2?hosts=all&type=test
+   * route().params;
+   * // ➔ { venue: '1', event: '2', hosts: 'all', type: 'test' }
    *
    * @see [Retrieve the current route with all params (query search params and laravel route params): ***`route().params`***.](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#retrieve-the-current-route-params-routeparams)
-   *
    */
   get params(): Record<string, string | undefined>;
   /** ---------------------------------------------
-   * * ***Retrieve only params route in laravel route (except query search params) in the current route: `route().routeParams`***
+   * * ***Get only Laravel route parameters: `route().routeParams`.***
    * ---------------------------------------------
+   * **Returns an object of **only the Laravel route parameters** from the
+   * current URL, excluding query string parameters.**
    * @example
-   *
-   *  // Laravel route called 'venues.events.show' with URI '/venues/{venue}/events/{event}'
-   *  // Current window URL is https://myapp.com/venues/1/events/2?hosts=all&type=test
-   *
-   *  route().routeParams; // ➔ { venue: '1', event: '2' }
+   * // Laravel route called 'venues.events.show' with URI '/venues/{venue}/events/{event}'
+   * // Current window URL is https://myapp.com/venues/1/events/2?hosts=all&type=test
+   * route().routeParams; // ➔ { venue: '1', event: '2' }
    *
    * @see [Retrieve only params route in laravel route (except query search params) in the current route: ***`route().routeParams`***.](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#retrieve-only-params-route-in-laravel-route-except-query-search-params-in-the-current-route-routerouteparams)
    */
   get routeParams(): Record<string, string | undefined>;
   /** ---------------------------------------------
-   * * ***Retrieve all search query params only (except params route in laravel route) in the current route: `route().queryParams`***
+   * * ***Get only query string parameters: `route().queryParams`.***
    * ---------------------------------------------
+   * **Returns an object of **only the query string parameters** from
+   * the current URL, excluding Laravel route parameters.**
    * @example
-   *
-   *  // Laravel route called 'venues.events.show' with URI '/venues/{venue}/events/{event}'
-   *  // Current window URL is https://myapp.com/venues/1/events/2?hosts=all&type=test
-   *
-   *  route().queryParams; // ➔ { hosts: 'all', type: 'test' }
+   * // Laravel route called 'venues.events.show' with URI '/venues/{venue}/events/{event}'
+   * // Current window URL is https://myapp.com/venues/1/events/2?hosts=all&type=test
+   * route().queryParams; // ➔ { hosts: 'all', type: 'test' }
    *
    * @see [Retrieve all search query params only (except params route in laravel route) in the current route: ***`route().queryParams`***.](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#retrieve-all-search-query-params-only-except-params-route-in-laravel-route-in-the-current-route-routequeryparams)
    */
   get queryParams(): ParsedQs;
   /** ---------------------------------------------
-   * * ***Check the current route: `route().has(...)`***
+   * * ***Check if a route exists: `route().has(name)`.***
    * ---------------------------------------------
+   * **Determines whether a named route is registered.**
+   * @param name
+   *   The route name or wildcard pattern to check.
+   *   - Accepts a full route name such as `"home"`.
+   *   - Supports wildcard patterns like `"events.*"` to match multiple routes.
+   *   - When `TypeConfig` is set with `strictRouteNames: true`,
+   *     this parameter is limited to `KnownRouteName`.
    * @example
+   * // Laravel app has only one named route, 'home'
    *
-   *  // Laravel app has only one named route, 'home'
-   *
-   *  route().has('home');   // ➔ true
-   *  route().has('orders'); // ➔ false
+   * route().has('home');   // ➔ true
+   * route().has('orders'); // ➔ false
    *
    * @see [Check **@rzl-zone/ziggy-route** if a route exists: ***`route().has(...)`***.](https://github.com/rzl-zone/ziggy-route#check-if-a-route-exists-routehas)
-   *
    */
   has<T extends ValidRouteName>(name: T): boolean;
 };

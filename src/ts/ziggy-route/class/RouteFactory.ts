@@ -5,9 +5,9 @@ import type {
 } from "../types";
 
 import { parse } from "qs";
-import { isEmptyString, isNil, isString } from "@rzl-zone/utils-js";
 
 import { RoutePropsError, RouterConfigError } from "./exceptions";
+import { isEmptyString, isNil, isString } from "@rzl-zone/utils-js/predicates";
 
 /** ---------------------------------
  * * ***A Laravel route. This class represents one route and its configuration and metadata.***
@@ -65,7 +65,7 @@ export default class RouteFactory {
       const match = this.config.url.match(/^\w+:\/\//);
       if (!match) {
         throw new RouterConfigError(
-          `Invalid \`config.url\` missing protocol (e.g., http:// or https://)`
+          `Invalid \`config.url\` missing protocol (e.g., \`"http://"\` or \`"https://"\`).`
         );
       }
       const protocol = match[0];
@@ -148,15 +148,17 @@ export default class RouteFactory {
 
         if (!optional && isNil(value)) {
           throw new RoutePropsError(
-            `Invalid \`${segment}\` parameter is required for route \`${this.name}\`.`
+            `Invalid \`"${segment}"\` parameter is required for route \`"${this.name}"\`.`
           );
         }
 
-        if (this.wheres[segment]) {
-          const regex = new RegExp(`^${this.wheres[segment]}$`);
+        const wheresSegment = this.wheres[segment];
+
+        if (wheresSegment) {
+          const regex = new RegExp(`^${wheresSegment}$`);
           if (isString(value) && !regex.test(value)) {
             throw new RoutePropsError(
-              `Invalid \`${segment}\` parameter \`${value}\` does not match required format \`${this.wheres[segment]}\` for route \`${this.name}\`.`
+              `Invalid \`"${segment}"\` parameter \`"${value}"\` does not match required format \`${wheresSegment}\` for route \`"${this.name}"\`.`
             );
           }
         }

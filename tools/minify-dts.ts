@@ -34,7 +34,6 @@ dtsFiles.forEach((filePath) => {
 
       const isJsDoc = match[0].startsWith("/**");
       parts.push({ type: isJsDoc ? "jsdoc" : "comment", content: match[0] });
-
       lastIndex = end;
     }
 
@@ -42,29 +41,54 @@ dtsFiles.forEach((filePath) => {
       parts.push({ type: "code", content: content.slice(lastIndex) });
     }
 
-    const result = parts
-      .map((part) => {
-        if (part.type === "jsdoc") return `\n${part.content}\n`;
-        if (part.type === "comment") return ""; // remove non-jsdoc comment
-        return part.content
-          .replace(/[\n\r\t]/g, "")
-          .replace(/ {2,}/g, " ")
-          .replace(/import\s+([^'"]+?)\s+from/g, (_, imp) => {
-            const cleaned = imp
-              .replace(/\{\s*/g, "{")
-              .replace(/\s*\}/g, "}")
-              .replace(/\s*,\s*/g, ",")
-              .replace(/\s+/g, " ");
-            return `import ${cleaned} from`;
-          })
-          .replace(/ ?([=:{},;()<>]) ?/g, "$1")
-          .replace(/ +/g, " ")
-          .trim();
-      })
-      .filter(Boolean)
-      .join("");
+    const firstJsDocIndex = parts.findIndex((p) => p.type === "jsdoc");
 
-    fs.writeFileSync(outFile, result, "utf-8");
+    const result =
+      parts
+        .map((part, index) => {
+          if (part.type === "jsdoc") {
+            if (index === firstJsDocIndex) {
+              return part.content + "\n";
+            }
+            return `\n${part.content}\n`;
+          }
+          if (part.type === "comment") {
+            // normalize comment: replace newlines with space and collapse multiple spaces
+            return ` ${part.content.replace(/\n/g, " ").replace(/\s+/g, " ")} `;
+          }
+
+          // code section: safe for string literals
+          const code = part.content;
+          // split code into string literals and normal code
+          const fragments =
+            code.match(/(["'`])(?:\\.|(?!\1).)*\1|[^"'`]+/g) || [];
+
+          return fragments
+            .map((frag: string) => {
+              if (/^["'`]/.test(frag)) {
+                // string literal, leave as-is
+                return frag;
+              }
+              // normal code: remove spaces/tabs/newlines around | ? : , and apply other minify rules
+              return frag
+                .replace(/[\n\r\t]/g, "")
+                .replace(/ {2,}/g, " ")
+                .replace(/\s*([|?:,])\s*/g, "$1")
+                .replace(/ ?([=:{},;()<>]) ?/g, "$1")
+                .replace(/ +/g, " ")
+                .trim();
+            })
+            .join("");
+        })
+        .filter(Boolean)
+        .join("") + "\n";
+
+    const finalResult = result
+      .replace(/;(?=\/\*\*)/g, ";\n")
+      .replace(/\{(?=\/\*\*)/g, "{\n")
+      .replace(/(^|\n)[ \t]+(\*)/g, "$1 $2");
+
+    fs.writeFileSync(outFile, finalResult, "utf-8");
 
     const endTime = Date.now();
 
