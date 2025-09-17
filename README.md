@@ -1004,6 +1004,4 @@ Rzl Ziggy is open-source software released under the MIT license. See [LICENSE](
 
 - Forked and extended from [Ziggy by Tighten.](https://github.com/tighten/ziggy)
 - Inspired by the work of Daniel Coulbourne, Jake Bathman, Matt Stauffer, and Jacob Baker-Kretzmar.
-- Custom features and enhancements maintained by [Rizalfin Dwiky (RZL)](https://github.com/rzl-app)
-# ziggy-route
-# ziggy-route
+- Custom features and enhancements maintained by [Rizalfin Dwiky (RZL)](https://github.com/rzl-app) 
