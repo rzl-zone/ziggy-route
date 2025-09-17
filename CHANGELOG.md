@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.9](https://github.com/rzl-zone/ziggy-route/compare/v0.0.8...v0.0.9) (2025-09-17)
+
+
+### Bug Fixes
+
+* Fixing BladeRouteGenerator.php for import path `.iife.js` file. ([1b89674](https://github.com/rzl-zone/ziggy-route/commit/1b89674d5a695d860b4f9356554bc908b0568f69))
+* Fixing validate config options fo Router class. ([a8e604f](https://github.com/rzl-zone/ziggy-route/commit/a8e604f1b8e5a41d6a23dd65f8f635d73515dcc8))
+
 ## [0.0.8](https://github.com/rzl-zone/ziggy-route/compare/v0.0.7...v0.0.8) (2025-09-17)
 
 
