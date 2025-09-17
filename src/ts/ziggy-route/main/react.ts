@@ -6,8 +6,6 @@ import type {
   ValidRouteName
 } from "@ts/ziggy-route/types";
 
-import { isUndefined } from "@rzl-zone/utils-js/predicates";
-
 import { route } from "@ts/ziggy-route/main/route";
 import { RouterConfigError } from "@ts/ziggy-route/class/exceptions";
 
@@ -171,7 +169,11 @@ export type ReactRouteHook = {
  * @see [**More docs use with react hook: `useRoute`.**](https://github.com/rzl-app/ziggy?tab=readme-ov-file#react)
  */
 export function useRoute(defaultConfig?: Config): ReactRouteHook {
-  if (!defaultConfig && !globalThis.appRoutes && isUndefined(appRoutes)) {
+  if (
+    !defaultConfig &&
+    !globalThis.appRoutes &&
+    typeof appRoutes === "undefined"
+  ) {
     throw new RouterConfigError(
       `Hook \`useRouter()\` missing configuration.\n- Ensure that a \`appRoutes\` variable is defined globally or pass a config object into the \`useRoute\` hook.`
     );

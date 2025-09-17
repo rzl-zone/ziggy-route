@@ -16,7 +16,7 @@ export class RouterConfigError extends Error {
     super(
       `\n${trimmedPrefix.startsWith("❌") ? trimmedPrefix : "❌ " + trimmedPrefix} - ${trimmedMessage}`
     );
-    this.name = "RouterConfigError";
+    this.name = "RouteConfigError";
 
     // Preserve stack trace in non-production environments
     if (Error.captureStackTrace) {

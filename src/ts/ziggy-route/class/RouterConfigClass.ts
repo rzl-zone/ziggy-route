@@ -6,8 +6,8 @@ import type {
 
 import {
   getPreciseType,
+  hasOwnProp,
   isError,
-  isNil,
   isNull,
   isNumber,
   isPlainObject,
@@ -46,7 +46,7 @@ export class RouterConfigClass implements RouterConfig {
 
   /** Check object like RouterConfig */
   private static isRouterConfigRaw(obj: unknown): obj is RouterConfig {
-    if (isNil(obj)) return false;
+    if (!isPlainObject(obj)) return false;
 
     // object
     if (!isPlainObject<Partial<RouterConfig>>(obj)) {
@@ -81,7 +81,7 @@ export class RouterConfigClass implements RouterConfig {
     }
 
     // location (optional)
-    if ("location" in obj) {
+    if (hasOwnProp(obj, "location")) {
       const loc = obj.location;
 
       if (!isPlainObject(loc)) {
@@ -91,21 +91,17 @@ export class RouterConfigClass implements RouterConfig {
       }
 
       const l = loc;
-      if ("host" in l && !isString(l.host) && !isUndefined(l.host)) {
+      if (hasOwnProp(l, "host") && !isString(l.host)) {
         throw new RouterConfigError(
           `Invalid \`route()\` parameter \`config.location.host\` property of the \`config\` (fourth parameter) detected:\n- Ensure that \`appLocation\` is defined globally or passed as a valid \`config.location\`.\n  - Parameter \`config.location.host\` must be of type \`string\` or \`undefined\`, but received: \`${getPreciseType(l.host)}\`, with value: \`${realValue(l.host)}\`.${docsErrorLinkRepo}`
         );
       }
-      if (
-        "pathname" in l &&
-        !isString(l.pathname) &&
-        !isUndefined(l.pathname)
-      ) {
+      if (hasOwnProp(l, "pathname") && !isString(l.pathname)) {
         throw new RouterConfigError(
           `Invalid \`route()\` parameter \`config.location.pathname\` property of the \`config\` (fourth parameter) detected:\n- Ensure that \`appLocation\` is defined globally or passed as a valid \`config.location\`.\n  - Parameter \`config.location.pathname\` must be of type \`string\` or \`undefined\`, but received: \`${getPreciseType(l.pathname)}\`, with value: \`${realValue(l.pathname)}\`.${docsErrorLinkRepo}`
         );
       }
-      if ("search" in l && !isString(l.search) && !isUndefined(l.search)) {
+      if (hasOwnProp(l, "search") && !isString(l.search)) {
         throw new RouterConfigError(
           `Invalid \`route()\` parameter \`config.location.search\` property of the \`config\` (fourth parameter) detected:\n- Ensure that \`appLocation\` is defined globally or passed as a valid \`config.location\`.\n  - Parameter \`config.location.search\` must be of type \`string\` or \`undefined\`, but received: \`${getPreciseType(l.search)}\`, with value: \`${realValue(l.search)}\`.${docsErrorLinkRepo}`
         );

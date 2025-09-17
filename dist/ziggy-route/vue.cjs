@@ -1,1 +1,1 @@
-"use strict";var r=require("../chunk-QZ6ITKWC.cjs");require("../chunk-GXOYTAOD.cjs");var e={install:function(e,t){function i(e,i,o){return r.route(e,i,o,t)}parseInt(e.version)>2?(e.config.globalProperties.route=i,e.provide("route",i)):e.mixin({methods:{route:i}})}};exports.rzlZiggyVue=e;
+"use strict";var r=require("../chunk-WVGOBRCR.cjs");require("../chunk-EUN6VYDD.cjs");var e={install:function(e,t){function i(e,i,o){return r.route(e,i,o,t)}parseInt(e.version)>2?(e.config.globalProperties.route=i,e.provide("route",i)):e.mixin({methods:{route:i}})}};exports.rzlZiggyVue=e;
