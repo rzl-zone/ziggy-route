@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.8](https://github.com/rzl-zone/ziggy-route/compare/v0.0.7...v0.0.8) (2025-09-17)
+
+
+### Bug Fixes
+
+* Fixing BANNER generate tsDoc for ts and .d.ts file. ([79bc486](https://github.com/rzl-zone/ziggy-route/commit/79bc486b76c23f5cc1191a2569c56e1704b857fa))
+
 ## [0.0.7](https://github.com/rzl-zone/ziggy-route/compare/v0.0.6...v0.0.7) (2025-09-17)
 
 
