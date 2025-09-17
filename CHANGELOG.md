@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.10](https://github.com/rzl-zone/ziggy-route/compare/v0.0.9...v0.0.10) (2025-09-17)
+
+
+### Bug Fixes
+
+* Fixing validate config options fo Router class, and fix some minor bugs. ([a6e2eb5](https://github.com/rzl-zone/ziggy-route/commit/a6e2eb5484edf57a0267908f6201b1d646f364c9))
+
 ## [0.0.9](https://github.com/rzl-zone/ziggy-route/compare/v0.0.8...v0.0.9) (2025-09-17)
 
 
