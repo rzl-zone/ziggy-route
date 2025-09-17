@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/rzl-zone/ziggy-route/compare/v0.0.3...v0.0.4) (2025-09-17)
+
+
+### Bug Fixes
+
+* error message at validation parameter, fix tsDoc, fix readme.md, and fix some bugs. ([326e025](https://github.com/rzl-zone/ziggy-route/commit/326e025fd61eea8203c19d286ac81fb4cb3a10e0))
+
 ## [0.0.3](https://github.com/rzl-zone/ziggy-route/compare/v0.0.2...v0.0.3) (2025-08-07)
 
 
