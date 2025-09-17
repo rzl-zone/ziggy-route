@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.11](https://github.com/rzl-zone/ziggy-route/compare/v0.0.10...v0.0.11) (2025-09-17)
+
+
+### Bug Fixes
+
+* Error message at Router.ts, and fix README.md. ([721515a](https://github.com/rzl-zone/ziggy-route/commit/721515ad5e8a9c2b25d7d4ff25e5172fecd67910))
+
 ## [0.0.10](https://github.com/rzl-zone/ziggy-route/compare/v0.0.9...v0.0.10) (2025-09-17)
 
 
