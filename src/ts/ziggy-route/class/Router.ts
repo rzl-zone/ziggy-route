@@ -57,9 +57,10 @@ export class Router extends String {
     // Defensive fallback in case user passes `null` or `undefined`.
     absolute = !!absolute;
 
-    const _config = this.safeValidateRouterConfig(
-      config || globalThis.appRoutes
-    );
+    const configValue = !isNil(config)
+      ? config
+      : (!isNil(appRoutes) ? appRoutes : globalThis.appRoutes) || undefined;
+    const _config = this.safeValidateRouterConfig(configValue);
 
     this._config = { ..._config, absolute };
 
