@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.6](https://github.com/rzl-zone/ziggy-route/compare/v0.0.5...v0.0.6) (2025-09-17)
+
+
+### Bug Fixes
+
+* Fixing error message at logger.ts ([a888a8e](https://github.com/rzl-zone/ziggy-route/commit/a888a8e101d42c55e85cb451ecbd2d3e433b6275))
+* Fixing error message at vite-plugin/index.ts ([def8554](https://github.com/rzl-zone/ziggy-route/commit/def8554632ae8e06b1bb7e2ad4a1adb585731724))
+
 ## [0.0.5](https://github.com/rzl-zone/ziggy-route/compare/v0.0.4...v0.0.5) (2025-09-17)
 
 
