@@ -213,16 +213,16 @@ final class RzlZiggyHelper
        * {$bottomDesc}
        *
        * 🔗 ***Links:***
-       *  - 📦 NPM       : [***{$namePkg}***](https://www.npmjs.com/package/{$namePkg})
-       *     - 🟢 Current : {$versionPkg}
-       *     - 🔵 Latest  : {$versionLatestNpm}
-       *  - 📦 Packagist : [***{$name}***](https://packagist.org/packages/{$name})
-       *     - 🟢 Current : {$versionComposer}
-       *     - 🔵 Latest  : {$versionLatestPackagist}
-       *  - 🧭 Repo      : [***{$repoName}***]({$cleanUrl})
-       *  - 📝 License   : [***{$license}***]({$cleanUrl}/blob/main/LICENSE)
-       *
-       *  © {$date} {$author}
+       *  - 📦 **NPM       :** [**`{$namePkg}`**](https://www.npmjs.com/package/{$namePkg}).
+       *     - 🟢 ***Current :*** `{$versionPkg}`.
+       *     - 🔵 ***Latest  :*** `{$versionLatestNpm}`.
+       *  - 📦 **Packagist :** [**`{$name}`**](https://packagist.org/packages/{$name}).
+       *     - 🟢 ***Current :*** `{$versionComposer}`.
+       *     - 🔵 ***Latest  :*** `{$versionLatestPackagist}`.
+       *  - 🧭 **Repo      :** [**`{$repoName}`**]({$cleanUrl}).
+       *  - 📝 **License   :** [**`{$license}`**]({$cleanUrl}/blob/main/LICENSE).
+       * ---------------------------------------------------------------------
+       *  ***© {$date} {$author}***
        */
       BANNER;
   }
