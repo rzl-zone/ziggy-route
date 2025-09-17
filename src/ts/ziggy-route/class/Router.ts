@@ -164,7 +164,7 @@ export class Router extends String {
   ): Record<string, string> {
     if (!isPlainObject(params) && !isArray(params)) {
       throw new RoutePropsError(
-        `Invalid \`route()\` \`params\` property detected. \n- Second Parameter (\`params\`) must be of type \`plain-object\` or \`array\`, but received: \`${getPreciseType(params)}\`.\n\nℹ️ More info: \`${REPO.LINK}#parameters\`.`
+        `Invalid \`route()\` \`params\` property detected. \n- Second Parameter (\`params\`) must be of type \`plain-object\` or \`array\`, but received: \`${getPreciseType(params)}\`.\n\nℹ️ More info: ${REPO.LINK}#parameters.`
       );
     }
 
@@ -254,7 +254,7 @@ export class Router extends String {
           route.bindings[key] = "id";
         } else {
           throw new RoutePropsError(
-            `Object passed as \`"${key}"\` parameter is missing route model binding key \`${route.bindings[key]}\`.\n\nℹ️ More info: \`${REPO.LINK}#parameters\`.`
+            `Object passed as \`"${key}"\` parameter is missing route model binding key \`${route.bindings[key]}\`.\n\nℹ️ More info: ${REPO.LINK}#parameters.`
           );
         }
       }
@@ -377,7 +377,7 @@ export class Router extends String {
 
     if (!thisRoute) {
       throw new RoutePropsError(
-        `Function route() was called without a \`name\` (first parameter) but used as a \`string\`.\n- Pass a valid route name, or use route().current() to get the current route name — or route().current('dashboard') to check if it matches.\n\nℹ️ More info: \`${REPO.LINK}#%EF%B8%8F-warning-calling-route-without-arguments\`.`
+        `Function route() was called without a \`name\` (first parameter) but used as a \`string\`.\n- Pass a valid route name, or use route().current() to get the current route name — or route().current('dashboard') to check if it matches.\n\nℹ️ More info: ${REPO.LINK}#%EF%B8%8F-warning-calling-route-without-arguments.`
       );
     }
 
@@ -395,7 +395,7 @@ export class Router extends String {
 
     if (!isUndefined(thisParamsQuery) && !isPlainObject(thisParamsQuery)) {
       throw new RoutePropsError(
-        `Invalid parameter \`_query\` property of the \`params\` (second parameter) value passed to \`route()\`, expected a \`plain-object\` (e.g., { foo: "bar" }), but received: \`${getPreciseType(thisParamsQuery)}\`.\n\nℹ️ More info: \`${REPO.LINK}#query-parameters\`.`
+        `Invalid parameter \`_query\` property of the \`params\` (second parameter) value passed to \`route()\`, expected a \`plain-object\` (e.g., { foo: "bar" }), but received: \`${getPreciseType(thisParamsQuery)}\`.\n\nℹ️ More info: ${REPO.LINK}#query-parameters.`
       );
     }
 

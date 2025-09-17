@@ -1,1 +1,1 @@
-import{route as o}from"../chunk-7NZLGDNW.esm.js";import"../chunk-BKI6CYPF.esm.js";var r={install:function(r,e){function t(r,t,n){return o(r,t,n,e)}parseInt(r.version)>2?(r.config.globalProperties.route=t,r.provide("route",t)):r.mixin({methods:{route:t}})}};export{r as rzlZiggyVue};
+import{route as o}from"../chunk-MMR5OWTW.esm.js";import"../chunk-BKI6CYPF.esm.js";var r={install:function(r,e){function t(r,t,n){return o(r,t,n,e)}parseInt(r.version)>2?(r.config.globalProperties.route=t,r.provide("route",t)):r.mixin({methods:{route:t}})}};export{r as rzlZiggyVue};
