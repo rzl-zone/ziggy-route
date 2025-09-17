@@ -58,6 +58,6 @@ class BladeRouteGenerator
 
   private function getRouteFunction()
   {
-    return config('rzl-ziggy.skip-route-function') ? '' : file_get_contents(__DIR__ . '/../dist/ziggy-route/rzl-ziggy.iife.js');
+    return config('rzl-ziggy.skip-route-function') ? '' : file_get_contents(__DIR__ . '/../../dist/ziggy-route/rzl-ziggy.iife.js');
   }
 }
