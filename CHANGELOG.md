@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.5](https://github.com/rzl-zone/ziggy-route/compare/v0.0.4...v0.0.5) (2025-09-17)
+
+
+### Bug Fixes
+
+* error with chalk default instance, and fix tsDoc at `stringValue.ts` ([5d9bab3](https://github.com/rzl-zone/ziggy-route/commit/5d9bab3c464b6b21414c010febdb03a6fb84f3d3))
+
 ## [0.0.4](https://github.com/rzl-zone/ziggy-route/compare/v0.0.3...v0.0.4) (2025-09-17)
 
 
