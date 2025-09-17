@@ -17,6 +17,9 @@ import { build, BuildConfig } from "./build";
 import { defaultConfig, type Config } from "./config";
 import { getComposerPackageVersion } from "@ts/utils/composer";
 import { realValue } from "@ts/utils/stringValue";
+import { CONFIG } from "@ts/utils/constants";
+
+const { PACKAGE, REPO } = CONFIG;
 
 export default (config: Config = {}): Plugin => {
   if (!isPlainObject(config)) {
@@ -146,10 +149,10 @@ export default (config: Config = {}): Plugin => {
                   .relative(process.cwd(), file)
                   .replace(/\\/g, "/");
                 console.log(
-                  `\n🛰️  ${chalk.cyanBright("Live Watcher")} ${chalk.gray("detected change in")} ${chalk.yellowBright(changedFile)}`
+                  `\n🚀 ${chalk.bold.cyanBright("Live Watcher")} ${chalk.gray("detected change in")} ${chalk.yellowBright(changedFile)}`
                 );
                 console.log(
-                  `${chalk.hex("#ff6f00")("🔁 Rerunning")} ${chalk.bold.cyan(cmd.join(" "))} ${chalk.gray("...syncing fresh routes 🚦")}\n`
+                  `${chalk.hex("#ff6f00")("⚡ Rerunning")} ${chalk.bold.cyan(cmd.join(" "))} ${chalk.italic.gray("...syncing fresh routes 🔄.")}\n`
                 );
               },
               name: "rzl-ziggy-generator",
@@ -189,21 +192,21 @@ export default (config: Config = {}): Plugin => {
     };
   } catch (error) {
     console.error(
-      `\n${chalk.bgRed.white.bold(" RZL ZIGGY ERROR ")} ${chalk.redBright("An error occurred in")} ${chalk.yellow("[@rzl-zone/ziggy-route/vite-plugin]")} 🚨`
+      `\n${chalk.bgRed.white.bold(`💥 ${PACKAGE.PREFIX.NAME} ERROR `)} ${chalk.redBright("An error occurred in")} ${chalk.yellow(`[${PACKAGE.NPM_NAME}/vite-plugin]`)}`
     );
 
     if (isError(error)) {
       console.error(
-        `${chalk.red("❌ Message:")} ${chalk.white(error.message)}`
+        `${chalk.red("🛑 Message:")} ${chalk.white(error.message)}`
       );
 
       if (process.env.NODE_ENV === "development") {
         console.error(
-          `${chalk.gray("📍 Stack Trace:")}\n${chalk.dim(error.stack || "")}`
+          `${chalk.gray("📌 Stack Trace:")}\n${chalk.dim(error.stack || "")}`
         );
       } else {
         console.error(
-          `${chalk.gray("ℹ️  Tip:")} Run in ${chalk.cyan("development")} mode to see stack trace.`
+          `${chalk.gray("💡 Tip:")} Run in ${chalk.cyan("development")} mode to see stack trace.`
         );
       }
     } else {
