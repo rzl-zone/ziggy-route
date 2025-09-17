@@ -40,7 +40,7 @@ export const logger = {
 
       throw err;
     } else {
-      logger.error(label, "Unknown error occurchalk.red");
+      logger.error(label, "Unknown error occurred");
       throw new Error(isString(err) ? err : "Unknown error");
     }
   },
