@@ -753,7 +753,7 @@ To make your routes available on the frontend for this function to use, you can 
 ### Using with Inertiajs
 
 #### SSR MODE (CSR can be skip):
-When you using Inertia-js with SSR mode, and you using `@rzlRoutes` directive in your app.blade.php, you need put this config in your `ssr.{ts|js}` file, for TypeScript global `route` because using `@rzlRoutes` directive, see: [TypeScript Support](#user-content-typescript-support) for more detail.
+When you using Inertia-js with SSR mode, and you using `@rzlRoutes` directive in your app.blade.php, you need put this config in your `ssr.{tsx|jsx|ts|js}` file, for TypeScript global `route` because using `@rzlRoutes` directive, see: [TypeScript Support](#user-content-typescript-support) for more detail.
 
 #### Server-side: at HandleInertiaRequests.php (middleware) file.
 ```php
@@ -793,7 +793,7 @@ class HandleInertiaRequests extends Middleware
 }
 
 ```
-#### Client-side: at your ssr.jsx or ssr.tsx file
+#### Client-side: at your (ssr.{tsx|jsx|ts|js}) file
 ```tsx
 import {
   route as defaultRoute,
@@ -804,8 +804,8 @@ import {
 
 createServer((page) =>
   createInertiaApp({
-    setup: ({ App, props }) => { 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    setup: ({ App, props }) => {
+      //! this is required. 
       (globalThis as any).route = (
         name: RouteName,
         params?: RouteParams<RouteName> | null | undefined,

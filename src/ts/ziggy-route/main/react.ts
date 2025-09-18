@@ -50,7 +50,7 @@ export type ReactRouteHook = {
    * const r = route(undefined, undefined, true, JSON.parse(appRoutes));
    * console.log(r) // ➔ r instance of Router.
    *
-   * @see [**More Docs see: `route()` function.**](https://github.com/rzl-app/ziggy?tab=readme-ov-file#route-function)
+   * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
    */
   (): Router;
   /** -------------------------------------------------------
@@ -78,7 +78,7 @@ export type ReactRouteHook = {
    * // Returns absolute URL like "https://example.com/posts/123"
    * route("posts.show", { id: 123 }, true);
    *
-   * @see [**More Docs see: `route()` function.**](https://github.com/rzl-app/ziggy?tab=readme-ov-file#route-function)
+   * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
    */
   <T extends ValidRouteName>(
     name: T,
@@ -110,7 +110,7 @@ export type ReactRouteHook = {
    * // Returns absolute URL like "https://example.com/posts/123"
    * route("posts.show", { id: 123 }, true);
    *
-   * @see [**More Docs see: `route()` function.**](https://github.com/rzl-app/ziggy?tab=readme-ov-file#route-function)
+   * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
    */
   <T extends ValidRouteName>(
     name: T,
@@ -146,7 +146,7 @@ export type ReactRouteHook = {
    * const r = route(undefined, undefined, true, JSON.parse(appRoutes));
    * console.log(r) // ➔ r instance of Router.
    *
-   * @see [**More Docs see: `route()` function.**](https://github.com/rzl-app/ziggy?tab=readme-ov-file#route-function)
+   * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
    */
   (
     name: undefined | null,
@@ -166,7 +166,7 @@ export type ReactRouteHook = {
  * - Required only if the global `appRoutes` variable is not available, by default
  * the function will use the global `appRoutes` if present.
  *
- * @see [**More docs use with react hook: `useRoute`.**](https://github.com/rzl-app/ziggy?tab=readme-ov-file#react)
+ * @see [**More docs use with react hook: `useRoute`.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#react)
  */
 export function useRoute(defaultConfig?: Config): ReactRouteHook {
   if (

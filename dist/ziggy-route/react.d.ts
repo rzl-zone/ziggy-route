@@ -39,7 +39,7 @@ import{R as Router,V as ValidRouteName,a as RouteParams,P as ParameterValueProps
  * const r = route(undefined, undefined, true, JSON.parse(appRoutes));
  * console.log(r) // ➔ r instance of Router.
  *
- * @see [**More Docs see: `route()` function.**](https://github.com/rzl-app/ziggy?tab=readme-ov-file#route-function)
+ * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
  */
 ():Router;
 /** -------------------------------------------------------
@@ -67,7 +67,7 @@ import{R as Router,V as ValidRouteName,a as RouteParams,P as ParameterValueProps
  * // Returns absolute URL like "https://example.com/posts/123"
  * route("posts.show", { id: 123 }, true);
  *
- * @see [**More Docs see: `route()` function.**](https://github.com/rzl-app/ziggy?tab=readme-ov-file#route-function)
+ * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
  */
 <T extends ValidRouteName>(name:T,params?:RouteParams<T>|null|undefined,absolute?:boolean):string;
 /** -------------------------------------------------------
@@ -95,7 +95,7 @@ import{R as Router,V as ValidRouteName,a as RouteParams,P as ParameterValueProps
  * // Returns absolute URL like "https://example.com/posts/123"
  * route("posts.show", { id: 123 }, true);
  *
- * @see [**More Docs see: `route()` function.**](https://github.com/rzl-app/ziggy?tab=readme-ov-file#route-function)
+ * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
  */
 <T extends ValidRouteName>(name:T,params?:ParameterValueProps|null|undefined,absolute?:boolean):string;
 /** -------------------------------------------------------
@@ -127,7 +127,7 @@ import{R as Router,V as ValidRouteName,a as RouteParams,P as ParameterValueProps
  * const r = route(undefined, undefined, true, JSON.parse(appRoutes));
  * console.log(r) // ➔ r instance of Router.
  *
- * @see [**More Docs see: `route()` function.**](https://github.com/rzl-app/ziggy?tab=readme-ov-file#route-function)
+ * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
  */
 (name:undefined|null,params?:undefined|null,absolute?:boolean):Router;};
 /** -------------------------------------------------------
@@ -141,6 +141,6 @@ import{R as Router,V as ValidRouteName,a as RouteParams,P as ParameterValueProps
  * - Required only if the global `appRoutes` variable is not available, by default
  * the function will use the global `appRoutes` if present.
  *
- * @see [**More docs use with react hook: `useRoute`.**](https://github.com/rzl-app/ziggy?tab=readme-ov-file#react)
+ * @see [**More docs use with react hook: `useRoute`.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#react)
  */
 declare function useRoute(defaultConfig?:Config):ReactRouteHook;export{type ReactRouteHook,useRoute};
