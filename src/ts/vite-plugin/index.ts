@@ -19,9 +19,9 @@ import { getComposerPackageVersion } from "@ts/utils/composer";
 import { realValue } from "@ts/utils/stringValue";
 import { CONFIG } from "@ts/utils/constants";
 
-const { PACKAGE, REPO } = CONFIG;
+const { PACKAGE } = CONFIG;
 
-export default (config: Config = {}): Plugin => {
+const rzlZiggyVite = (config: Config = {}): Plugin => {
   if (!isPlainObject(config)) {
     config = {};
   }
@@ -217,3 +217,5 @@ export default (config: Config = {}): Plugin => {
 
   return {} as Plugin;
 };
+
+export default rzlZiggyVite;
