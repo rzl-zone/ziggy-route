@@ -1027,11 +1027,11 @@ php artisan rzl-ziggy:generate --types
 #### - Setting in your vite.config.ts or vite.config.js, register the plugin:
 
 ```js
-import rzlZiggyPlugin from '@rzl-zone/ziggy-route/vite-plugin'
+import rzlZiggyVitePlugin from '@rzl-zone/ziggy-route/vite-plugin'
 
 export default defineConfig({
   plugins: [
-    rzlZiggyPlugin({
+    rzlZiggyVitePlugin({
       // ...you can replace default options.
     }),
 

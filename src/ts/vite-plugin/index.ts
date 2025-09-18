@@ -21,7 +21,7 @@ import { CONFIG } from "@ts/utils/constants";
 
 const { PACKAGE } = CONFIG;
 
-const rzlZiggyVite = (config: Config = {}): Plugin => {
+const rzlZiggyVitePlugin = (config: Config = {}): Plugin => {
   if (!isPlainObject(config)) {
     config = {};
   }
@@ -218,4 +218,4 @@ const rzlZiggyVite = (config: Config = {}): Plugin => {
   return {} as Plugin;
 };
 
-export default rzlZiggyVite;
+export default rzlZiggyVitePlugin;
