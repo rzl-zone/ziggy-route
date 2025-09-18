@@ -2,6 +2,7 @@
 
 namespace RzlZone\ZiggyRoute\Helpers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\File;
@@ -204,6 +205,8 @@ final class RzlZiggyHelper
 
     $repoName = str($name)->afterLast("github.com");
 
+    $generateLatestTime = Carbon::now();
+
     return <<<BANNER
       /** ---------------------------------------------------------------------
        * * ***🚀 {$titleGenerate}***
@@ -221,6 +224,8 @@ final class RzlZiggyHelper
        *     - 🔵 ***Latest  :*** `{$versionLatestPackagist}`.
        *  - 🧭 **Repo      :** [**`{$repoName}`**]({$cleanUrl}).
        *  - 📝 **License   :** [**`{$license}`**]({$cleanUrl}/blob/main/LICENSE).
+       * ---------------------------------------------------------------------
+       *  - ***Latest Generated File (depends at: `config.app.timezone`):*** **`{$generateLatestTime}`.**
        * ---------------------------------------------------------------------
        *  ***© {$date} {$author}***
        */
