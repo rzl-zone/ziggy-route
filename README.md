@@ -750,6 +750,81 @@ Rzl Ziggy's `route()` function is available as an NPM package, for use in JavaSc
 
 To make your routes available on the frontend for this function to use, you can either run `php artisan rzl-ziggy:generate` and add the generated config file to your frontend project, or you can return Rzl Ziggy's config as JSON from an endpoint in your Laravel API (see [Retrieving Rzl Ziggy's config from an API endpoint](#retrieving-rzl-ziggys-config-from-an-api-endpoint) below for an example of how to set this up).
 
+### Using with Inertiajs
+
+#### SSR MODE (CSR can be skip):
+When you using Inertia-js with SSR mode, and you using `@rzlRoutes` directive in your app.blade.php, you need put this config in your `ssr.{ts|js}` file, for TypeScript global `route` because using `@rzlRoutes` directive, see: [TypeScript Support](#user-content-typescript-support) for more detail.
+
+#### Server-side: at HandleInertiaRequests.php (middleware) file.
+```php
+namespace App\Http\Middleware;
+
+use Inertia\Middleware;
+use Illuminate\Http\Request;
+use RzlZone\ZiggyRoute\RzlZiggy;
+use Illuminate\Foundation\Inspiring;
+
+class HandleInertiaRequests extends Middleware
+{ 
+  // modify at share method only.
+  public function share(Request $request): array
+  {  
+    return [
+      ...parent::share($request), 
+      
+      //! This is required
+      'url' => [
+        'root' => $request->root(),
+        'currentPath' => $request->getPathInfo(),
+        'searchParams' => getQueryParams($request),
+        'currentLocation' => $request->url(),
+        'currentFullUrl' => $request->fullUrl(),
+        "previousPath" => (str(url()->previous()))->replace(url("/"), ""),
+      ],
+
+      //! This is required if using `@rzlRoutes` directive
+      'rzlZiggy' => fn(): array => [
+        ...(new RzlZiggy())->jsonConfigsSsr(), 
+      ],
+      
+      // ....other your props config
+    ];
+  }
+}
+
+```
+#### Client-side: at your ssr.jsx or ssr.tsx file
+```tsx
+import {
+  route as defaultRoute,
+  type Config,
+  type RouteName,
+  type RouteParams
+} from "@rzl-zone/ziggy-route";
+
+createServer((page) =>
+  createInertiaApp({
+    setup: ({ App, props }) => { 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (globalThis as any).route = (
+        name: RouteName,
+        params?: RouteParams<RouteName> | null | undefined,
+        absolute?: boolean
+      ) => {
+        return defaultRoute(
+          name,
+          params,
+          absolute,
+          page.props.rzlZiggy as Config
+        );
+      };
+
+      return <App {...props} />;
+    },
+    // ....other your props config
+  })
+);
+```
 ---
 ## Publish Config File
 
