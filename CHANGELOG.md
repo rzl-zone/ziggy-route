@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.0.12](https://github.com/rzl-zone/ziggy-route/compare/v0.0.11...v0.0.12) (2025-09-18)
+
+
+### Bug Fixes
+
+* add name const for default export at ./vite-plugin ([4a6d821](https://github.com/rzl-zone/ziggy-route/commit/4a6d821e90af416b75c4ceeb5d91ed0370a7af79))
+* Fixing tsDoc repo link at react.ts and readme.md. ([292f112](https://github.com/rzl-zone/ziggy-route/commit/292f112d2b8193fc0ae6cbb77c93f162ad29bb5c))
+* generate BANNER result at RzlZiggyHelper.php ([b8da0f2](https://github.com/rzl-zone/ziggy-route/commit/b8da0f2ce598ba07575d611734587d2b430b8e90))
+* Readme.md adding docs about inertiaJS SSR mode ([bed3610](https://github.com/rzl-zone/ziggy-route/commit/bed361053a72927e66f43e6a9253ed23c3ea3d6a))
+* Readme.md docs about register the vite plugin, and rename const default from ./vite-plugin to `rzlZiggyVitePlugin`. ([5d4a6bb](https://github.com/rzl-zone/ziggy-route/commit/5d4a6bbaddb181c550e431c88b53410717a793f3))
+
 ## [0.0.11](https://github.com/rzl-zone/ziggy-route/compare/v0.0.10...v0.0.11) (2025-09-17)
 
 
