@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.15](https://github.com/rzl-zone/ziggy-route/compare/v0.0.14...v0.0.15) (2025-11-29)
+
+
+### Bug Fixes
+
+* README.md ([de3dcbd](https://github.com/rzl-zone/ziggy-route/commit/de3dcbd66591ca79fe69935ff96962989563c22b))
+
 ## [0.0.14](https://github.com/rzl-zone/ziggy-route/compare/v0.0.13...v0.0.14) (2025-11-29)
 
 
