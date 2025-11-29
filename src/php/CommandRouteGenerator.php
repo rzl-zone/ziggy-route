@@ -18,7 +18,7 @@ class CommandRouteGenerator extends Command
                         {--path= : Path to the generated JavaScript file. Default: `resources/js/rzl-ziggy/routes`.}
                         {--name= : Filename to the generated JavaScript file. Default: `index`.}
                         {--lang= : Set language to JavaScript or TypeScript (default: `ts`). If invalid or empty, will fallback to `ts`.}
-                        {--locale= : Sets the default value for the {locale} route parameter (e.g., en, id, etc.)}
+                        {--locale= : Sets the default value for the {locale} route parameter (e.g., en, id, ar.)}
                         {--types : Generate with a TypeScript declaration file.}
                         {--types-only : Generate only a TypeScript declaration file.}
                         {--url=}
@@ -36,8 +36,8 @@ class CommandRouteGenerator extends Command
     $this->alert("Generating routes using 'artisan rzl-ziggy:generated'. Please wait a moment....");
 
     $overrides = [];
-    if ($this->option('locale') && str($this->option('locale'))->isNotEmpty()) {
-      $overrides['locale'] = $this->option('locale');
+    if ($this->option("locale") && str($this->option("locale"))->isNotEmpty()) {
+      $overrides["locale"] = $this->option("locale");
     }
     RzlZiggyHelper::applyDefaultUrl($overrides);
 
@@ -46,12 +46,12 @@ class CommandRouteGenerator extends Command
     $lang = $this->resolveLang();
 
     $basePath = $this->resolveRawPathDetails(
-      $this->option('path'),
-      config('rzl-ziggy.output.path.main'),
+      $this->option("path"),
+      config("rzl-ziggy.output.path.main"),
       $lang
     );
     $name = $this->resolveOutputName();
-    $finalFile = $this->buildOutputFilePath($basePath['dir'], $name, $lang);
+    $finalFile = $this->buildOutputFilePath($basePath["dir"], $name, $lang);
 
     // Generated new folder
     $this->makeDirectory($finalFile["dir"]);
@@ -107,52 +107,52 @@ class CommandRouteGenerator extends Command
    */
   private function resolveLang(): string
   {
-    $cliLang = trim((string) $this->option('lang'));
+    $cliLang = trim((string) $this->option("lang"));
 
-    if (in_array($cliLang, ['ts', 'js'], true)) {
+    if (in_array($cliLang, ["ts", "js"], true)) {
       return $cliLang;
     }
 
-    $configLang = trim((string) config('rzl-ziggy.lang'));
+    $configLang = trim((string) config("rzl-ziggy.lang"));
 
-    if (in_array($configLang, ['ts', 'js'], true)) {
+    if (in_array($configLang, ["ts", "js"], true)) {
       return $configLang;
     }
 
-    return 'ts'; // Default fallback
+    return "ts"; // Default fallback
   }
 
   private function resolveOutputName(): string
   {
     // Get the initial name from CLI option
-    $nameInputOption = $this->option('name');
+    $nameInputOption = $this->option("name");
 
     // Log raw input type and value
     if (!is_string($nameInputOption)) {
       $this->debugWarn("The '--name' option is not a string. Raw value: " . var_export($nameInputOption, true));
     }
 
-    $nameInput = is_string($nameInputOption) ? trim($nameInputOption) : '';
+    $nameInput = is_string($nameInputOption) ? trim($nameInputOption) : "";
 
-    if ($nameInput === '') {
-      $configName = config('rzl-ziggy.output.name');
+    if ($nameInput === "") {
+      $configName = config("rzl-ziggy.output.name");
       $this->debugWarn("No '--name' provided. Falling back to config value: '$configName'");
       $nameInput = trim($configName);
     }
 
-    if ($nameInput === '') {
-      if (config()->has('rzl-ziggy.output.name')) {
+    if ($nameInput === "") {
+      if (config()->has("rzl-ziggy.output.name")) {
         $this->warn("{$this->PREFIX_LOG} Config fallback 'rzl-ziggy.output.name' is also empty. Using default value: 'index'");
       }
-      return 'index';
+      return "index";
     }
 
     // Remove leading slashes or backslashes to avoid Git Bash path conversion
     $normalizedInput = ltrim($nameInput, "/\\");
-    $name = $normalizedInput !== '' ? $normalizedInput : 'index';
+    $name = $normalizedInput !== "" ? $normalizedInput : "index";
 
     if ($this->isInvalidName($nameInput)) {
-      $typeNameInput = filled($nameInputOption) ? '--name' : 'rzl-ziggy.output.name';
+      $typeNameInput = filled($nameInputOption) ? "--name" : "rzl-ziggy.output.name";
 
       $this->warn("{$this->PREFIX_LOG} Invalid '{$typeNameInput}' value: '$nameInput'.");
       $this->warn("  - Reason     : Contains path-like characters (e.g. '/', '\\', ':') or starts with a slash.");
@@ -167,37 +167,37 @@ class CommandRouteGenerator extends Command
     $this->debugLine("Raw filename before sanitization: '$nameBeforeSanitize'");
 
     // Sanitize the name (only keep letters, numbers, underscore, hyphen, dot)
-    $sanitizedName = preg_replace('/[^\p{L}\p{N}_\-.]/u', '', $nameBeforeSanitize);
+    $sanitizedName = preg_replace('/[^\p{L}\p{N}_\-.]/u', "", $nameBeforeSanitize);
 
     if ($sanitizedName === null) {
       $this->warn("{$this->PREFIX_LOG} Regex failed. Possibly due to invalid UTF-8 in: '$nameBeforeSanitize'");
-      $sanitizedName = ''; // or handle as fatal
+      $sanitizedName = ""; // or handle as fatal
     }
 
     // ✅ Prevent reserved Windows names (e.g. CON, AUX, NUL, COM1)
     $reserved = [
-      'CON',
-      'PRN',
-      'AUX',
-      'NUL',
-      'COM1',
-      'COM2',
-      'COM3',
-      'COM4',
-      'COM5',
-      'COM6',
-      'COM7',
-      'COM8',
-      'COM9',
-      'LPT1',
-      'LPT2',
-      'LPT3',
-      'LPT4',
-      'LPT5',
-      'LPT6',
-      'LPT7',
-      'LPT8',
-      'LPT9'
+      "CON",
+      "PRN",
+      "AUX",
+      "NUL",
+      "COM1",
+      "COM2",
+      "COM3",
+      "COM4",
+      "COM5",
+      "COM6",
+      "COM7",
+      "COM8",
+      "COM9",
+      "LPT1",
+      "LPT2",
+      "LPT3",
+      "LPT4",
+      "LPT5",
+      "LPT6",
+      "LPT7",
+      "LPT8",
+      "LPT9"
     ];
     if (in_array(strtoupper($sanitizedName), $reserved)) {
       $this->warn("{$this->PREFIX_LOG} Sanitized name '$sanitizedName' is a reserved Windows filename. Appending underscore.");
@@ -207,10 +207,10 @@ class CommandRouteGenerator extends Command
     $this->debugLine("Sanitized filename: '$sanitizedName'");
 
     // Validate the final result avoid empty name
-    if (trim($sanitizedName) === '') {
+    if (trim($sanitizedName) === "") {
       $this->error("❌ {$this->PREFIX_LOG} Output filename is empty or invalid after sanitization.");
       $this->error("➔ Diagnostic information:");
-      $this->error("- Original '--name' input: " . var_export($this->option('name'), true));
+      $this->error("- Original '--name' input: " . var_export($this->option("name"), true));
       $this->error("- After config fallback: '$nameInput'");
       $this->error("- Before sanitization: '$nameBeforeSanitize'");
       $this->error("- After sanitization: '$sanitizedName'");
@@ -238,10 +238,10 @@ class CommandRouteGenerator extends Command
    */
   private function buildOutputFilePath(string $dir, string $name, string $lang)
   {
-    $finalPath = rtrim($dir, '/\\') . "/" . $name . '.' . $lang;
+    $finalPath = rtrim($dir, "/\\") . "/" . $name . "." . $lang;
 
     // Fix any backslashes to forward slashes
-    $finalPath = str_replace('\\', "/", $finalPath);
+    $finalPath = str_replace("\\", "/", $finalPath);
 
     return $this->resolveRawPathDetails($finalPath, null, $lang);
   }
@@ -266,9 +266,9 @@ class CommandRouteGenerator extends Command
     ?string $lang = null,
     ?string $default = null
   ) {
-    // Normalize language and default to 'ts' if not 'js'
-    $lang = strtolower(ltrim($lang ?? '', '.'));
-    $lang = $lang === 'js' ? 'js' : 'ts';
+    // Normalize language and default to "ts" if not "js"
+    $lang = strtolower(ltrim($lang ?? "", "."));
+    $lang = $lang === "js" ? "js" : "ts";
 
     // Determine the raw path: priority ➔ arg > config > default
     $default ??= "resources/js/rzl-ziggy/routes/index.$lang";
@@ -277,15 +277,15 @@ class CommandRouteGenerator extends Command
       : (filled($configPath) ? trim($configPath) : $default);
 
     // Strip query string or fragment (e.g., ?lang=ts#hash)
-    $raw = preg_replace('/[?#].*$/', '', $raw);
+    $raw = preg_replace("/[?#].*$/", "", $raw);
 
     // Ensure path is always relative to the Laravel project
-    if (Str::startsWith($raw, ['/', "/", "\\", '\\'])) {
-      $raw = ltrim($raw, '/\\');
+    if (Str::startsWith($raw, ["/", "/", "\\", "\\"])) {
+      $raw = ltrim($raw, "/\\");
     }
 
     // Detect if path looks like a file (contains a dot in the basename)
-    $looksLikeFile = str_contains(basename($raw), '.');
+    $looksLikeFile = str_contains(basename($raw), ".");
 
     $rawBeforeAppendFileName = rtrim($raw, "/");
 
@@ -312,29 +312,29 @@ class CommandRouteGenerator extends Command
 
 
     // 🔒 Ensure file contains both filename and extension
-    if (!isset($info['filename']) || !isset($info['extension'])) {
+    if (!isset($info["filename"]) || !isset($info["extension"])) {
       $this->error("{$this->PREFIX_LOG} Invalid path. Filename or extension missing in: \"$raw\"");
       exit(self::INVALID);
     }
 
     // 🔧 If extension is invalid or missing, fix it to match target language
-    if (!isset($info['extension']) || $info['extension'] !== $lang) {
-      $raw = ($info['dirname'] ?? '') . "/" . ($info['filename'] ?? 'index') . '.' . $lang;
+    if (!isset($info["extension"]) || $info["extension"] !== $lang) {
+      $raw = ($info["dirname"] ?? "") . "/" . ($info["filename"] ?? "index") . "." . $lang;
       $info = pathinfo($raw); // Re-parse after fix
     }
 
     // $this->info($raw);
 
     // Normalize paths to use forward slashes (for cross-platform and JS output)
-    $normalizedRaw = str_replace('\\', "/", $raw);
-    $normalizedDir = str_replace('\\', "/", $info['dirname'] ?? dirname($raw));
+    $normalizedRaw = str_replace("\\", "/", $raw);
+    $normalizedDir = str_replace("\\", "/", $info["dirname"] ?? dirname($raw));
 
     return [
-      'raw'      => $normalizedRaw,                   // full path including filename
-      'dir'      => $normalizedDir,                   // directory path
-      'filename' => $info['basename'] ?? null,        // filename with extension
-      'basename' => $info['filename'] ?? null,        // filename without extension
-      'ext'      => $info['extension'] ?? $lang,      // file extension
+      "raw"      => $normalizedRaw,                   // full path including filename
+      "dir"      => $normalizedDir,                   // directory path
+      "filename" => $info["basename"] ?? null,        // filename with extension
+      "basename" => $info["filename"] ?? null,        // filename without extension
+      "ext"      => $info["extension"] ?? $lang,      // file extension
     ];
   }
 
@@ -344,77 +344,77 @@ class CommandRouteGenerator extends Command
   private function isValidOutputPath(string $raw): bool
   {
     // Normalize separator
-    $path = str_replace('\\', "/", trim($raw));
-    $basename = basename($path);
+    $path = str_replace("\\", "/", trim($raw));
     $dirname = dirname($path);
+    $basename = basename($path);
 
     if (strlen($basename) > 255 || strlen($path) > 4096) {
       return false;
     }
 
-    if (trim($raw) === '' || preg_match('/^[\s\'\"\.\-\/\\\\]*$/', $raw)) {
+    if (trim($raw) === "" || preg_match('/^[\s\'\"\.\-\/\\\\]*$/', $raw)) {
       return false;
     }
 
-    if (preg_match('/[:*?"\'<>|@~,;#$%^&*()!=+]/', $path) || preg_match('/[\x00-\x1F\x7F]/', $path)) {
+    if (preg_match('/[:*?"\'<>|@~,;#$%^&*()!=+]/', $path) || preg_match("/[\x00-\x1F\x7F]/", $path)) {
       return false;
     }
 
-    $parts = explode('/', $path);
+    $parts = explode("/", $path);
     foreach ($parts as $part) {
-      if ($part === '') continue;
+      if ($part === "") continue;
 
       if (
         preg_match('/[\'<>:"|?*@\+]/', $part) ||
         preg_match('/[\x00-\x1F\x7F]/', $part) ||
-        $part === '.' || $part === '..'
+        $part === "." || $part === ".."
       ) {
         return false;
       }
     }
 
-    if (preg_match('/^[-.]/', $basename)) {
+    if (preg_match("/^[-.]/", $basename)) {
       return false;
     }
 
     if (
-      strpos($path, '..') !== false ||
-      preg_match('#(^|/)\.{1,}(/|$)#', $path) ||
-      strpos($path, '//') !== false
+      strpos($path, "..") !== false ||
+      preg_match("#(^|/)\.{1,}(/|$)#", $path) ||
+      strpos($path, "//") !== false
     ) {
       return false;
     }
 
     if (
-      in_array($basename, ["'", '"', '-', '', '.', '..']) ||
-      $dirname === '-'
+      in_array($basename, ["'", '"', "-", "", ".", ".."]) ||
+      $dirname === "-"
     ) {
       return false;
     }
 
     $reserved = [
-      'CON',
-      'PRN',
-      'AUX',
-      'NUL',
-      'COM1',
-      'COM2',
-      'COM3',
-      'COM4',
-      'COM5',
-      'COM6',
-      'COM7',
-      'COM8',
-      'COM9',
-      'LPT1',
-      'LPT2',
-      'LPT3',
-      'LPT4',
-      'LPT5',
-      'LPT6',
-      'LPT7',
-      'LPT8',
-      'LPT9'
+      "CON",
+      "PRN",
+      "AUX",
+      "NUL",
+      "COM1",
+      "COM2",
+      "COM3",
+      "COM4",
+      "COM5",
+      "COM6",
+      "COM7",
+      "COM8",
+      "COM9",
+      "LPT1",
+      "LPT2",
+      "LPT3",
+      "LPT4",
+      "LPT5",
+      "LPT6",
+      "LPT7",
+      "LPT8",
+      "LPT9"
     ];
     if (in_array(strtoupper(pathinfo($basename, PATHINFO_FILENAME)), $reserved)) {
       return false;
@@ -425,8 +425,8 @@ class CommandRouteGenerator extends Command
 
   private function isInvalidName(string $name): bool
   {
-    return trim($name) === '' ||
-      in_array($name, ['.', '..', '/', '\\'], true) ||
+    return trim($name) === "" ||
+      in_array($name, [".", "..", "/", "\\"], true) ||
       preg_match('/^[\/\\\\]/', $name) ||   // starts with slash or backslash
       preg_match('/[\/\\\\:]/', $name);     // contains any of those
   }

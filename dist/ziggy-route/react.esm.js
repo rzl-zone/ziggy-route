@@ -1,1 +1,23 @@
-import{RouterConfigError as o,route as e}from"../chunk-MMR5OWTW.esm.js";import"../chunk-BKI6CYPF.esm.js";function t(t){if(!t&&!globalThis.appRoutes&&"undefined"==typeof appRoutes)throw new o("Hook `useRouter()` missing configuration.\n- Ensure that a `appRoutes` variable is defined globally or pass a config object into the `useRoute` hook.");return(o,n,s)=>e(o,n,s,t)}export{t as useRoute};
+/*!
+ * ====================================================
+ * Rzl Ziggy-Route.
+ * ----------------------------------------------------
+ * Version: 0.0.12.
+ * Author: Rizalvin Dwiky.
+ * Repository: https://github.com/rzl-zone/ziggy-route.
+ * ====================================================
+ */
+import { RouterConfigError, route } from '../chunk-FY7J5NOI.esm.js';
+import '../chunk-IWMGSFDN.esm.js';
+
+function useRoute(defaultConfig) {
+  if (!defaultConfig && !globalThis.appRoutes && typeof appRoutes === "undefined") {
+    throw new RouterConfigError(
+      `Hook \`useRouter()\` missing configuration.
+- Ensure that a \`appRoutes\` variable is defined globally or pass a config object into the \`useRoute\` hook.`
+    );
+  }
+  return (name, params, absolute) => route(name, params, absolute, defaultConfig);
+}
+
+export { useRoute };

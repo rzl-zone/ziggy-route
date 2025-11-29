@@ -1,8 +1,19 @@
-import{R as Router,V as ValidRouteName,a as RouteParams,C as Config,P as ParameterValueProps}from'../index-B8x4plc9.js';export{K as KnownRouteName,c as ParameterValue,d as ParsedQs,e as RawParameterValue,f as RouteDefinition,g as RouteFactoryConfig,h as RouteList,i as RouteName,b as RouterConfig,T as TypeConfig}from'../index-B8x4plc9.js';
+/*!
+ * ====================================================
+ * Rzl Ziggy-Route.
+ * ----------------------------------------------------
+ * Version: 0.0.12.
+ * Author: Rizalvin Dwiky.
+ * Repository: https://github.com/rzl-zone/ziggy-route.
+ * ====================================================
+ */
+import { R as Router, V as ValidRouteName, a as RouteParams, C as Config, P as ParameterValueProps } from '../index-BWEFzAgA.js';
+export { K as KnownRouteName, c as ParameterValue, d as ParsedQs, e as RawParameterValue, f as RouteDefinition, g as RouteFactoryConfig, h as RouteList, i as RouteName, b as RouterConfig, T as TypeConfig } from '../index-BWEFzAgA.js';
+
 /** -------------------------------------------------------
- * * ***Rzl Ziggy's `route()` helper.***
+ * * ***The `route()` function of Rzl **Ziggy Route**.***
  * -------------------------------------------------------
- * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
+ * **This function works similarly to Laravel's [**`route()` helper**](https://laravel.com/docs/helpers#method-route).**
  * @description
  * You can pass it the name of a route and any required parameters, and it will generate a proper URL string.
  * - **Behavior:**
@@ -44,11 +55,11 @@ import{R as Router,V as ValidRouteName,a as RouteParams,C as Config,P as Paramet
  *
  * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
  */
-declare function route():Router;
+declare function route(): Router;
 /** -------------------------------------------------------
- * * ***Rzl Ziggy's `route()` helper.***
+ * * ***The `route()` function of Rzl **Ziggy Route**.***
  * -------------------------------------------------------
- * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
+ * **This function works similarly to Laravel's [**`route()` helper**](https://laravel.com/docs/helpers#method-route).**
  * @description
  * You can pass it the name of a route and any required parameters, and it will generate a proper URL string.
  * - **Behavior:**
@@ -74,11 +85,11 @@ declare function route():Router;
  *
  * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
  */
-declare function route<T extends ValidRouteName>(name:T,params?:RouteParams<T>|null|undefined,absolute?:boolean,config?:Config):string;
+declare function route<T extends ValidRouteName>(name: T, params?: RouteParams<T> | null | undefined, absolute?: boolean, config?: Config): string;
 /** -------------------------------------------------------
- * * ***Rzl Ziggy's `route()` helper.***
+ * * ***The `route()` function of Rzl **Ziggy Route**.***
  * -------------------------------------------------------
- * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
+ * **This function works similarly to Laravel's [**`route()` helper**](https://laravel.com/docs/helpers#method-route).**
  * @description
  * You can pass it the name of a route and any required parameters, and it will generate a proper URL string.
  * - **Behavior:**
@@ -104,11 +115,11 @@ declare function route<T extends ValidRouteName>(name:T,params?:RouteParams<T>|n
  *
  * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
  */
-declare function route<T extends ValidRouteName>(name:T,params?:ParameterValueProps|null|undefined,absolute?:boolean,config?:Config):string;
+declare function route<T extends ValidRouteName>(name: T, params?: ParameterValueProps | null | undefined, absolute?: boolean, config?: Config): string;
 /** -------------------------------------------------------
- * * ***Rzl Ziggy's `route()` helper.***
+ * * ***The `route()` function of Rzl **Ziggy Route**.***
  * -------------------------------------------------------
- * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
+ * **This function works similarly to Laravel's [**`route()` helper**](https://laravel.com/docs/helpers#method-route).**
  * @description
  * You can pass it the name of a route and any required parameters, and it will generate a proper URL string.
  * - **Behavior:**
@@ -136,4 +147,6 @@ declare function route<T extends ValidRouteName>(name:T,params?:ParameterValuePr
  *
  * @see [**More Docs see: `route()` function.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#route-function)
  */
-declare function route(name:null|undefined,params?:null|undefined,absolute?:boolean,config?:Config):Router;export{Config,ParameterValueProps,RouteParams,Router,ValidRouteName,route};
+declare function route(name: null | undefined, params?: null | undefined, absolute?: boolean, config?: Config): Router;
+
+export { Config, ParameterValueProps, RouteParams, Router, ValidRouteName, route };

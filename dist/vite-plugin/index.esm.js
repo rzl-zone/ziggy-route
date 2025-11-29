@@ -1,1 +1,311 @@
-import{CONFIG as e,n as r,e3 as t,x as o,realValue as n,o as s,p as i,i as a,e as p,g as l,h as c}from"../chunk-BKI6CYPF.esm.js";import y,{resolve as h}from"path";import g from"chalk";import{run as u}from"vite-plugin-run";import{readFileSync as f}from"fs";var $={sail:!1,types:!0,typesOnly:!1,delay:250,throttle:250,only:[],except:[]},d=g.bgHex("#00bcd4").black.bold(` ${e.PACKAGE.PREFIX.NAME} `),m={info:(e,r)=>{console.log(`\n${d} ${g.blueBright("ℹ️ "+e)} ${g.gray("➔")} ${g.white(r)}`)},success:(e,r)=>{console.log(`\n${d} ${g.greenBright("✅ "+e)} ${g.gray("➔")} ${g.whiteBright(r)}`)},warn:(e,r)=>{console.warn(`\n${d} ${g.yellow("⚠️  "+e)} ${g.gray("➔")} ${g.yellowBright(r)}`)},error:(e,r)=>{console.error(`\n${d} ${g.redBright("❌ "+e)} ${g.gray("➔")} ${g.red(r)}`)},throw:(e,r)=>{throw l(r)?(m.error(e,r.message),"development"===process.env.NODE_ENV&&r.stack&&console.error(g.gray(r.stack)),r):(m.error(e,"Unknown error occurred"),new Error(a(r)?r:"Unknown error"))},raw:e=>console.log(`\n${d} ${e}`)};function w(e,r){throw m.throw(e,r),a(r)?new Error(r):r}var{PACKAGIST_NAME:v}=e.PACKAGE,{PACKAGE:b,REPO:E}=e,P=(e={})=>{r(e)||(e={});try{const r=(()=>{try{const e=h(process.cwd(),"composer.json"),r=f(e,"utf-8"),t=c(r);t?.require?.[v]||w("composer.json",`${v} not found in composer.json dependencies`);const o=t.require[v],n=o.match(/^[~^><]?(\d+)/);n||w("Version Format",`Invalid version format for ${v}: ${o}`);const s=n[1];return m.success("Composer Package",`${v} v${s}`),s}catch(e){l(e)&&("ENOENT"===e.code&&w("composer.json",`File not found in: ${process.cwd()}.`),w("Version Fetch Failed",e)),w("Unknown Error","Something exploded 💣")}})(),{delay:d=$.delay,throttle:b=$.throttle,except:E=$.except,group:P=$.group,only:A=$.only,sail:T=$.sail,types:k=$.types,typesOnly:x=$.typesOnly,url:N=$.url}=e;if(!t(d))throw new TypeError(`Parameter \`delay\` property of the \`config\` (first parameter) must be of type \`integer-number\`, but received: \`${o(d)}\`, with value: \`${n(d)}\`.`);if(!t(b))throw new TypeError(`Parameter \`throttle\` property of the \`config\` (first parameter) must be of type \`integer-number\`, but received: \`${o(b)}\`, with value: \`${n(b)}\`.`);if(!s(E))throw new TypeError(`Parameter \`except\` property of the \`config\` (first parameter) must be of type \`array\`, but received: \`${o(E)}\`, with value: \`${n(E)}\`.`);if(!i(P)&&!a(P))throw new TypeError(`Parameter \`group\` property of the \`config\` (first parameter) must be of type \`string\`, but received: \`${o(P)}\`, with value: \`${n(P)}\`.`);if(!s(A))throw new TypeError(`Parameter \`only\` property of the \`config\` (first parameter) must be of type \`array\`, but received: \`${o(A)}\`, with value: \`${n(A)}\`.`);if(!p(T))throw new TypeError(`Parameter \`sail\` property of the \`config\` (first parameter) must be of type \`boolean\`, but received: \`${o(T)}\`, with value: \`${n(T)}\`.`);if(!p(k))throw new TypeError(`Parameter \`types\` property of the \`config\` (first parameter) must be of type \`boolean\`, but received: \`${o(k)}\`, with value: \`${n(k)}\`.`);if(!p(x))throw new TypeError(`Parameter \`typesOnly\` property of the \`config\` (first parameter) must be of type \`boolean\`, but received: \`${o(x)}\`, with value: \`${n(x)}\`.`);if(!i(N)&&!a(N))throw new TypeError(`Parameter \`url\` property of the \`config\` (first parameter) must be of type \`string\`, but received: \`${o(N)}\`, with value: \`${n(N)}\`.`);const z=E.filter(e=>!a(e));if(z.length>0)throw new TypeError(`Parameter \`except\` property of the \`config\` (first parameter) must be of type \`array-of-string\` and contains \`string\` only, invalid values: ${z.map(e=>`\n\`${o(e)}\`: \`${n(e)}\``).join(", ")}`);const O=A.filter(e=>!a(e));if(O.length>0)throw new TypeError(`Parameter \`only\` property of the \`config\` (first parameter) must be of type \`array-of-string\` and contains \`string\` only, invalid values: ${O.map(e=>`\n\`${o(e)}\`: \`${n(e)}\``).join(", ")}`);const R=((e,r)=>{const t=[r.sail&&!process.env.LARAVEL_SAIL?"sail":"php","artisan","rzl-ziggy:generate"];return r.group&&t.push("--group",r.group),r.url&&t.push("--url",r.url),["0","1","2"].includes(e)&&(r.types&&t.push("--types"),r.typesOnly&&t.push("--types-only"),"0"!==e&&"1"!==e||(r.only.length>0&&t.push("--only",r.only.join(",")),r.except.length>0&&t.push("--except",r.except.join(",")))),t})(r,{delay:d,throttle:b,except:E,group:P,only:A,sail:T,types:k,typesOnly:x,url:N}),{configResolved:j,handleHotUpdate:B}=u("development"===process.env.NODE_ENV?[{delay:d,throttle:b,onFileChanged:({file:e})=>{const r=y.relative(process.cwd(),e).replace(/\\/g,"/");console.log(`\n🚀 ${g.bold.cyanBright("Live Watcher")} ${g.gray("detected change in")} ${g.yellowBright(r)}`),console.log(`${g.hex("#ff6f00")("⚡ Rerunning")} ${g.bold.cyan(R.join(" "))} ${g.italic.gray("...syncing fresh routes 🔄.")}\n`)},name:"rzl-ziggy-generator",run:R,pattern:["routes/**/*.php","config/rzl-ziggy.php",".env",".env.*",".env.*.*"],condition:e=>{const r=y.relative(process.cwd(),e).replace(/\\/g,"/");return e.includes("/config/")&&e.endsWith("rzl-ziggy.php")||e.includes("/routes/")&&e.endsWith(".php")||".env"===r||r.startsWith(".env.")||/^config\/rzl-ziggy.php$/.test(r)||/^routes\/.*\.php$/.test(r)||/\.env(\..+)?$/.test(r)}}]:[]);return{name:"rzl-ziggy-plugin",configResolved:j,handleHotUpdate:B}}catch(e){if(console.error(`\n${g.bgRed.white.bold(`💥 ${b.PREFIX.NAME} ERROR `)} ${g.redBright("An error occurred in")} ${g.yellow(`[${b.NPM_NAME}/vite-plugin]`)}`),!l(e))throw console.error(`${g.red("❓ Unknown error type thrown:")}`),e;console.error(`${g.red("🛑 Message:")} ${g.white(e.message)}`),"development"===process.env.NODE_ENV?console.error(`${g.gray("📌 Stack Trace:")}\n${g.dim(e.stack||"")}`):console.error(`${g.gray("💡 Tip:")} Run in ${g.cyan("development")} mode to see stack trace.`)}return{}};export{P as default};
+/*!
+ * ====================================================
+ * Rzl Ziggy-Route.
+ * ----------------------------------------------------
+ * Version: 0.0.12.
+ * Author: Rizalvin Dwiky.
+ * Repository: https://github.com/rzl-zone/ziggy-route.
+ * ====================================================
+ */
+import { CONFIG, isPlainObject, isInteger, getPreciseType, realValue, assertIsArray, isUndefined, assertIsString, assertIsBoolean, isNonEmptyString, isError, safeJsonParse, isString } from '../chunk-IWMGSFDN.esm.js';
+import path, { resolve } from 'path';
+import chalk2 from 'chalk';
+import { run } from 'vite-plugin-run';
+import { readFileSync } from 'fs';
+
+var tag = chalk2.bgHex("#00bcd4").black.bold(` ${CONFIG.PACKAGE.PREFIX.NAME} `);
+var logger = {
+  info: (label, msg) => {
+    console.log(
+      `
+${tag} ${chalk2.blueBright("\u2139\uFE0F " + label)} ${chalk2.gray("\u2794")} ${chalk2.white(msg)}`
+    );
+  },
+  success: (label, msg) => {
+    console.log(
+      `
+${tag} ${chalk2.greenBright("\u2705 " + label)} ${chalk2.gray("\u2794")} ${chalk2.whiteBright(msg)}`
+    );
+  },
+  warn: (label, msg) => {
+    console.warn(
+      `
+${tag} ${chalk2.yellow("\u26A0\uFE0F  " + label)} ${chalk2.gray("\u2794")} ${chalk2.yellowBright(msg)}`
+    );
+  },
+  error: (label, msg) => {
+    console.error(
+      `
+${tag} ${chalk2.redBright("\u274C " + label)} ${chalk2.gray("\u2794")} ${chalk2.red(msg)}`
+    );
+  },
+  throw: (label, err) => {
+    if (isError(err)) {
+      logger.error(label, err.message);
+      if (process.env.NODE_ENV === "development") {
+        if (err.stack) {
+          console.error(chalk2.gray(err.stack));
+        }
+      }
+      throw err;
+    } else {
+      logger.error(label, "Unknown error occurred");
+      throw new Error(isString(err) ? err : "Unknown error");
+    }
+  },
+  raw: (msg) => console.log(`
+${tag} ${msg}`)
+};
+function rzlThrow(label, err) {
+  logger.throw(label, err);
+  throw isString(err) ? new Error(err) : err;
+}
+
+var { PACKAGIST_NAME } = CONFIG.PACKAGE;
+var getComposerPackageVersion = () => {
+  try {
+    const composerPath = resolve(process.cwd(), "composer.json");
+    const readComposer = readFileSync(composerPath, "utf-8");
+    const composer = safeJsonParse(
+      readComposer
+    );
+    if (!composer?.require?.[PACKAGIST_NAME]) {
+      rzlThrow(
+        "composer.json",
+        `${PACKAGIST_NAME} not found in composer.json dependencies`
+      );
+    }
+    const version = composer.require[PACKAGIST_NAME];
+    const match = version.match(/^[~^><]?(\d+)/);
+    if (!match) {
+      rzlThrow(
+        "Version Format",
+        `Invalid version format for ${PACKAGIST_NAME}: ${version}`
+      );
+    }
+    const cleanVersion = match[1];
+    logger.success("Composer Package", `${PACKAGIST_NAME} v${cleanVersion}`);
+    return cleanVersion;
+  } catch (error) {
+    if (isError(error)) {
+      if (error.code === "ENOENT") {
+        rzlThrow("composer.json", `File not found in: ${process.cwd()}.`);
+      }
+      rzlThrow("Version Fetch Failed", error);
+    }
+    rzlThrow("Unknown Error", "Something exploded \u{1F4A3}");
+  }
+};
+
+var build = (version, config) => {
+  const cmd = [
+    config.sail && !process.env.LARAVEL_SAIL ? "sail" : "php",
+    "artisan",
+    "rzl-ziggy:generate"
+  ];
+  if (config.group) cmd.push("--group", config.group);
+  if (config.url) cmd.push("--url", config.url);
+  if (["0", "1", "2"].includes(version)) {
+    if (config.types) cmd.push("--types");
+    if (config.typesOnly) cmd.push("--types-only");
+    if (version === "0" || version === "1") {
+      if (config.only.length > 0) cmd.push("--only", config.only.join(","));
+      if (config.except.length > 0)
+        cmd.push("--except", config.except.join(","));
+    }
+  }
+  return cmd;
+};
+
+var defaultConfig = {
+  sail: false,
+  types: true,
+  typesOnly: false,
+  delay: 250,
+  throttle: 250,
+  only: [],
+  except: []
+};
+
+var { PACKAGE } = CONFIG;
+var rzlZiggyVitePlugin = (config = {}) => {
+  if (!isPlainObject(config)) config = {};
+  try {
+    const version = getComposerPackageVersion();
+    const {
+      delay = defaultConfig.delay,
+      throttle = defaultConfig.throttle,
+      except = defaultConfig.except,
+      group = defaultConfig.group,
+      only = defaultConfig.only,
+      sail = defaultConfig.sail,
+      types = defaultConfig.types,
+      typesOnly = defaultConfig.typesOnly,
+      url = defaultConfig.url
+    } = config;
+    if (!isInteger(delay)) {
+      throw new TypeError(
+        `Parameter \`delay\` property of the \`config\` (first parameter) must be of type \`integer-number\`, but received: \`${getPreciseType(
+          delay
+        )}\`, with value: \`${realValue(delay)}\`.`
+      );
+    }
+    if (!isInteger(throttle)) {
+      throw new TypeError(
+        `Parameter \`throttle\` property of the \`config\` (first parameter) must be of type \`integer-number\`, but received: \`${getPreciseType(
+          throttle
+        )}\`, with value: \`${realValue(throttle)}\`.`
+      );
+    }
+    assertIsArray(except, {
+      message({ currentType, validType }) {
+        return `Parameter \`except\` property of the \`config\` (first parameter) must be of type \`${validType}\`, but received: \`${currentType}\`, with value: \`${realValue(except)}\`.`;
+      }
+    });
+    if (!isUndefined(group)) {
+      assertIsString(group, {
+        message({ currentType, validType }) {
+          return `Parameter \`group\` property of the \`config\` (first parameter) must be of type \`${validType}\`, but received: \`${currentType}\`, with value: \`${realValue(group)}\`.`;
+        }
+      });
+    }
+    assertIsArray(only, {
+      message({ currentType, validType }) {
+        return `Parameter \`only\` property of the \`config\` (first parameter) must be of type \`${validType}\`, but received: \`${currentType}\`, with value: \`${realValue(only)}\`.`;
+      }
+    });
+    assertIsBoolean(sail, {
+      message({ currentType, validType }) {
+        return `Parameter \`sail\` property of the \`config\` (first parameter) must be of type \`${validType}\`, but received: \`${currentType}\`, with value: \`${realValue(sail)}\`.`;
+      }
+    });
+    assertIsBoolean(types, {
+      message({ currentType, validType }) {
+        return `Parameter \`types\` property of the \`config\` (first parameter) must be of type \`${validType}\`, but received: \`${currentType}\`, with value: \`${realValue(types)}\`.`;
+      }
+    });
+    assertIsBoolean(typesOnly, {
+      message({ currentType, validType }) {
+        return `Parameter \`typesOnly\` property of the \`config\` (first parameter) must be of type \`${validType}\`, but received: \`${currentType}\`, with value: \`${realValue(typesOnly)}\`.`;
+      }
+    });
+    if (!isUndefined(url)) {
+      assertIsString(url, {
+        message({ currentType, validType }) {
+          return `Parameter \`url\` property of the \`config\` (first parameter) must be of type \`${validType}\`, but received: \`${currentType}\`, with value: \`${realValue(url)}\`.`;
+        }
+      });
+    }
+    const invalidExcept = except.filter(
+      (exc) => !isNonEmptyString(exc)
+    );
+    if (invalidExcept.length > 0) {
+      throw new TypeError(
+        `Parameter \`except\` property of the \`config\` (first parameter) must be of type \`array-of-string\` and contains \`string\` (non empty-string) only, invalid values: ${invalidExcept.map((exc) => {
+          return `
+\`${getPreciseType(exc)}\`: \`${realValue(exc)}\``;
+        }).join(", ")}`
+      );
+    }
+    const invalidOnly = only.filter((onl) => !isNonEmptyString(onl));
+    if (invalidOnly.length > 0) {
+      throw new TypeError(
+        `Parameter \`only\` property of the \`config\` (first parameter) must be of type \`array-of-string\` and contains \`string\` (non empty-string) only, invalid values: ${invalidOnly.map((onl) => {
+          return `
+\`${getPreciseType(onl)}\`: \`${realValue(onl)}\``;
+        }).join(", ")}`
+      );
+    }
+    const cmd = build(version, {
+      delay,
+      throttle,
+      except,
+      group,
+      only,
+      sail,
+      types,
+      typesOnly,
+      url
+    });
+    const { configResolved, handleHotUpdate } = run(
+      process.env.NODE_ENV === "development" ? [
+        {
+          delay,
+          throttle,
+          onFileChanged: ({ file }) => {
+            const changedFile = path.relative(process.cwd(), file).replace(/\\/g, "/");
+            console.log(
+              `
+\u{1F680} ${chalk2.bold.cyanBright("Live Watcher")} ${chalk2.gray("detected change in")} ${chalk2.yellowBright(changedFile)}`
+            );
+            console.log(
+              `${chalk2.hex("#ff6f00")("\u26A1 Rerunning")} ${chalk2.bold.cyan(cmd.join(" "))} ${chalk2.italic.gray("...syncing fresh routes \u{1F504}.")}
+`
+            );
+          },
+          name: "rzl-ziggy-generator",
+          run: cmd,
+          pattern: [
+            "routes/**/*.php",
+            "config/rzl-ziggy.php",
+            ".env",
+            ".env.*",
+            ".env.*.*"
+          ],
+          condition: (file) => {
+            const relative = path.relative(process.cwd(), file).replace(/\\/g, "/");
+            return file.includes("/config/") && file.endsWith("rzl-ziggy.php") || file.includes("/routes/") && file.endsWith(".php") || relative === ".env" || relative.startsWith(".env.") || /^config\/rzl-ziggy.php$/.test(relative) || /^routes\/.*\.php$/.test(relative) || /\.env(\..+)?$/.test(relative);
+          }
+        }
+      ] : []
+    );
+    return {
+      name: "rzl-ziggy-plugin",
+      configResolved,
+      handleHotUpdate
+    };
+  } catch (error) {
+    console.error(
+      `
+${chalk2.bgRed.white.bold(`\u{1F4A5} ${PACKAGE.PREFIX.NAME} ERROR `)} ${chalk2.redBright("An error occurred in")} ${chalk2.yellow(`[${PACKAGE.NPM_NAME}/vite-plugin]`)}`
+    );
+    if (isError(error)) {
+      console.error(
+        `${chalk2.red("\u{1F6D1} Message:")} ${chalk2.white(error.message)}`
+      );
+      if (process.env.NODE_ENV === "development") {
+        console.error(
+          `${chalk2.gray("\u{1F4CC} Stack Trace:")}
+${chalk2.dim(error.stack || "")}`
+        );
+      } else {
+        console.error(
+          `${chalk2.gray("\u{1F4A1} Tip:")} Run in ${chalk2.cyan("development")} mode to see stack trace.`
+        );
+      }
+    } else {
+      console.error(`${chalk2.red("\u2753 Unknown error type thrown:")}
+${error}`);
+      throw error;
+    }
+    return {
+      name: "rzl-ziggy-plugin"
+    };
+  }
+};
+var vite_plugin_default = rzlZiggyVitePlugin;
+/*! Bundled license information:
+
+@rzl-zone/utils-js/dist/assertions/index.js:
+  (*!
+   * ====================================================
+   * Rzl Utils-JS.
+   * ----------------------------------------------------
+   * Version: 3.11.0.
+   * Author: Rizalvin Dwiky.
+   * Repository: https://github.com/rzl-zone/utils-js.
+   * ====================================================
+   *)
+*/
+
+export { vite_plugin_default as default };

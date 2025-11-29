@@ -44,7 +44,10 @@ export class RouterConfigClass implements RouterConfig {
     this.location = config.location;
   }
 
-  /** Check object like RouterConfig */
+  /** Check object like RouterConfig
+   *
+   * @internal
+   */
   private static isRouterConfigRaw(obj: unknown): obj is RouterConfig {
     if (!isPlainObject(obj)) return false;
 
@@ -112,7 +115,10 @@ export class RouterConfigClass implements RouterConfig {
     return true;
   }
 
-  /** Validate & convert unknown object to RouterConfigClass */
+  /** Validate & convert unknown object to RouterConfigClass
+   *
+   * @internal
+   */
   public static validateAndWrap(obj: unknown): RouterConfigClass {
     try {
       if (obj instanceof RouterConfigClass) return obj;

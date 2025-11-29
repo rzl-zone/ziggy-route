@@ -21,20 +21,20 @@ interface Vue2CompatApp {
 type VueApp = Vue3App | Vue2CompatApp;
 
 /** -------------------------------------------------------
- * * ***Rzl Ziggy's Vue Plugin.***
+ * * ***Vue Plugin of Rzl **Ziggy Route**.***
  * -------------------------------------------------------
- * **Rzl Ziggy includes a Vue plugin to make it easy to use the route() helper throughout your Vue app.**
+ * **Rzl **Ziggy Route** includes a Vue plugin to make it easy to use the `route()` helper throughout your Vue app.**
  *
- * @see [**More docs use with vue: #Rzl Ziggy Vue.**](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#vue)
+ * @see [**More docs use with **Vue****](https://github.com/rzl-zone/ziggy-route?tab=readme-ov-file#vue)
  */
 export const rzlZiggyVue = {
   /** -------------------------------------------------------
-   * * ***Rzl Ziggy's Install Route to Vue.***
+   * * ***Rzl **Ziggy Route** Install Route to Vue.***
    * -------------------------------------------------------
    */
   install: function (app: VueApp, options?: Config) {
     /** -------------------------------------------------------
-     * * ***Rzl Ziggy's `route()` from `rzlZiggyVue` helper.***
+     * * ***The `route()` function from `rzlZiggyVue` helper of Rzl **Ziggy Route**.***
      * -------------------------------------------------------
      * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
      * @description
@@ -77,7 +77,7 @@ export const rzlZiggyVue = {
      */
     function rt(): Router;
     /** -------------------------------------------------------
-     * * ***Rzl Ziggy's `route()` from `rzlZiggyVue` helper.***
+     * * ***The `route()` function from `rzlZiggyVue` helper of Rzl **Ziggy Route**.***
      * -------------------------------------------------------
      * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
      * @description
@@ -109,7 +109,7 @@ export const rzlZiggyVue = {
       absolute?: boolean
     ): string;
     /** -------------------------------------------------------
-     * * ***Rzl Ziggy's `route()` from `rzlZiggyVue` helper.***
+     * * ***The `route()` function from `rzlZiggyVue` helper of Rzl **Ziggy Route**.***
      * -------------------------------------------------------
      * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
      * @description
@@ -141,7 +141,7 @@ export const rzlZiggyVue = {
       absolute?: boolean
     ): string;
     /** -------------------------------------------------------
-     * * ***Rzl Ziggy's `route()` from `rzlZiggyVue` helper.***
+     * * ***The `route()` function from `rzlZiggyVue` helper of Rzl **Ziggy Route**.***
      * -------------------------------------------------------
      * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
      * @description

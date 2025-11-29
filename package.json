@@ -3,16 +3,16 @@
   "version": "0.0.12",
   "type": "module",
   "license": "MIT",
-  "types": "./dist/index.d.ts",
-  "unpkg": "./dist/rzl-ziggy.iife.js",
-  "jsdelivr": "./dist/rzl-ziggy.iife.js",
+  "types": "./dist/ziggy-route/index.d.ts",
+  "unpkg": "./dist/ziggy-route/rzl-ziggy.iife.js",
+  "jsdelivr": "./dist/ziggy-route/rzl-ziggy.iife.js",
   "sideEffects": false,
   "bugs": "https://github.com/rzl-zone/ziggy-route/issues",
   "homepage": "https://github.com/rzl-zone/ziggy-route#readme",
   "description": "Typed Laravel route generator for any frontend — works with React, Vue, Vanilla JS, and other JavaScript-based stacks.",
-  "author": "RZL",
-  "main": "./dist/index.esm.js",
-  "module": "./dist/index.esm.js",
+  "author": "Rizalvin Dwiky <rizalvindwiky@gmail.com>",
+  "main": "./dist/ziggy-route/index.esm.js",
+  "module": "./dist/ziggy-route/index.esm.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rzl-zone/ziggy-route.git"
@@ -94,7 +94,11 @@
     "rzl-zone",
     "rzl-ziggy",
     "ziggy-route",
-    "@rzl-zone/ziggy-route"
+    "ziggy route",
+    "@rzl-zone/ziggy-route",
+    "rzl",
+    "rzl-zone",
+    "rzl zone"
   ],
   "publishConfig": {
     "access": "public"
@@ -112,12 +116,15 @@
   "scripts": {
     "prepare": "npm run build",
     "format": "prettier . --write",
+    "inject:banner": "tsx tools/injectBanner",
+    "normalize:new-lines": "tsx tools/normalizeNewLineDistFiles",
+    "clean-dist:js-comments": "tsx tools/cleanDistJsComments.ts",
     "check-publish": "npm pack --dry-run",
     "clear:dist": "rm -rf ./dist || true",
     "postbuild": "del-cli \"dist/**/*.d.cts\"",
     "prepublishOnly": "npm run clear:dist",
     "release-patch": "npm version patch && git push && git push --tags && npm publish",
-    "build": "npm run clear:dist && tsup && npm run postbuild && npm run dts-minify && npm run rename-iife",
+    "build": "npm run clear:dist && tsup && npm run postbuild && npm run rename-iife && npm run clean-dist:js-comments && npm run normalize:new-lines && npm run inject:banner",
     "build:deprecated": "npm run clear:dist && tsup && npm run esbuild-minify && npm run dts-minify && npm run rename-iife && npm run postbuild",
     "rename-iife": "tsx tools/rename-iife.ts",
     "dts-minify": "tsx tools/minify-dts.ts",
@@ -125,14 +132,15 @@
     "test": "vitest --typecheck"
   },
   "dependencies": {
+    "@rzl-zone/ts-types-plus": "^0.1.0",
     "@types/qs": "^6.9.17",
     "chalk": "^5.5.0",
     "qs": "~6.9.7",
     "vite-plugin-run": "^0.6.1"
   },
   "devDependencies": {
-    "@rzl-zone/utils-js": "^3.2.0",
-    "@types/node": "^24.2.0",
+    "@rzl-zone/utils-js": "^3.11.0",
+    "@types/node": "^20.19.0",
     "del-cli": "^6.0.0",
     "glob": "^11.0.3",
     "json-schema-to-typescript": "^15.0.4",

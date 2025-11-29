@@ -15,7 +15,7 @@ if (!function_exists("getQueryParams")) {
 
     if (!empty($req->query())) {
       // count(request()->query()) > 0
-      return $uri->replaceFirst($uri->split('[\?]')[0], "");
+      return $uri->replaceFirst($uri->split("[\?]")[0], "");
     }
 
     return "";

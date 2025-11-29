@@ -44,13 +44,16 @@
     "ts",
     "javascript",
     "typescript",
+    "rzl-zone/ziggy-route",
     "rzl",
     "rzl app",
     "rzl zone",
     "rzl ziggy",
     "rzl-app",
     "rzl-zone",
-    "rzl-ziggy"
+    "rzl-ziggy",
+    "ziggy-route",
+    "ziggy route"
   ],
   "license": "MIT",
   "name": "rzl-zone/ziggy-route",

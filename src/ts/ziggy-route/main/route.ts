@@ -9,9 +9,9 @@ import type {
 import { Router as RouterClass } from "@ts/ziggy-route/class/Router";
 
 /** -------------------------------------------------------
- * * ***Rzl Ziggy's `route()` helper.***
+ * * ***The `route()` function of Rzl **Ziggy Route**.***
  * -------------------------------------------------------
- * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
+ * **This function works similarly to Laravel's [**`route()` helper**](https://laravel.com/docs/helpers#method-route).**
  * @description
  * You can pass it the name of a route and any required parameters, and it will generate a proper URL string.
  * - **Behavior:**
@@ -56,9 +56,9 @@ import { Router as RouterClass } from "@ts/ziggy-route/class/Router";
 // Called with no arguments - returns a Router instance
 export function route(): Router;
 /** -------------------------------------------------------
- * * ***Rzl Ziggy's `route()` helper.***
+ * * ***The `route()` function of Rzl **Ziggy Route**.***
  * -------------------------------------------------------
- * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
+ * **This function works similarly to Laravel's [**`route()` helper**](https://laravel.com/docs/helpers#method-route).**
  * @description
  * You can pass it the name of a route and any required parameters, and it will generate a proper URL string.
  * - **Behavior:**
@@ -92,9 +92,9 @@ export function route<T extends ValidRouteName>(
   config?: Config
 ): string;
 /** -------------------------------------------------------
- * * ***Rzl Ziggy's `route()` helper.***
+ * * ***The `route()` function of Rzl **Ziggy Route**.***
  * -------------------------------------------------------
- * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
+ * **This function works similarly to Laravel's [**`route()` helper**](https://laravel.com/docs/helpers#method-route).**
  * @description
  * You can pass it the name of a route and any required parameters, and it will generate a proper URL string.
  * - **Behavior:**
@@ -127,9 +127,9 @@ export function route<T extends ValidRouteName>(
   config?: Config
 ): string;
 /** -------------------------------------------------------
- * * ***Rzl Ziggy's `route()` helper.***
+ * * ***The `route()` function of Rzl **Ziggy Route**.***
  * -------------------------------------------------------
- * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
+ * **This function works similarly to Laravel's [**`route()` helper**](https://laravel.com/docs/helpers#method-route).**
  * @description
  * You can pass it the name of a route and any required parameters, and it will generate a proper URL string.
  * - **Behavior:**

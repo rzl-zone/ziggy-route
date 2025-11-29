@@ -1,5 +1,5 @@
 /* eslint-disable */
-import type { Prettify } from "@rzl-zone/utils-js/types";
+import type { Prettify } from "@rzl-zone/ts-types-plus";
 
 /**
  * Types package.json schema.

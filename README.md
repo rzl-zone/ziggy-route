@@ -1,14 +1,50 @@
-# Rzl Ziggy – Fully-Typed Laravel Route Generator for JS/TS
-(Forked from [Ziggy](https://github.com/tighten/ziggy) by [Tighten](https://github.com/tighten)).
+<div align="center" style="display: flex; flex-direction: column; align-items: center;gap: 0rem">
+  <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/rzl-zone/ziggy-route/main/logo-circle.png">
+    <img src="https://raw.githubusercontent.com/rzl-zone/ziggy-route/main/logo-circle.png" align="middle" alt="RzlZone Logo" width="110" style="max-width: 100%;" />
+  </a>
+</div>
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/rzl-zone/ziggy-route.svg?style=flat)](https://packagist.org/packages/rzl-zone/ziggy-route)
-[![Downloads on Packagist](https://img.shields.io/packagist/dt/rzl-zone/ziggy-route.svg?style=flat)](https://packagist.org/packages/rzl-zone/ziggy-route)
-[![Latest Version on NPM](https://img.shields.io/npm/v/@rzl-zone/ziggy-route.svg?style=flat)](https://npmjs.com/package/@rzl-zone/ziggy-route)
-[![Downloads on NPM](https://img.shields.io/npm/dt/@rzl-zone/ziggy-route.svg?style=flat)](https://npmjs.com/package/@rzl-zone/ziggy-route)
-[![GitHub](https://img.shields.io/badge/GitHub-rzl--zone%2Fziggy--route-181717?logo=github)](https://github.com/rzl-zone/ziggy-route)
-[![Repo on GitHub](https://img.shields.io/badge/Repo-on%20GitHub-181717?logo=github&style=flat-rounded)](https://github.com/rzl-app)
+<h1 align="center"><strong>Ziggy Route</strong></h1>
 
-**Ziggy-Route** is a customized fork of [Ziggy](https://github.com/tighten/ziggy) that provides a fully-typed JavaScript `route()` function mimicking Laravel's routing, with additional features such as extended config handling and attribute stubs.
+<p align="center">
+  <i>
+    Fully-Typed <a href="https://laravel.com"><code>Laravel</code></a> Route Generator for JS/TS.
+  </i><br/>
+  <i><strong>Ziggy Route</strong> is a customized fork of <a href="https://github.com/tighten/ziggy"><code>Ziggy</code></a> that provides a fully-typed JavaScript <code>route()</code> function mimicking Laravel's routing, with additional features such as extended config handling and attribute stubs.</i><br/>
+  <strong><i>Customization with ❤️ by <a href="https://github.com/rzl-zone" target="_blank" rel="nofollow noreferrer noopener">@rzl-zone</a>.</i></strong>
+</p>
+
+<div align="center">
+  <p>
+    <a href="https://packagist.org/packages/rzl-zone/ziggy-route" target="_blank" rel="nofollow noreferrer noopener">
+      <img src="https://img.shields.io/packagist/v/rzl-zone/ziggy-route.svg?logo=packagist&label=Latest%20Version%20Packagist&color=red&logoColor=white&style=flat-rounded" alt="Latest Version on Packagist" />
+    </a>
+    <a href="https://packagist.org/packages/rzl-zone/ziggy-route" target="_blank" rel="nofollow noreferrer noopener">
+      <img src="https://img.shields.io/packagist/dt/rzl-zone/ziggy-route.svg?logo=packagist&label=Weekly%20Downloads%20Packagist&color=orange&logoColor=white&style=flat-rounded" alt="Latest Version on Packagist" />
+    </a>
+    <a href="https://npmjs.com/package/@rzl-zone/ziggy-route" target="_blank" rel="nofollow noreferrer noopener">
+      <img src="https://img.shields.io/npm/v/@rzl-zone/ziggy-route?logo=npm&label=Latest%20Version%20NPM&color=4CAF50&logoColor=CB3837&style=flat-rounded" alt="Latest Version on NPM" />
+    </a>
+    <a href="https://npmjs.com/package/@rzl-zone/ziggy-route" target="_blank" rel="nofollow noreferrer noopener">
+      <img src="https://img.shields.io/npm/dt/@rzl-zone/ziggy-route?logo=npm&label=Total%20Downloads%20NPM&color=007EC6&logoColor=CB3837&style=flat-rounded" alt="NPM Total Downloads" />
+    </a>
+    <a href="https://npmjs.com/package/@rzl-zone/ziggy-route" target="_blank" rel="nofollow noreferrer noopener">
+      <img src="https://img.shields.io/npm/dw/@rzl-zone/ziggy-route?logo=npm&label=Weekly%20Downloads%20NPM&color=CB3837&logoColor=CB3837&style=flat-rounded" alt="NPM Weekly Downloads" />
+    </a>
+    <a href="https://github.com/rzl-zone/ziggy-route/blob/main/CONTRIBUTING.md" target="_blank" rel="nofollow noreferrer noopener">
+      <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?color=28A745" alt="PRs Welcome" />
+    </a>
+    <a href="https://github.com/rzl-zone/ziggy-route/blob/main/LICENSE.md" target="_blank" rel="nofollow noreferrer noopener">
+      <img src="https://img.shields.io/badge/License-MIT-blue.svg?color=3DA639" alt="GitHub license" />
+    </a>
+    <a href="https://github.com/rzl-zone/ziggy-route" target="_blank" rel="nofollow noreferrer noopener">
+      <img src="https://img.shields.io/badge/Repo-on%20GitHub-181717?logo=github" alt="GitHub" />
+    </a>
+    <a href="https://github.com/orgs/rzl-zone/repositories" target="_blank" rel="nofollow noreferrer noopener">
+      <img src="https://img.shields.io/badge/Org-rzl--zone-24292e?logo=github&style=flat-rounded" alt="Repo on GitHub" />
+    </a>
+  </p>
+</div>
 
 This package is **not officially maintained by Tighten**.
 
@@ -24,7 +60,7 @@ It is framework-agnostic and can be used with **Vue**, **React**, **Vanilla JS**
     - [Route-model binding](#route-model-binding)
     - [TypeScript Support](#typescript-support)
 - [**JavaScript frameworks**](#javascript-frameworks)
-    - [Generating and importing Rzl Ziggy-Route configuration](#generating-and-importing-rzl-ziggys-configuration)
+    - [Generating and importing Rzl Ziggy-Route configuration](#generating-and-importing-rzl-ziggy-route-configuration)
     - [Importing the `route()` function](#importing-the-route-function)
     - [Vue](#vue)
     - [React](#react)
@@ -69,23 +105,23 @@ Add the ***`@rzlRoutes`*** Blade directive to your main layout (_before_ your ap
 
 ### `route()` function
 
-Rzl Ziggy's `route()` function works like [Laravel's `route()` helper](https://laravel.com/docs/helpers#method-route)—you can pass it the name of a route, and the parameters you want to pass to the route, and it will generate a URL.
+Rzl Ziggy-Route `route()` function works like [Laravel's `route()` helper](https://laravel.com/docs/helpers#method-route)—you can pass it the name of a route, and the parameters you want to pass to the route, and it will generate a URL.
 
 #### Basic usage
 
 ```php
-Route::get('posts', fn (Request $request) => /* ... */)->name('posts.index');
+Route::get("posts", fn (Request $request) => /* ... */)->name("posts.index");
 ```
 
 ```js
-route('posts.index');                  
-// ➔ '/posts'
-route('posts.index', {}, true);        
-// ➔ 'https://rzl.test/posts'
-route('posts.index', null, true);      
-// ➔ 'https://rzl.test/posts'
-route('posts.index', undefined, true); 
-// ➔ 'https://rzl.test/posts'
+route("posts.index");                  
+// ➔ "/posts"
+route("posts.index", {}, true);        
+// ➔ "https://rzl.test/posts"
+route("posts.index", null, true);      
+// ➔ "https://rzl.test/posts"
+route("posts.index", undefined, true); 
+// ➔ "https://rzl.test/posts"
 ```
 
 #### Absolute URL
@@ -97,79 +133,79 @@ To include the origin in the result, simply pass true as the third argument.
 > ⚠️ Passing a non-boolean value except null or undefined as the third argument will throw an error.
 
 ```js
-route('posts.index');                  
-// ➔ '/posts'
-route('posts.index', {}, false);       
-// ➔ '/posts'
-route('posts.index', null, true);      
-// ➔ 'https://rzl.test/posts'
-route('posts.index', undefined, true); 
-// ➔ 'https://rzl.test/posts'
+route("posts.index");                  
+// ➔ "/posts"
+route("posts.index", {}, false);       
+// ➔ "/posts"
+route("posts.index", null, true);      
+// ➔ "https://rzl.test/posts"
+route("posts.index", undefined, true); 
+// ➔ "https://rzl.test/posts"
 ```
 > ⚠️ Passing a non-boolean value like null or undefined as the third argument will force to false.
 ```js
-route('posts.index', {}, null);             
-// ➔ '/posts'
-route('posts.index', {}, undefined);        
-// ➔ '/posts'
-route('posts.index', null, undefined);      
-// ➔ '/posts'
-route('posts.index', undefined, undefined); 
-// ➔ '/posts'
+route("posts.index", {}, null);             
+// ➔ "/posts"
+route("posts.index", {}, undefined);        
+// ➔ "/posts"
+route("posts.index", null, undefined);      
+// ➔ "/posts"
+route("posts.index", undefined, undefined); 
+// ➔ "/posts"
 ```
 #### Parameters
 
 ```php
-Route::get('posts/{post}', fn (Post $post) => /* ... */)->name('posts.show');
+Route::get("posts/{post}", fn (Post $post) => /* ... */)->name("posts.show");
 ```
 
 ```js
-route('posts.show', [1], true);                    
-// ➔ 'https://rzl.test/posts/1'      
-route('posts.show', [1]);                          
-// ➔ '/posts/1'      
-route('posts.show', [{}]);                         
+route("posts.show", [1], true);                    
+// ➔ "https://rzl.test/posts/1"      
+route("posts.show", [1]);                          
+// ➔ "/posts/1"      
+route("posts.show", [{}]);                         
 // ➔  Error.
-// Error: Object passed as 'post' parameter is missing route model binding key 'undefined'.
+// Error: Object passed as "post" parameter is missing route model binding key "undefined".
 // The first parameter (index 0) is must be passed as route parameters, e.g., { post }.
 
-route('posts.show', [1, { other: "test" }]);       
-// ➔ '/posts/1?other=test'
-route('posts.show', { post: 1 });                  
-// ➔ '/posts/1'
+route("posts.show", [1, { other: "test" }]);       
+// ➔ "/posts/1?other=test"
+route("posts.show", { post: 1 });                  
+// ➔ "/posts/1"
 ```
 
 > ⚠️ Warning: Unknown route parameters in Laravel will be appended as query strings with empty values.
 ```js
-route('posts.show', [1, "unknown-route-params"]);  
-// ➔ '/posts/1?unknown-route-params='      
+route("posts.show", [1, "unknown-route-params"]);  
+// ➔ "/posts/1?unknown-route-params="      
 ```
 
 #### Multiple parameters
 
 ```php
-Route::get('venues/{venue}/events/{event}', fn (Venue $venue, Event $event) => /* ... */)->name('venues.events.show');
+Route::get("venues/{venue}/events/{event}", fn (Venue $venue, Event $event) => /* ... */)->name("venues.events.show");
 ```
 
 ```js
-route('venues.events.show', [1, 2], true);                   
-// ➔ 'https://rzl.test/venues/1/events/2'
-route('venues.events.show', [1, 2]);                         
-// ➔ '/venues/1/events/2'
-route('venues.events.show', [1, 2, { other: "test" }]);      
-// ➔ '/venues/1/events/2?other=test'
-route('venues.events.show', [1, {}]);                        
+route("venues.events.show", [1, 2], true);                   
+// ➔ "https://rzl.test/venues/1/events/2"
+route("venues.events.show", [1, 2]);                         
+// ➔ "/venues/1/events/2"
+route("venues.events.show", [1, 2, { other: "test" }]);      
+// ➔ "/venues/1/events/2?other=test"
+route("venues.events.show", [1, {}]);                        
 // ➔ Error.  
-// Error: Object passed as 'event' parameter is missing route model binding key 'undefined'.
+// Error: Object passed as "event" parameter is missing route model binding key "undefined".
 // The second parameter (index 1) is must be passed as route parameters, e.g., { event }.
 
-route('venues.events.show', { venue: 1, event: 2 });         
-// ➔ '/venues/1/events/2'
+route("venues.events.show", { venue: 1, event: 2 });         
+// ➔ "/venues/1/events/2"
 ```
 > ⚠️ Warning: Unknown route parameters in Laravel will be appended as query strings with empty values.
 ```js
-route('venues.events.show', [1, 2, "unknown-route-params"]); 
-// ➔ '/venues/1/events/2?unknown-route-params='
+route("venues.events.show", [1, 2, "unknown-route-params"]); 
+// ➔ "/venues/1/events/2?unknown-route-params="
 ```
 
 #### Query parameters
@@ -177,31 +213,31 @@ route('venues.events.show', [1, 2, "unknown-route-params"]);
 Rzl Ziggy adds arguments that don't match any named route parameters as query parameters:
 
 ```php
-Route::get('venues/{venue}/events/{event}', fn (Venue $venue, Event $event) => /* ... */)->name('venues.events.show');
+Route::get("venues/{venue}/events/{event}", fn (Venue $venue, Event $event) => /* ... */)->name("venues.events.show");
 ```
 
 ```js
-route('venues.events.show', {
+route("venues.events.show", {
     venue: 1,
     event: 2,
     page: 5,
     count: 10,
 });
-// ➔ '/venues/1/events/2?page=5&count=10'
-route('venues.events.show', {
+// ➔ "/venues/1/events/2?page=5&count=10"
+route("venues.events.show", {
     venue: 1,
     event: 2,
     page: 5,
     count: 10,
     type: "active"
 }, true);
-// ➔ 'https://rzl.test/venues/1/events/2?page=5&count=10&type=active'
+// ➔ "https://rzl.test/venues/1/events/2?page=5&count=10&type=active"
 ```
 
 If you need to pass a query parameter with the same name as a route parameter, nest it under the special `_query` key:
 
 ```js
-route('venues.events.show', {
+route("venues.events.show", {
     venue: 1,
     event: 2,
     _query: {
@@ -209,8 +245,8 @@ route('venues.events.show', {
         page: 5,
     },
 });
-// ➔ '/venues/1/events/2?event=3&page=5'
-route('venues.events.show', {
+// ➔ "/venues/1/events/2?event=3&page=5"
+route("venues.events.show", {
     venue: 1,
     event: 2,
     type: "disable"
@@ -220,13 +256,13 @@ route('venues.events.show', {
         type: "active",
     },
 }, true);
-// ➔ 'https://rzl.test/venues/1/events/2?event=3&page=5&type=active'
+// ➔ "https://rzl.test/venues/1/events/2?event=3&page=5&type=active"
 ```
 
 Like Laravel, Rzl Ziggy automatically encodes boolean query parameters as integers in the query string:
 
 ```js
-route('venues.events.show', {
+route("venues.events.show", {
     venue: 1,
     event: 2,
     _query: {
@@ -234,8 +270,8 @@ route('venues.events.show', {
         overdue: true,
     },
 }, true);
-// ➔ 'https://rzl.test/venues/1/events/2?draft=0&overdue=1'
-route('venues.events.show', {
+// ➔ "https://rzl.test/venues/1/events/2?draft=0&overdue=1"
+route("venues.events.show", {
     venue: 1,
     event: 2,
     active: true,
@@ -244,19 +280,19 @@ route('venues.events.show', {
         overdue: true,
     },
 });
-// ➔ '/venues/1/events/2?active=1&draft=0&overdue=1'
+// ➔ "/venues/1/events/2?active=1&draft=0&overdue=1"
 ```
 
 - #### Usage at JS/TS example:
 ```js
-route('posts.show', { post: 5, type: "active" });     
-// ➔ '/de/posts/5?type=active'
-route('posts.show', { post: 1 }, true);               
-// ➔ 'https://rzl.test/de/posts/1'
-route('posts.show', { post: 1, locale:"ar" });        
-// ➔ '/ar/posts/1'
-route('posts.show', { post: 1, locale:"en" }, true);  
-// ➔ 'https://rzl.test/en/posts/1'
+route("posts.show", { post: 5, type: "active" });     
+// ➔ "/de/posts/5?type=active"
+route("posts.show", { post: 1 }, true);               
+// ➔ "https://rzl.test/de/posts/1"
+route("posts.show", { post: 1, locale:"ar" });        
+// ➔ "/ar/posts/1"
+route("posts.show", { post: 1, locale:"en" }, true);  
+// ➔ "https://rzl.test/en/posts/1"
 ```
 
 #### Examples
@@ -264,9 +300,9 @@ route('posts.show', { post: 1, locale:"en" }, true);
 HTTP request with `axios`:
 
 ```js
-const post = { id: 1, title: 'Rzl Ziggy Stardust' };
+const post = { id: 1, title: "Rzl Ziggy Stardust" };
 
-return axios.get(route('posts.show', post)).then((response) => response.data);
+return axios.get(route("posts.show", post)).then((response) => response.data);
 ```
 ---
 ### ⚠️ Warning: Calling `route()` Without Arguments
@@ -292,20 +328,20 @@ return axios.get(route('posts.show', post)).then((response) => response.data);
   
   - `Rzl-Ziggy Error: route() was called without a route name and then implicitly converted to a string. This typically happens when route() is used in a string context...`
   ```
-  > ℹ️ The actual error message may vary depending on your environment or build process, but it typically happens because route() without a name returns an object that can't be coerced to a string.
+  > ⚠️ The actual error message may vary depending on your environment or build process, but it typically happens because `route()` without a name returns an object that can't be coerced to a string.
 
   ✅ Correct usage:
   ```js
-  route('events.index');
+  route("events.index");
   route().params;
   route().queryParams;
   route().routeParams;
   route().current();
-  route().has('route.name');
+  route().has("route.name");
   ```
   > 💡 To safely introspect the current route, use route() as an object:
   >  - [route().current()](#check-the-current-route-routecurrent)
-  >  - [route().has('route.name')](#check-if-a-route-exists-routehas)
+  >  - [route().has("route.name")](#check-if-a-route-exists-routehas)
   >  - [route().params](#retrieve-the-current-route-params-routeparams)
   >  - [route().queryParams](#retrieve-all-search-query-params-only-except-params-route-in-laravel-route-in-the-current-route-routequeryparams)
   >  - [route().routeParams](#retrieve-only-params-route-in-laravel-route-except-query-search-params-in-the-current-route-routerouteparams)
@@ -314,86 +350,86 @@ return axios.get(route('posts.show', post)).then((response) => response.data);
 
 ### `Router` class
 
-Calling Rzl Ziggy's `route()` function with no arguments will return an instance of its JavaScript `Router` class, which has some other useful properties and methods.
+Calling Rzl Ziggy-Route `route()` function with no arguments will return an instance of its JavaScript `Router` class, which has some other useful properties and methods.
 
 #### Check the current route: `route().current()`
 
 ```js
-// Laravel route called 'events.index' with URI '/events'
+// Laravel route called "events.index" with URI "/events"
 // Current window URL is https://rzl.test/events
 
 route().current();               
-// ➔ 'events.index'
-route().current('events.index'); 
+// ➔ "events.index"
+route().current("events.index"); 
 // ➔ true
-route().current('events.*');     
+route().current("events.*");     
 // ➔ true
-route().current('events.show');  
+route().current("events.show");  
 // ➔ false
 ```
 
 #### `route().current(...)` optionally accepts parameters as its second argument, and will check that their values also match in the current URL:
 
 ```js
-// Laravel route called 'venues.events.show' with URI '/venues/{venue}/events/{event}'
+// Laravel route called "venues.events.show" with URI "/venues/{venue}/events/{event}"
 // Current window URL is https://myapp.com/venues/1/events/2?hosts=all
 
-route().current('venues.events.show', [1]);                        
+route().current("venues.events.show", [1]);                        
 // ➔ true
-route().current('venues.events.show', [6]);                        
+route().current("venues.events.show", [6]);                        
 // ➔ false
-route().current('venues.events.show', [1, 5]);                     
+route().current("venues.events.show", [1, 5]);                     
 // ➔ false
-route().current('venues.events.show', [1, 2]);                     
+route().current("venues.events.show", [1, 2]);                     
 // ➔ true
-route().current('venues.events.show', [1, { hosts: 'all' }]);      
+route().current("venues.events.show", [1, { hosts: "all" }]);      
 // ➔ Error
-//* Error: Object passed as 'event' parameter is missing route model binding key 'undefined'.
+//* Error: Object passed as "event" parameter is missing route model binding key "undefined".
 //* Error: (Cause array index 1 is must passing as routeParams, aka: {event}). 
 
-route().current('venues.events.show', [1, 2, { hosts: 'all' }]);   
+route().current("venues.events.show", [1, 2, { hosts: "all" }]);   
 // ➔ true
-route().current('venues.events.show', [2, 2, { hosts: 'all' }]);   
+route().current("venues.events.show", [2, 2, { hosts: "all" }]);   
 // ➔ false
-route().current('venues.events.show', [1, { hosts: 'single' }]);   
+route().current("venues.events.show", [1, { hosts: "single" }]);   
 // ➔ Error 
-//* Error: Object passed as 'event' parameter is missing route model binding key 'undefined'.
+//* Error: Object passed as "event" parameter is missing route model binding key "undefined".
 //* Error: (Cause array index 1 is must passing as routeParams, aka: {event}).
 
-route().current('venues.events.show', [1, 5, { hosts: 'single' }]);
+route().current("venues.events.show", [1, 5, { hosts: "single" }]);
 // ➔ false
-route().current('venues.events.show', [2, 2, { hosts: 'all' }]);   
+route().current("venues.events.show", [2, 2, { hosts: "all" }]);   
 // ➔ false
-route().current('venues.events.show', { venue: 1 });               
+route().current("venues.events.show", { venue: 1 });               
 // ➔ true
-route().current('venues.events.show', { venue: 1, event: 2 });     
+route().current("venues.events.show", { venue: 1, event: 2 });     
 // ➔ true
-route().current('venues.events.show', { hosts: 'all' });           
+route().current("venues.events.show", { hosts: "all" });           
 // ➔ true
-route().current('venues.events.show', { venue: 6 });               
+route().current("venues.events.show", { venue: 6 });               
 // ➔ false
 ```
 
 #### Check if a route exists: `route().has(...)`
 
 ```js
-// Laravel app has only one named route, 'home'
+// Laravel app has only one named route, "home"
 
-route().has('home');   
+route().has("home");   
 // ➔ true
-route().has('orders'); 
+route().has("orders"); 
 // ➔ false
 ```
 
 #### Retrieve the current route params: `route().params`
 
 ```js
-// Laravel route called 'venues.events.show' with URI '/venues/{venue}/events/{event}'
+// Laravel route called "venues.events.show" with URI "/venues/{venue}/events/{event}"
 // Current window URL is https://myapp.com/venues/1/events/2?hosts=all
  
 const test = route().params;
 console.log(test)         
-// ➔ { venue: '1', event: '2', hosts: 'all' }
+// ➔ { venue: "1", event: "2", hosts: "all" }
 console.log(test.venue)   
 // ➔ "1"
 console.log(test.hosts)   
@@ -407,12 +443,12 @@ console.log(test.other)
 #### Retrieve only params route in laravel route (except query search params) in the current route: `route().routeParams`
 
 ```js
-// Laravel route called 'venues.events.show' with URI '/venues/{venue}/events/{event}'
+// Laravel route called "venues.events.show" with URI "/venues/{venue}/events/{event}"
 // Current window URL is https://myapp.com/venues/1/events/2?hosts=all&type=test
 
 const test = route().routeParams;
 console.log(test)         
-// ➔ { venue: '1', event: '2' }
+// ➔ { venue: "1", event: "2" }
 console.log(test.venue)   
 // ➔ "1"
 console.log(test.hosts)   
@@ -427,12 +463,12 @@ console.log(test.other)
 #### Retrieve all search query params only (except params route in laravel route) in the current route: `route().queryParams`
 
 ```js
-// Laravel route called 'venues.events.show' with URI '/venues/{venue}/events/{event}'
+// Laravel route called "venues.events.show" with URI "/venues/{venue}/events/{event}"
 // Current window URL is https://myapp.com/venues/1/events/2?hosts=all&type=test
  
 const test = route().queryParams;
 console.log(test)         
-// ➔ { hosts: 'all', type: 'test' }
+// ➔ { hosts: "all", type: "test" }
 console.log(test.type)    
 // ➔ "test"
 console.log(test.hosts)   
@@ -456,48 +492,48 @@ class Post extends Model
 {
     public function getRouteKeyName()
     {
-        return 'slug';
+        return "slug";
     }
 }
 ```
 
 ```php
-Route::get('blog/{post}', function (Post $post) {
-    return view('posts.show', ['post' => $post]);
-})->name('posts.show');
+Route::get("blog/{post}", function (Post $post) {
+    return view("posts.show", ["post" => $post]);
+})->name("posts.show");
 ```
 
 ```js
 const post = {
     id: 3,
-    title: 'Introducing Rzl Ziggy v1',
-    slug: 'introducing-rzl-ziggy-v1',
-    date: '2020-10-23T20:59:24.359278Z',
+    title: "Introducing Rzl Ziggy v1",
+    slug: "introducing-rzl-ziggy-v1",
+    date: "2020-10-23T20:59:24.359278Z",
 };
 
-// Rzl Ziggy knows that this route uses the 'slug' route-model binding key:
+// Rzl Ziggy knows that this route uses the "slug" route-model binding key:
 
-route('posts.show', post);       
-// ➔ '/blog/introducing-rzl-ziggy-v1'
-route('posts.show', post, true); 
-// ➔ 'https://rzl.test/blog/introducing-rzl-ziggy-v1'
+route("posts.show", post);       
+// ➔ "/blog/introducing-rzl-ziggy-v1"
+route("posts.show", post, true); 
+// ➔ "https://rzl.test/blog/introducing-rzl-ziggy-v1"
 ```
 
 Rzl Ziggy also supports [custom keys](https://laravel.com/docs/routing#customizing-the-key) for scoped bindings declared directly in a route definition:
 
 ```php
-Route::get('authors/{author}/photos/{photo:uuid}', fn (Author $author, Photo $photo) => /* ... */)
-    ->name('authors.photos.show');
+Route::get("authors/{author}/photos/{photo:uuid}", fn (Author $author, Photo $photo) => /* ... */)
+    ->name("authors.photos.show");
 ```
 
 ```js
 const photo = {
-    uuid: '714b19e8-ac5e-4dab-99ba-34dc6fdd24a5',
-    filename: 'sunset.jpg',
+    uuid: "714b19e8-ac5e-4dab-99ba-34dc6fdd24a5",
+    filename: "sunset.jpg",
 }
 
-route('authors.photos.show', [{ id: 1, name: 'John' }, photo], true);
-// ➔ 'https://rzl.test/authors/1/photos/714b19e8-ac5e-4dab-99ba-34dc6fdd24a5'
+route("authors.photos.show", [{ id: 1, name: "John" }, photo], true);
+// ➔ "https://rzl.test/authors/1/photos/714b19e8-ac5e-4dab-99ba-34dc6fdd24a5"
 ```
 
 ### TypeScript Support
@@ -510,17 +546,17 @@ To generate route types, run the `rzl-ziggy:generate` command with the `--types`
 php artisan rzl-ziggy:generate --types
 ```
 
-To make your IDE aware that Rzl Ziggy's `route()` helper is available globally, and to type it correctly, add a declaration like this in a `.d.ts` file somewhere in your project:
+To make your IDE aware that Rzl Ziggy-Route `route()` helper is available globally, and to type it correctly, add a declaration like this in a `.d.ts` file somewhere in your project:
 
 ```ts
-import { route as routeFn } from '@rzl-zone/ziggy-route';
+import { route as routeFn } from "@rzl-zone/ziggy-route";
 
 declare global {
     var route: typeof routeFn;
 }
 ```
 
-If you don't have [Rzl Ziggy's NPM package installed](https://www.npmjs.com/package/@rzl-zone/ziggy-route), add the following to your `jsconfig.json` or `tsconfig.json` to load Rzl Ziggy's types from your vendor directory:
+If you don't have [Rzl Ziggy-Route NPM package installed](https://www.npmjs.com/package/@rzl-zone/ziggy-route), add the following to your `jsconfig.json` or `tsconfig.json` to load Rzl Ziggy-Route types from your vendor directory:
 
 ```json
 {
@@ -536,11 +572,11 @@ If you don't have [Rzl Ziggy's NPM package installed](https://www.npmjs.com/pack
 ## JavaScript frameworks
 
 > [!NOTE]
-> Many applications don't need the additional setup described here—the `@rzlRoutes` Blade directive makes Rzl Ziggy's `route()` function and config available globally, including within bundled JavaScript files.
+> Many applications don't need the additional setup described here—the `@rzlRoutes` Blade directive makes Rzl Ziggy-Route `route()` function and config available globally, including within bundled JavaScript files.
 
-If you are not using the `@rzlRoutes` Blade directive, you can import Rzl Ziggy's `route()` function and configuration directly into JavaScript/TypeScript files.
+If you are not using the `@rzlRoutes` Blade directive, you can import Rzl Ziggy-Route `route()` function and configuration directly into JavaScript/TypeScript files.
 
-### Generating and importing Rzl Ziggy's configuration
+### Generating and importing Rzl Ziggy-Route configuration
 
 Rzl Ziggy provides an Artisan command to output its config and routes to a file:
 
@@ -623,14 +659,14 @@ This means:
 - You must manually pass the config to the `route()` function.
 - Since `appRoutes` is a string, you need to parse it using `JSON.parse()` before passing it in.
 
-> ℹ️ Path import `import { appRoutes } from './rzl-ziggy/routes/index.js';` depend from your setting at config php file, see: [Output Name File And Path To Generate](#output-name-file-and-path-to-generate).
+> ℹ️ Path import `import { appRoutes } from "./rzl-ziggy/routes/index.js";` depend from your setting at config php file, see: [Output Name File And Path To Generate](#output-name-file-and-path-to-generate).
 
 ```js
-import { route } from '@rzl-zone/ziggy-route';
-import { appRoutes } from './rzl-ziggy/routes/index.js';
+import { route } from "@rzl-zone/ziggy-route";
+import { appRoutes } from "./rzl-ziggy/routes/index.js";
 
-route('home', null, false, JSON.parse(appRoutes));
-route('home', undefined, undefined, JSON.parse(appRoutes));
+route("home", null, false, JSON.parse(appRoutes));
+route("home", undefined, undefined, JSON.parse(appRoutes));
 ```
 
 To simplify importing the `route()` function, you can create an alias to the vendor path:
@@ -641,7 +677,7 @@ To simplify importing the `route()` function, you can create an alias to the ven
 export default defineConfig({
     resolve: {
         alias: {
-            '@rzl-zone/ziggy-route': path.resolve('vendor/rzl-zone/ziggy-route'),
+            "@rzl-zone/ziggy-route": path.resolve("vendor/rzl-zone/ziggy-route"),
         },
     },
 });
@@ -650,7 +686,7 @@ export default defineConfig({
 Now your imports can be shortened to:
 
 ```js
-import { route } from '@rzl-zone/ziggy-route';
+import { route } from "@rzl-zone/ziggy-route";
 ```
 
 ### Vue
@@ -658,9 +694,9 @@ import { route } from '@rzl-zone/ziggy-route';
 Rzl Ziggy includes a Vue plugin to make it easy to use the `route()` helper throughout your Vue app:
 
 ```js
-import { createApp } from 'vue';
-import { rzlZiggyVue } from '@rzl-zone/ziggy-route/vue';
-import App from './App.vue';
+import { createApp } from "vue";
+import { rzlZiggyVue } from "@rzl-zone/ziggy-route/vue";
+import App from "./App.vue";
 
 createApp(App).use(rzlZiggyVue);
 ```
@@ -668,29 +704,29 @@ createApp(App).use(rzlZiggyVue);
 Now you can use the `route()` function anywhere in your Vue components and templates:
 
 ```vue
-<a class="nav-link" :href="route('home')">Home</a>
+<a class="nav-link" :href="route("home")">Home</a>
 ```
 
 With `<script setup>` in Vue 3 you can use `inject` to make the `route()` function available in your component script:
 
 ```vue
 <script setup>
-import { inject } from 'vue';
+import { inject } from "vue";
 
-const route = inject('route');
+const route = inject("route");
 </script>
 ```
 
-If you are not using the `@rzlRoutes` Blade directive, import Rzl Ziggy's configuration too and pass it to `.use()`:
+If you are not using the `@rzlRoutes` Blade directive, import Rzl Ziggy-Route configuration too and pass it to `.use()`:
 
 
-> ℹ️ Path import `import { appRoutes } from './rzl-ziggy/routes/index.js';` depend from your setting at config php file, see: [Output Name File And Path To Generate](#output-name-file-and-path-to-generate). 
+> ℹ️ Path import `import { appRoutes } from "./rzl-ziggy/routes/index.js";` depend from your setting at config php file, see: [Output Name File And Path To Generate](#output-name-file-and-path-to-generate). 
 
 ```js
-import { createApp } from 'vue';
-import { rzlZiggyVue } from '@rzl-zone/ziggy-route/vue';
-import { appRoutes } from './rzl-ziggy/routes/index.js';
-import App from './App.vue';
+import { createApp } from "vue";
+import { rzlZiggyVue } from "@rzl-zone/ziggy-route/vue";
+import { appRoutes } from "./rzl-ziggy/routes/index.js";
+import App from "./App.vue";
 
 createApp(App).use(rzlZiggyVue, JSON.parse(appRoutes));
 ```
@@ -698,7 +734,7 @@ createApp(App).use(rzlZiggyVue, JSON.parse(appRoutes));
 If you're using TypeScript, you may need to add the following declaration to a `.d.ts` file in your project to avoid type errors when using the `route()` function in your Vue component templates:
 
 ```ts
-declare module 'vue' {
+declare module "vue" {
     interface ComponentCustomProperties {
         route: typeof routeFn;
     }
@@ -710,45 +746,45 @@ declare module 'vue' {
 Rzl Ziggy includes a `useRoute()` hook to make it easy to use the `route()` helper in your React app:
 
 ```jsx
-import React from 'react';
-import { useRoute } from '@rzl-zone/ziggy-route/react';
+import React from "react";
+import { useRoute } from "@rzl-zone/ziggy-route/react";
 
 export default function PostsLink() {
     const route = useRoute();
 
-    return <a href={route('posts.index')}>Posts</a>;
+    return <a href={route("posts.index")}>Posts</a>;
 }
 ```
 
-If you are not using the `@rzlRoutes` Blade directive, import Rzl Ziggy's configuration too and pass it to `useRoute()`:
+If you are not using the `@rzlRoutes` Blade directive, import Rzl Ziggy-Route configuration too and pass it to `useRoute()`:
 
-> ℹ️ Path import `import { appRoutes } from './rzl-ziggy/routes/index.js';` depend from your setting at config php file, see: [Output Name File And Path To Generate](#output-name-file-and-path-to-generate). 
+> ℹ️ Path import `import { appRoutes } from "./rzl-ziggy/routes/index.js";` depend from your setting at config php file, see: [Output Name File And Path To Generate](#output-name-file-and-path-to-generate). 
 
 ```jsx
-import React from 'react';
-import { useRoute } from '@rzl-zone/ziggy-route/react';
-import { appRoutes } from './rzl-ziggy/routes/index.js';
+import React from "react";
+import { useRoute } from "@rzl-zone/ziggy-route/react";
+import { appRoutes } from "./rzl-ziggy/routes/index.js";
 
 export default function PostsLink() {
     const route = useRoute(JSON.parse(appRoutes));
 
-    return <a href={route('posts.index')}>Posts</a>;
+    return <a href={route("posts.index")}>Posts</a>;
 }
 ```
 
-You can also make the `Rzl Ziggy` config object available globally, so you can call `useRoute()` without passing Rzl Ziggy's configuration to it every time:
+You can also make the `Rzl Ziggy` config object available globally, so you can call `useRoute()` without passing Rzl Ziggy-Route configuration to it every time:
 
 ```js
 // app.js
-import { appRoutes } from './rzl-ziggy/routes/index.js';
+import { appRoutes } from "./rzl-ziggy/routes/index.js";
 globalThis.appRoutes = JSON.parse(appRoutes);
 ```
 
 ### SPAs or separate repos
 
-Rzl Ziggy's `route()` function is available as an NPM package, for use in JavaScript projects managed separately from their Laravel backend (i.e. without Composer or a `vendor` directory). You can install the NPM package with `npm install @rzl-zone/ziggy-route`.
+Rzl Ziggy-Route `route()` function is available as an NPM package, for use in JavaScript projects managed separately from their Laravel backend (i.e. without Composer or a `vendor` directory). You can install the NPM package with `npm install @rzl-zone/ziggy-route`.
 
-To make your routes available on the frontend for this function to use, you can either run `php artisan rzl-ziggy:generate` and add the generated config file to your frontend project, or you can return Rzl Ziggy's config as JSON from an endpoint in your Laravel API (see [Retrieving Rzl Ziggy's config from an API endpoint](#retrieving-rzl-ziggys-config-from-an-api-endpoint) below for an example of how to set this up).
+To make your routes available on the frontend for this function to use, you can either run `php artisan rzl-ziggy:generate` and add the generated config file to your frontend project, or you can return Rzl Ziggy-Route config as JSON from an endpoint in your Laravel API (see [Retrieving Rzl Ziggy-Route config from an API endpoint](#retrieving-rzl-ziggy-route-config-from-an-api-endpoint) below for an example of how to set this up).
 
 ### Using with Inertiajs
 
@@ -773,17 +809,17 @@ class HandleInertiaRequests extends Middleware
       ...parent::share($request), 
       
       //! This is required
-      'url' => [
-        'root' => $request->root(),
-        'currentPath' => $request->getPathInfo(),
-        'searchParams' => getQueryParams($request),
-        'currentLocation' => $request->url(),
-        'currentFullUrl' => $request->fullUrl(),
+      "url" => [
+        "root" => $request->root(),
+        "currentPath" => $request->getPathInfo(),
+        "searchParams" => getQueryParams($request),
+        "currentLocation" => $request->url(),
+        "currentFullUrl" => $request->fullUrl(),
         "previousPath" => (str(url()->previous()))->replace(url("/"), ""),
       ],
 
       //! This is required if using `@rzlRoutes` directive
-      'rzlZiggy' => fn(): array => [
+      "rzlZiggy" => fn(): array => [
         ...(new RzlZiggy())->jsonConfigsSsr(), 
       ],
       
@@ -840,7 +876,7 @@ php artisan vendor:publish --tag=rzl-ziggy
 Rzl Ziggy supports filtering the list of routes it outputs, which is useful if you have certain routes that you don't want to be included and visible in your HTML source.
 
 > [!IMPORTANT]
-> Hiding routes from Rzl Ziggy's output is not a replacement for thorough authentication and authorization. Routes that should not be accessibly publicly should be protected by authentication whether they're filtered out of Rzl Ziggy's output or not.
+> Hiding routes from Rzl Ziggy-Route output is not a replacement for thorough authentication and authorization. Routes that should not be accessibly publicly should be protected by authentication whether they're filtered out of Rzl Ziggy-Route output or not.
 
 ### Including/excluding routes
 
@@ -852,7 +888,7 @@ To set up route filtering, create a config file in your Laravel app at `config/r
 // config/rzl-ziggy.php
 
 return [
-    'only' => ['home', 'posts.index', 'posts.show'],
+    "only" => ["home", "posts.index", "posts.show"],
 
     // other you config...
 ];
@@ -864,7 +900,7 @@ You can use asterisks as wildcards in route filters. In the example below, `admi
 // config/rzl-ziggy.php
 
 return [
-    'except' => ['_debugbar.*', 'horizon.*', 'admin.*'],
+    "except" => ["_debugbar.*", "horizon.*", "admin.*"],
 
     // other you config...
 ];
@@ -877,9 +913,9 @@ You can also define groups of routes that you want make available in different p
 // config/rzl-ziggy.php
 
 return [
-    'groups' => [
-        'admin' => ['admin.*', 'users.*'],
-        'author' => ['posts.*'],
+    "groups" => [
+        "admin" => ["admin.*", "users.*"],
+        "author" => ["posts.*"],
     ],
 
     // other you config...
@@ -891,7 +927,7 @@ Then, you can expose a specific group by passing the group name into the `@rzlRo
 ```blade
 {{-- authors.blade.php --}}
 
-@rzlRoutes('author')
+@rzlRoutes("author")
 ```
 
 To expose multiple groups you can pass an array of group names:
@@ -899,7 +935,7 @@ To expose multiple groups you can pass an array of group names:
 ```blade
 {{-- admin.blade.php --}}
 
-@rzlRoutes(['admin', 'author'])
+@rzlRoutes(["admin", "author"])
 ```
 
 > Note: Passing group names to the `@rzlRoutes` directive will always take precedence over your other `only` or `except` settings.
@@ -911,7 +947,7 @@ To expose multiple groups you can pass an array of group names:
 Rzl Ziggy supports default route parameter values ([Laravel docs](https://laravel.com/docs/urls#default-values)).
 
 ```php
-Route::get('{locale}/posts/{post}', fn (Post $post) => /* ... */)->name('posts.show');
+Route::get("{locale}/posts/{post}", fn (Post $post) => /* ... */)->name("posts.show");
 ```
 #### With config file:
 > ℹ️ To generate config file, see: [**Publish Config File**](#publish-config-file).
@@ -929,13 +965,13 @@ return [
      *
      * You can override these at runtime via `URL::defaults([...])`.
      */
-    'defaults' => [
+    "defaults" => [
         /** Default for `{locale}` route parameter. CLI `--locale` overrides this value. */
-        'locale' => env('APP_LOCALE', 'en'),
+        "locale" => env("APP_LOCALE", "en"),
 
         // another example:...
-        // 'type'   => 'default', // Default value for routes requiring {type}
-        // 'team'   => 'main',    // Default tenant/team identifier (e.g. {team})
+        // "type"   => "default", // Default value for routes requiring {type}
+        // "team"   => "main",    // Default tenant/team identifier (e.g. {team})
     ],
 
     // other you config...
@@ -1027,7 +1063,7 @@ php artisan rzl-ziggy:generate --types
 #### - Setting in your vite.config.ts or vite.config.js, register the plugin:
 
 ```js
-import rzlZiggyVitePlugin from '@rzl-zone/ziggy-route/vite-plugin'
+import rzlZiggyVitePlugin from "@rzl-zone/ziggy-route/vite-plugin"
 
 export default defineConfig({
   plugins: [
@@ -1044,13 +1080,13 @@ export default defineConfig({
 <p></p>
 
 ```js
-const mix = require('laravel-mix');
-const { exec } = require('child_process');
+const mix = require("laravel-mix");
+const { exec } = require("child_process");
 
-mix.extend('rzlZiggy', new class {
+mix.extend("rzlZiggy", new class {
     register(config = {}) {
-        this.watch = config.watch ?? ['routes/**/*.php'];
-        this.path = config.path ?? '';
+        this.watch = config.watch ?? ["routes/**/*.php"];
+        this.path = config.path ?? "";
         this.enabled = config.enabled ?? !Mix.inProduction();
     }
 
@@ -1065,8 +1101,8 @@ mix.extend('rzlZiggy', new class {
         command();
 
         if (Mix.isWatching() && this.watch) {
-            ((require('chokidar')).watch(this.watch))
-                .on('change', (path) => {
+            ((require("chokidar")).watch(this.watch))
+                .on("change", (path) => {
                     console.log(`${path} changed...`);
                     command();
                 });
@@ -1074,8 +1110,8 @@ mix.extend('rzlZiggy', new class {
     }
 }());
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [])
+mix.js("resources/js/app.js", "public/js")
+    .postCss("resources/css/app.css", "public/css", [])
     .rzlZiggy();
 ```
 </details>
@@ -1085,32 +1121,32 @@ mix.js('resources/js/app.js', 'public/js')
 
 ### TLS/SSL termination and trusted proxies
 
-<!-- Or: What to do if your app is served over `https` but Rzl Ziggy's `route()` helper generates `http` URLs -->
+<!-- Or: What to do if your app is served over `https` but Rzl Ziggy-Route `route()` helper generates `http` URLs -->
 
 If your application is using [TLS/SSL termination](https://en.wikipedia.org/wiki/TLS_termination_proxy) or is behind a load balancer or proxy, or if it's hosted on a service that is, Rzl Ziggy may generate URLs with a scheme of `http` instead of `https`, even if your app URL uses `https`. To fix this, set up your Laravel app's trusted proxies according to the documentation on [Configuring Trusted Proxies](https://laravel.com/docs/requests#configuring-trusted-proxies).
 
 ### Using `@rzlRoutes` with a Content Security Policy
 
-A [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) (CSP) may block inline scripts, including those output by Rzl Ziggy's `@rzlRoutes` Blade directive. If you have a CSP and are using a nonce to flag safe inline scripts, you can pass the nonce to the `@rzlRoutes` directive and it will be added to Rzl Ziggy's script tag:
+A [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) (CSP) may block inline scripts, including those output by Rzl Ziggy-Route `@rzlRoutes` Blade directive. If you have a CSP and are using a nonce to flag safe inline scripts, you can pass the nonce to the `@rzlRoutes` directive and it will be added to Rzl Ziggy-Route script tag:
 
 ```php
-@rzlRoutes(nonce: 'your-nonce-here')
+@rzlRoutes(nonce: "your-nonce-here")
 ```
 
 ### Disabling the `route()` helper
 
-If you only want to use the `@rzlRoutes` directive to make Rzl Ziggy's configuration available in JavaScript, but don't need the `route()` helper function, set the `rzl-ziggy.skip-route-function` config to `true`.
+If you only want to use the `@rzlRoutes` directive to make Rzl Ziggy-Route configuration available in JavaScript, but don't need the `route()` helper function, set the `rzl-ziggy.skip-route-function` config to `true`.
 
-### Retrieving Rzl Ziggy's config from an API endpoint
+### Retrieving Rzl Ziggy-Route config from an API endpoint
 
-If you need to retrieve Rzl Ziggy's config from your Laravel backend over the network, you can create a route that looks something like this:
+If you need to retrieve Rzl Ziggy-Route config from your Laravel backend over the network, you can create a route that looks something like this:
 
 ```php
 // routes/api.php
 
 use RzlZone\Ziggy\RzlZiggy;
 
-Route::get('rzl-ziggy', fn () => response()->json(new RzlZiggy));
+Route::get("rzl-ziggy", fn () => response()->json(new RzlZiggy));
 ```
 
 ---
@@ -1146,6 +1182,6 @@ See [LICENSE](LICENSE) for more information.
 ---
 ## Credits
 
-- Forked and extended from [Ziggy by Tighten.](https://github.com/tighten/ziggy)
+- Forked and extended from [Ziggy by Tighten](https://github.com/tighten/ziggy).
 - Inspired by the work of Daniel Coulbourne, Jake Bathman, Matt Stauffer, and Jacob Baker-Kretzmar.
-- Custom features and enhancements maintained by [Rizalfin Dwiky (RZL)](https://github.com/rzl-app) 
+- Custom features and enhancements maintained by [Rizalfin Dwiky (Rzl)](https://github.com/rzl-app).

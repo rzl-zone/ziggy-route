@@ -18,7 +18,7 @@ class BladeRouteGenerator
     $name = RzlZiggyHelper::formattingAttribute("name", $name);
     $nonce = RzlZiggyHelper::formattingAttribute("nonce", $nonce);
 
-    $ignoreMinify = $ignoreMinify ? ' ignore--minify' : '';
+    $ignoreMinify = $ignoreMinify ? " ignore--minify" : "";
 
     $dataAttributes = ($joined = collect($dataAttribute ?? [])
       ->map(function ($v, $k) {
@@ -31,10 +31,10 @@ class BladeRouteGenerator
         $key = e(str($k)->trim());
         $value = e(str($v)->trim());
 
-        return $value !== '' ? "data-{$key}=\"{$value}\"" : null;
+        return $value !== "" ? "data-{$key}=\"{$value}\"" : null;
       })
       ->filter()
-      ->implode(' ')) !== '' ? " {$joined}" : '';
+      ->implode(" ")) !== "" ? " {$joined}" : "";
 
     if (static::$generated) {
       return (string) $this->generateMergeJavascript($ziggy, $id, $name, $nonce, $dataAttributes, $ignoreMinify);
@@ -44,20 +44,20 @@ class BladeRouteGenerator
 
     static::$generated = true;
 
-    $output = config('rzl-ziggy.output.script', Script::class);
+    $output = config("rzl-ziggy.output.script", Script::class);
 
     return (string) new $output($ziggy, $function, $id, $name, $nonce, $dataAttributes, $ignoreMinify);
   }
 
   private function generateMergeJavascript(RzlZiggy $ziggy, $id, $name, $nonce, $dataAttributes, $ignoreMinify)
   {
-    $output = config('rzl-ziggy.output.merge_script', MergeScript::class);
+    $output = config("rzl-ziggy.output.merge_script", MergeScript::class);
 
     return new $output($ziggy, $id, $name, $nonce, $dataAttributes, $ignoreMinify);
   }
 
   private function getRouteFunction()
   {
-    return config('rzl-ziggy.skip-route-function') ? '' : file_get_contents(__DIR__ . '/../../dist/ziggy-route/rzl-ziggy.iife.js');
+    return config("rzl-ziggy.skip-route-function") ? "" : file_get_contents(__DIR__ . "/../../dist/ziggy-route/rzl-ziggy.iife.js");
   }
 }

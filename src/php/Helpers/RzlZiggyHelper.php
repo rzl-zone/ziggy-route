@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Http;
 
 final class RzlZiggyHelper
 {
-  public const PACKAGIST_NAME = "rzl-zone/ziggy-route";
   public const NPM_NAME = "@rzl-zone/ziggy-route";
+  public const PACKAGIST_NAME = "rzl-zone/ziggy-route";
 
   /** * Merge config and runtime default parameters, then apply to URL::defaults().
    *
@@ -21,7 +21,7 @@ final class RzlZiggyHelper
   public static function applyDefaultUrl(array $overrides = []): array
   {
     $defaults = array_merge(
-      config('rzl-ziggy.defaults', []),
+      config("rzl-ziggy.defaults", []),
       URL::getDefaultParameters() ?? [],
       $overrides,
     );
@@ -38,9 +38,9 @@ final class RzlZiggyHelper
    * -------------------------------
    *
    * @param string $name
-   * @param bool $removeFirstSlash *default is `true`
-   * @param bool $useBackSlash *default is `false`
-   * @param string|null $default *default is `null`
+   * @param bool $removeFirstSlash **default** is `true`
+   * @param bool $useBackSlash **default** is `false`
+   * @param string|null $default **default** is `null`
    *
    * @return string|null
    *
@@ -48,7 +48,7 @@ final class RzlZiggyHelper
   public static function getPathFile($name, $removeFirstSlash = true, $useBackSlash = false, $default = null): string|null
   {
     if (filled($name)) {
-      $name = str($name)->replace("\\", "/")->replaceMatches(['#/{2,}#'], "/");
+      $name = str($name)->replace("\\", "/")->replaceMatches(["#/{2,}#"], "/");
       $filePath = str($name);
 
       if ($removeFirstSlash && $filePath->startsWith("/")) {
@@ -106,8 +106,11 @@ final class RzlZiggyHelper
 
   /** Formats an HTML attribute with a leading space.
    *
-   * Example:
-   * formattingAttribute('data-id', '123') => ' data-id="123"'
+   * @example
+   * ```php
+   * formattingAttribute("data-id", "123") 
+   * // ➔ " data-id='123'";
+   * ```
    *
    * Returns an empty string if the value is null or empty.
    *
@@ -120,26 +123,30 @@ final class RzlZiggyHelper
     $key = trim($key, "\"' \t\n\r\0\v\x0B");
 
     // Only allow alphanumeric keys with - or _
-    if (!preg_match('/^[a-zA-Z0-9_\-]+$/', $key)) {
-      return '';
+    if (!preg_match("/^[a-zA-Z0-9_\-]+$/", $key)) {
+      return "";
     }
 
     $value = str($value)->trim();
 
     if ($value->isEmpty()) {
-      return '';
+      return "";
     }
 
-    return ' ' . e(str($key)->trim()->toString()) . '="' . e($value->toString()) . '"';
+    return " " . e(str($key)->trim()->toString()) . '="' . e($value->toString()) . '"';
   }
 
   /** Appends a leading space to a string if it is not empty after trimming.
    *
    * Useful for optional class names or extra attributes.
-   *
-   * Example:
-   * appendSpaceAttribute('btn') => ' btn'
-   * appendSpaceAttribute('   ') => ''
+   * 
+   * @example
+   * ```php
+   * appendSpaceAttribute("btn");
+   * // ➔ " btn";
+   * appendSpaceAttribute("   ");
+   * // ➔ "";
+   * ```
    *
    * @param string|null $attribute  The string to be trimmed and formatted
    * @return string  The formatted string with a space prefix, or an empty string
@@ -147,7 +154,7 @@ final class RzlZiggyHelper
   public static function appendSpaceAttribute($attribute): string
   {
     $attribute = str($attribute)->trim();
-    return $attribute->isEmpty() ? '' : " {$attribute->toString()}";
+    return $attribute->isEmpty() ? "" : " {$attribute->toString()}";
   }
 
   public static function generateComposerBanner(string $typeGenerate = "ts-files"): string
@@ -179,29 +186,29 @@ final class RzlZiggyHelper
     }
 
     $composer = collect(json_decode(File::get($composerJson), true));
-    $repo = $composer->get('repository');
-    $repoUrl = is_array($repo) ? $repo['url'] ?? null : $repo;
-    $repoUrl = $repoUrl ?: $composer->get('homepage', 'https://github.com/rzl-zone/ziggy-route');
+    $repo = $composer->get("repository");
+    $repoUrl = is_array($repo) ? $repo["url"] ?? null : $repo;
+    $repoUrl = $repoUrl ?: $composer->get("homepage", "https://github.com/rzl-zone/ziggy-route");
 
     $package = collect(json_decode(File::get($packageJson), true));
-    $namePkg = $package->get('name') ?? "rzl-zone/ziggy-route";
-    $versionPkg = $package->get('version') ?? "0.0.0";
+    $namePkg = $package->get("name") ?? "rzl-zone/ziggy-route";
+    $versionPkg = $package->get("version") ?? "0.0.0";
     $versionLatestNpm = self::getNpmLatestVersion($namePkg);
 
-    $cleanUrl = Str::of($repoUrl)->replaceFirst('git+', '')->replaceLast('.git', '');
+    $cleanUrl = Str::of($repoUrl)->replaceFirst("git+", "")->replaceLast(".git", "");
 
-    $versionComposer = 'dev-main';
+    $versionComposer = "dev-main";
     if (File::exists($installedJson)) {
       $installed = json_decode(File::get($installedJson), true);
-      $packages = $installed['packages'] ?? $installed;
-      $versionComposer = collect($packages)->firstWhere('name', self::PACKAGIST_NAME)['version'] ?? $versionComposer;
+      $packages = $installed["packages"] ?? $installed;
+      $versionComposer = collect($packages)->firstWhere("name", self::PACKAGIST_NAME)["version"] ?? $versionComposer;
     }
 
-    $author = $composer->get('authors')[0]['name'] ?? 'Rzl';
-    $date = date('Y');
-    $name = $composer->get('name', self::PACKAGIST_NAME);
+    $author = $composer->get("authors")[0]["name"] ?? "Rzl";
+    $date = date("Y");
+    $name = $composer->get("name", self::PACKAGIST_NAME);
     $versionLatestPackagist = self::getComposerLatestVersion($name);
-    $license = $composer->get('license', 'MIT');
+    $license = $composer->get("license", "MIT");
 
     $repoName = str($name)->afterLast("github.com");
 
@@ -240,14 +247,14 @@ final class RzlZiggyHelper
       $response = Http::timeout(2)->get($url);
 
       if ($response->failed()) {
-        return '0.0.0';
+        return "0.0.0";
       }
 
       $data = $response->json();
 
-      return $data['dist-tags']['latest'] ?? '0.0.0';
+      return $data["dist-tags"]["latest"] ?? "0.0.0";
     } catch (\Throwable $e) {
-      return '0.0.0';
+      return "0.0.0";
     }
   }
 
@@ -259,21 +266,21 @@ final class RzlZiggyHelper
       $response = Http::timeout(2)->get($url);
 
       if ($response->failed()) {
-        return 'dev-main';
+        return "dev-main";
       }
 
       $data = $response->json();
-      $versions = $data['packages'][$packageName] ?? [];
+      $versions = $data["packages"][$packageName] ?? [];
 
       if (empty($versions)) {
-        return 'dev-main';
+        return "dev-main";
       }
 
-      $latest = $versions[0]['version'] ?? 'dev-main';
+      $latest = $versions[0]["version"] ?? "dev-main";
 
       return $latest;
     } catch (\Throwable $e) {
-      return 'dev-main';
+      return "dev-main";
     }
   }
 };

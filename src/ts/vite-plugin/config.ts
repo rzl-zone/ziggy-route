@@ -1,4 +1,4 @@
-import type { RequiredExcept } from "@rzl-zone/utils-js/types";
+import type { RequiredExcept } from "@rzl-zone/ts-types-plus";
 
 /** * ***Options for configuring the Rzl Ziggy Route plugin.*** */
 export type Config = {

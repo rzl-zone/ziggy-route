@@ -84,6 +84,7 @@ export class Router extends String {
     }
   }
 
+  /** @internal */
   private safeValidateRouterConfig(obj: unknown) {
     try {
       return RouterConfigClass.validateAndWrap(obj);
@@ -101,6 +102,7 @@ export class Router extends String {
     }
   }
 
+  /** @internal */
   private _unresolve(url?: string) {
     if (!url) {
       url = this._currentUrl();
@@ -128,6 +130,7 @@ export class Router extends String {
     };
   }
 
+  /** @internal */
   private _currentUrl() {
     const { host, pathname, search } = this._location();
 
@@ -140,6 +143,7 @@ export class Router extends String {
     );
   }
 
+  /** @internal */
   private _location() {
     const {
       host = "",
@@ -154,6 +158,7 @@ export class Router extends String {
     };
   }
 
+  /** @internal */
   private _parse(
     params:
       | null
@@ -212,6 +217,8 @@ export class Router extends String {
    *
    * @param {Route} route
    * @return {Object} Default route parameters.
+   *
+   * @internal
    */
   private _defaults(route: typeof this._route): {} | undefined {
     return route?.parameterSegments
@@ -234,6 +241,8 @@ export class Router extends String {
    * @param {Object} params - Route parameters.
    * @param {Object} route - Route definition.
    * @return {Object} Normalized route parameters.
+   *
+   * @internal
    */
   private _substituteBindings(
     params: Record<string, string | Record<string, string>>,
@@ -381,7 +390,7 @@ export class Router extends String {
       );
     }
 
-    const unhandled = Object.keys(thisParams)
+    const unhandled: Record<string, unknown> = Object.keys(thisParams)
       .filter(
         (key) => !thisRoute.parameterSegments.some(({ name }) => name === key)
       )

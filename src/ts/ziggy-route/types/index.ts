@@ -7,13 +7,13 @@
 export interface RouteList {}
 
 /** -------------------------------------------------------
- * * ***Marker interface to configure Rzl Ziggy's type checking behavior.***
+ * * ***Marker interface to configure Rzl **Ziggy Route** type checking behavior.***
  * -------------------------------------------------------
  */
 export interface TypeConfig {}
 
 /** -------------------------------------------------------
- * * ***A route name registered with Ziggy.***
+ * * ***A route name registered with **Ziggy Route**.***
  * -------------------------------------------------------
  */
 export type KnownRouteName = keyof RouteList;
@@ -51,12 +51,12 @@ export type RawParameterValue = string | number;
 type DefaultRoutable = { id: RawParameterValue } & Record<keyof any, unknown>;
 
 /** -------------------------------------------------------
- * * ***A route parameter value 1.***
+ * * ***A route parameter value (`RawParameterValue` or `DefaultRoutable`).***
  * -------------------------------------------------------
  */
 export type ParameterValue = RawParameterValue | DefaultRoutable;
 /** -------------------------------------------------------
- * * ***A route parameter value 2.***
+ * * ***A route parameter value (`DefaultRoutable`).***
  * -------------------------------------------------------
  */
 export type ParameterValueProps = DefaultRoutable;
@@ -85,7 +85,7 @@ type OptionalParams<I extends readonly ParameterInfo[]> = Extract<
 >;
 
 /** -------------------------------------------------------
- * * ***An object containing a special '_query' key to target the query string of a URL.***
+ * * ***An object containing a special `'_query'` key to target the query string of a URL.***
  * -------------------------------------------------------
  */
 type HasQueryParam = { _query?: Record<string, unknown> };
@@ -165,7 +165,7 @@ export type RouteDefinition = {
 };
 
 /** -------------------------------------------------------
- * * ***Rzl Ziggy's config props for `route()`.***
+ * * ***Config props for `route()` of Rzl **Ziggy Route**.***
  * -------------------------------------------------------
  */
 export type Config = {
@@ -186,9 +186,9 @@ export type ParsedQs = {
 };
 
 /** -------------------------------------------------------
- * * ***Rzl Ziggy's Router Instance Class.***
+ * * ***Router Instance Class of Rzl **Ziggy Route**.***
  * -------------------------------------------------------
- * **Calling Rzl Ziggy's `route()` function with no arguments will return an instance of
+ * **Calling `route()` function of Rzl **Ziggy Route** with no arguments will return an instance of
  * its JavaScript `Router` class, which has some other useful properties and methods.**
  */
 export type Router = {
@@ -306,7 +306,7 @@ export type Router = {
 };
 
 /** -------------------------------------------------------
- * * ***Types For RouteFactory Class.***
+ * * ***Types For `RouteFactory` Class.***
  * -------------------------------------------------------
  */
 export type RouteFactoryConfig = {
@@ -323,7 +323,7 @@ export type RouteFactoryConfig = {
 };
 
 /** -------------------------------------------------------
- * * ***Types For RouterConfig Class.***
+ * * ***Types For `RouterConfig` Class.***
  * -------------------------------------------------------
  */
 export type RouterConfig = {

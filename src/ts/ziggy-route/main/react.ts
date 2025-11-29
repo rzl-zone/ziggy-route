@@ -9,9 +9,13 @@ import type {
 import { route } from "@ts/ziggy-route/main/route";
 import { RouterConfigError } from "@ts/ziggy-route/class/exceptions";
 
+/** -------------------------------------------------------
+ * * ***Type Return from React Hook {@link useRoute | `useRoute`} Helper of Rzl **Ziggy Route**.***
+ * -------------------------------------------------------
+ */
 export type ReactRouteHook = {
   /** -------------------------------------------------------
-   * * ***Rzl Ziggy's `route()` from `useRouter` helper.***
+   * * ***The `route()` function from `useRouter` of Rzl **Ziggy Route**.***
    * -------------------------------------------------------
    * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
    * @description
@@ -54,7 +58,7 @@ export type ReactRouteHook = {
    */
   (): Router;
   /** -------------------------------------------------------
-   * * ***Rzl Ziggy's `route()` from `useRouter` helper.***
+   * * ***The `route()` function from `useRouter` of Rzl **Ziggy Route**.***
    * -------------------------------------------------------
    * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
    * @description
@@ -86,7 +90,7 @@ export type ReactRouteHook = {
     absolute?: boolean
   ): string;
   /** -------------------------------------------------------
-   * * ***Rzl Ziggy's `route()` from `useRouter` helper.***
+   * * ***The `route()` function from `useRouter` of Rzl **Ziggy Route**.***
    * -------------------------------------------------------
    * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
    * @description
@@ -118,7 +122,7 @@ export type ReactRouteHook = {
     absolute?: boolean
   ): string;
   /** -------------------------------------------------------
-   * * ***Rzl Ziggy's `route()` from `useRouter` helper.***
+   * * ***The `route()` function from `useRouter` of Rzl **Ziggy Route**.***
    * -------------------------------------------------------
    * **This function works similarly to Laravel's [`route()` helper](https://laravel.com/docs/helpers#method-route).**
    * @description
@@ -156,9 +160,9 @@ export type ReactRouteHook = {
 };
 
 /** -------------------------------------------------------
- * * ***Rzl Ziggy's React Hook Helper.***
+ * * ***React Hook Helper of Rzl **Ziggy Route**.***
  * -------------------------------------------------------
- * **Rzl Ziggy includes a `useRoute()` hook to make it easy to use
+ * **Rzl **Ziggy Route** includes a `useRoute()` hook to make it easy to use
  * the `route()` helper in your React app.**
  *
  * @param {Config} [defaultConfig]

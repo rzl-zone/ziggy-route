@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import { resolve } from "path";
 import { existsSync, renameSync } from "fs";
-import { getFormatExt, LOG_UTILS, toRelative } from "./utility";
+import { getFormatExt, LOG_UTILS, toRelative } from "./utils";
 
 const fileInput = "index.iife.js";
 const fileOutput = "rzl-ziggy.iife.js";

@@ -5,9 +5,9 @@ import type {
 } from "../types";
 
 import { parse } from "qs";
+import { isEmptyString, isNil, isString } from "@rzl-zone/utils-js/predicates";
 
 import { RoutePropsError, RouterConfigError } from "./exceptions";
-import { isEmptyString, isNil, isString } from "@rzl-zone/utils-js/predicates";
 
 /** ---------------------------------
  * * ***A Laravel route. This class represents one route and its configuration and metadata.***
@@ -36,7 +36,7 @@ export default class RouteFactory {
    * -------------------------------------------------------
    *
    * @example
-   * https://{team}.rzl.dev/user/{user}
+   * https://{team}.rzlzone.dev/user/{user}
    *
    * @return {String} Route template.
    */
@@ -54,7 +54,7 @@ export default class RouteFactory {
    * -------------------------------------------------------
    *
    * @example
-   * https://{team}.rzl.dev/
+   * https://{team}.rzlzone.dev/
    *
    * @return {String} Route origin template.
    */

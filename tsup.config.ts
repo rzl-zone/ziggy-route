@@ -16,7 +16,7 @@ const configOptions = (options: Options): Options => {
 
   return {
     dts: true,
-    minify: "terser",
+    minify: options.minify ?? "terser",
     treeshake: true,
     splitting: true,
     bundle: true,
@@ -27,7 +27,7 @@ const configOptions = (options: Options): Options => {
     },
     format: ["cjs", "esm"],
     outDir: "dist",
-    target: "esnext",
+    // target: "esnext",
     clean: !options.watch,
     outExtension({ format }) {
       return {
@@ -46,6 +46,7 @@ const configOptions = (options: Options): Options => {
 export default defineConfig((options) => [
   configOptions({
     ...options,
+    minify: false,
     entry: {
       "ziggy-route/vue": "src/ts/ziggy-route/build/node/vue.ts",
       "ziggy-route/react": "src/ts/ziggy-route/build/node/react.ts",

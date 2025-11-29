@@ -1,1 +1,35 @@
-import{route as o}from"../chunk-MMR5OWTW.esm.js";import"../chunk-BKI6CYPF.esm.js";var r={install:function(r,e){function t(r,t,n){return o(r,t,n,e)}parseInt(r.version)>2?(r.config.globalProperties.route=t,r.provide("route",t)):r.mixin({methods:{route:t}})}};export{r as rzlZiggyVue};
+/*!
+ * ====================================================
+ * Rzl Ziggy-Route.
+ * ----------------------------------------------------
+ * Version: 0.0.12.
+ * Author: Rizalvin Dwiky.
+ * Repository: https://github.com/rzl-zone/ziggy-route.
+ * ====================================================
+ */
+import { route } from '../chunk-FY7J5NOI.esm.js';
+import '../chunk-IWMGSFDN.esm.js';
+
+var rzlZiggyVue = {
+  /** -------------------------------------------------------
+   * * ***Rzl **Ziggy Route** Install Route to Vue.***
+   * -------------------------------------------------------
+   */
+  install: function(app, options) {
+    function rt(name, params, absolute) {
+      return route(name, params, absolute, options);
+    }
+    if (parseInt(app.version) > 2) {
+      app.config.globalProperties.route = rt;
+      app.provide("route", rt);
+    } else {
+      app.mixin({
+        methods: {
+          route: rt
+        }
+      });
+    }
+  }
+};
+
+export { rzlZiggyVue };

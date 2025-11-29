@@ -74,13 +74,13 @@ return [
    *
    * You can override these at runtime via `URL::defaults([...])`.
    */
-  'defaults' => [
+  "defaults" => [
     /** Default for `{locale}` route parameter. CLI `--locale` overrides this value. */
-    // 'locale' => env('APP_LOCALE', 'en'),
+    // "locale" => env("APP_LOCALE", "en"),
 
     // another example:...
-    // 'type'   => 'default', // Default value for routes requiring {type}
-    // 'team'   => 'main',    // Default tenant/team identifier (e.g. {team})
+    // "type"   => "default", // Default value for routes requiring {type}
+    // "team"   => "main",    // Default tenant/team identifier (e.g. {team})
   ],
 
   /** Filter the named routes that will be included in the generated output.
@@ -94,14 +94,14 @@ return [
    *
    * Example:
    * [
-   *     'home',
-   *     'posts.*',
+   *     "home",
+   *     "posts.*",
    * ]
    */
-  'only' => [
-    // 'home',
-    // 'posts.index',
-    // 'posts.show',
+  "only" => [
+    // "home",
+    // "posts.index",
+    // "posts.show",
   ],
 
   /** Exclude specific named routes from the generated output.
@@ -117,11 +117,11 @@ return [
    *
    * Example:
    * [
-   *     '_debugbar.*',
-   *     'debugbar.*',
-   *     'ignition.*',
-   *     'sanctum.csrf-cookie',
-   *     'minify.assets',
+   *     "_debugbar.*",
+   *     "debugbar.*",
+   *     "ignition.*",
+   *     "sanctum.csrf-cookie",
+   *     "minify.assets",
    * ]
    */
   "except" => [
@@ -147,12 +147,12 @@ return [
    *
    * Example:
    * [
-   *     'dashboard' => [
-   *         'dashboard.*',
-   *         'dashboard',
+   *     "dashboard" => [
+   *         "dashboard.*",
+   *         "dashboard",
    *     ],
-   *     'homepage' => [
-   *         'homepage',
+   *     "homepage" => [
+   *         "homepage",
    *     ],
    * ]
    */

@@ -35,8 +35,8 @@ class File implements Stringable
     JAVASCRIPT;
   }
 
-  /** @deprecated Use `toString()` instead. */
-  public function _toString_(): string
+  /** @deprecated Use `__toString()` instead. */
+  public function _toString(): string
   {
     return <<<JAVASCRIPT
     const appRoutes = {$this->ziggy->toJson(JSON_UNESCAPED_SLASHES)};
