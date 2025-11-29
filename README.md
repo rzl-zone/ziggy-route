@@ -1,7 +1,9 @@
 <div align="center" style="display: flex;justify-content: center;flex-direction: column;align-items: center;gap: 0rem">
-  <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/rzl-zone/ziggy-route/main/logo-circle.png">
-    <img src="https://raw.githubusercontent.com/rzl-zone/ziggy-route/main/logo-circle.png" align="middle" alt="RzlZone Logo" width="110" style="max-width: 100%;" />
-  </a>
+  <p align="center">
+    <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/rzl-zone/ziggy-route/main/logo-circle.png">
+      <img src="https://raw.githubusercontent.com/rzl-zone/ziggy-route/main/logo-circle.png" align="middle" alt="RzlZone Logo" width="110" style="max-width: 100%;" />
+    </a>
+  </p>
 </div>
 
 <h1 align="center"><strong>Ziggy Route</strong></h1>
@@ -15,7 +17,7 @@
 </p>
 
 <div align="center" style="display: flex;justify-content: center;flex-direction: column;align-items: center;gap: 0rem">
-  <p>
+  <p align="center">
     <a href="https://packagist.org/packages/rzl-zone/ziggy-route" target="_blank" rel="nofollow noreferrer noopener">
       <img src="https://img.shields.io/packagist/v/rzl-zone/ziggy-route.svg?logo=packagist&label=Latest%20Version%20Packagist&color=red&logoColor=white&style=flat-rounded" alt="Latest Version on Packagist" />
     </a>
