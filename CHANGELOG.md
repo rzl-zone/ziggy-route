@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.14](https://github.com/rzl-zone/ziggy-route/compare/v0.0.13...v0.0.14) (2025-11-29)
+
+
+### Bug Fixes
+
+* **`composer.json`:** Bump version because some error at composer.json. ([9d6705b](https://github.com/rzl-zone/ziggy-route/commit/9d6705bbc006a405c1e6097d4486fbae7bdcf416))
+
 ## [0.0.13](https://github.com/rzl-zone/ziggy-route/compare/v0.0.12...v0.0.13) (2025-11-29)
 
 
