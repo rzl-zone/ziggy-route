@@ -1,6 +1,6 @@
 {
   "name": "@rzl-zone/ziggy-route",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "type": "module",
   "license": "MIT",
   "types": "./dist/ziggy-route/index.d.ts",

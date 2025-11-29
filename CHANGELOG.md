@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.13](https://github.com/rzl-zone/ziggy-route/compare/v0.0.12...v0.0.13) (2025-11-29)
+
+
+### Bug Fixes
+
+* resolve plugin issues and include refactor, dependency updates, documentation improvements, and build script adjustments. ([1bb2399](https://github.com/rzl-zone/ziggy-route/commit/1bb2399d42fd23e8fe71f1e73aa4524165488e05))
+
 ## [0.0.12](https://github.com/rzl-zone/ziggy-route/compare/v0.0.11...v0.0.12) (2025-09-18)
 
 
